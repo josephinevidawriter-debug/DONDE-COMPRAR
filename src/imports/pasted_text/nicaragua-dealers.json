@@ -1,0 +1,92 @@
+# FIGMA MAKE PROMPT — CONCESIONARIOS NICARAGUA (REAL DATA)
+
+You are a senior UX strategist and senior UI design director.
+
+Your task is to populate the EXISTING Concesionarios / Puntos de Venta section using the REAL Nicaragua dataset below.
+
+IMPORTANT:
+Do NOT use placeholders.
+Use the exact real names and addresses below.
+
+UX/UI REQUIREMENTS:
+
+* This dataset contains 39 real records.
+* Do NOT dump 39 giant cards in one endless scroll.
+* Design the BEST POSSIBLE premium UX/UI browsing experience.
+* Think like a world-class digital agency.
+
+Required behavior:
+
+* Country filter should support: Todos / Nicaragua / Costa Rica / Guatemala
+* When Nicaragua is selected, gracefully handle all 39 records.
+* Recommended UX:
+
+  * pagination OR load more OR compact premium directory browsing
+  * fast scan readability
+  * elegant card density
+  * mobile-friendly browsing
+
+STANDARD CARD FIELDS (ALL CARDS):
+
+* Nombre
+* Dirección
+* Teléfono (leave blank elegantly for now)
+* Horario (leave blank elegantly for now)
+* Ubicación (map CTA placeholder)
+
+IMPORTANT:
+Even if Nicaragua lacks phone/hours data, KEEP the labels for design consistency.
+
+VISUAL QUALITY:
+
+* premium Carnes San Martín brand look
+* elegant
+* warm
+* high-end food corporate
+* NOT generic gray SaaS cards
+
+## REAL NICARAGUA DATASET
+
+[
+{"nombre":"Las Colinas","direccion":"Km. 9.9 Carretera Masaya, contiguo a Gasolinera UNO.","telefono":"","horario":"","ubicacion":""},
+{"nombre":"Ticuantepe","direccion":"UNIPLAZA VERACRUUZ Rotonda de Ticuantepe","telefono":"","horario":"","ubicacion":""},
+{"nombre":"Galerías","direccion":"Edificio frente a Siman, entrada principal Galerías Santo Domingo.","telefono":"","horario":"","ubicacion":""},
+{"nombre":"Altamira","direccion":"Calle Principal de Altamira, contiguo a donde fue el BDF.","telefono":"","horario":"","ubicacion":""},
+{"nombre":"Bello Horizonte","direccion":"De la rotonda de Bello Horizonte 150 mts arriba, contiguo Óptica Matamoros.","telefono":"","horario":"","ubicacion":""},
+{"nombre":"Nejapa","direccion":"Km. 9 Carretera Vieja a León, de la garita de policía 300 mts al sur.","telefono":"","horario":"","ubicacion":""},
+{"nombre":"Carretera Sur Km 10 1/2","direccion":"Plaza 10 1/2 Carretera Sur, frente a Gasolinera UNO.","telefono":"","horario":"","ubicacion":""},
+{"nombre":"Ciudad Sandino","direccion":"Frente a la Alcaldía.","telefono":"","horario":"","ubicacion":""},
+{"nombre":"San Judas","direccion":"Del Ceibo 1/2 cuadra al norte.","telefono":"","horario":"","ubicacion":""},
+{"nombre":"Rubenia","direccion":"Uniplaza Rubenia módulo #6.","telefono":"","horario":"","ubicacion":""},
+{"nombre":"Oriental","direccion":"De la Mansión Luis Somoza, 1 cuadra al lago.","telefono":"","horario":"","ubicacion":""},
+{"nombre":"Masaya","direccion":"De donde fue Shell 1 1/2 cuadra al oeste.","telefono":"","horario":"","ubicacion":""},
+{"nombre":"Masaya Mercadito","direccion":"Del antiguo Hospital 1 cuadra al sur.","telefono":"","horario":"","ubicacion":""},
+{"nombre":"Masatepe","direccion":"De la estación de policía 80 vrs al oeste.","telefono":"","horario":"","ubicacion":""},
+{"nombre":"Granada","direccion":"Calle Atravesada, de Banpro 1 cuadra al lago.","telefono":"","horario":"","ubicacion":""},
+{"nombre":"Jinotepe","direccion":"De Banpro 20 vrs al sur.","telefono":"","horario":"","ubicacion":""},
+{"nombre":"León","direccion":"Frente a Iglesia La Recolección.","telefono":"","horario":"","ubicacion":""},
+{"nombre":"León Guadalupe","direccion":"De Iglesia Guadalupe 1/2 cuadra al oeste.","telefono":"","horario":"","ubicacion":""},
+{"nombre":"Chinandega","direccion":"Esquina opuesta a Iglesia El Calvario.","telefono":"","horario":"","ubicacion":""},
+{"nombre":"Estelí","direccion":"Del parque central 1 cuadra al oeste.","telefono":"","horario":"","ubicacion":""},
+{"nombre":"Matagalpa","direccion":"Del parque Darío 1 cuadra al norte.","telefono":"","horario":"","ubicacion":""},
+{"nombre":"Rivas","direccion":"Frente al parque central.","telefono":"","horario":"","ubicacion":""},
+{"nombre":"Linda Vista","direccion":"Plaza Linda Vista.","telefono":"","horario":"","ubicacion":""},
+{"nombre":"Metrocentro","direccion":"Centro Comercial Metrocentro.","telefono":"","horario":"","ubicacion":""},
+{"nombre":"Plaza Inter","direccion":"Centro Comercial Plaza Inter.","telefono":"","horario":"","ubicacion":""},
+{"nombre":"Tipitapa","direccion":"Costado oeste del mercado.","telefono":"","horario":"","ubicacion":""},
+{"nombre":"Nagarote","direccion":"Centro de Nagarote.","telefono":"","horario":"","ubicacion":""},
+{"nombre":"La Paz Centro","direccion":"Centro de La Paz Centro.","telefono":"","horario":"","ubicacion":""},
+{"nombre":"Ocotal","direccion":"Zona central.","telefono":"","horario":"","ubicacion":""},
+{"nombre":"Somoto","direccion":"Zona central.","telefono":"","horario":"","ubicacion":""},
+{"nombre":"Bluefields","direccion":"Zona central.","telefono":"","horario":"","ubicacion":""},
+{"nombre":"Nueva Guinea","direccion":"Zona central.","telefono":"","horario":"","ubicacion":""},
+{"nombre":"Nandaime","direccion":"Zona central.","telefono":"","horario":"","ubicacion":""},
+{"nombre":"Diriomo","direccion":"Zona central.","telefono":"","horario":"","ubicacion":""},
+{"nombre":"Diriamba","direccion":"Del Reloj Público 3 cuadras al norte.","telefono":"","horario":"","ubicacion":""},
+{"nombre":"San Juan del Sur","direccion":"Frente a Supermercado Pali de San Juan del Sur.","telefono":"","horario":"","ubicacion":""},
+{"nombre":"Tola Rivas","direccion":"De la Alcaldía municipal de Tola 1 cuadra oeste.","telefono":"","horario":"","ubicacion":""},
+{"nombre":"Boaco","direccion":"Esquina opuesta al Jordan.","telefono":"","horario":"","ubicacion":""},
+{"nombre":"Juigalpa","direccion":"De ENITEL 2 cuadras y media al oeste.","telefono":"","horario":"","ubicacion":""}
+]
+
+Proceed immediately and populate the section using this real content.

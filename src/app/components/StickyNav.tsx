@@ -47,15 +47,15 @@ export function StickyNav() {
   if (!isVisible) return null;
 
   return (
-    <nav className="sticky top-20 z-40 bg-[#FDFBF7] border-b border-brand-gold/20 shadow-sm backdrop-blur-sm">
+    <nav className="sticky top-20 z-40 bg-[#FDFBF7]/95 border-b border-brand-gold/25 shadow-[0_6px_18px_rgba(0,0,0,0.05)] backdrop-blur-md">
       <div className="container mx-auto px-4 lg:px-8">
-        <div className="flex items-center justify-between py-1">
+        <div className="flex items-center justify-between py-0.5">
           <div className="flex items-center">
             {navItems.map((item) => (
               <button
                 key={item.id}
                 onClick={() => scrollToSection(item.id)}
-                className={`relative px-4 py-4 whitespace-nowrap transition-colors duration-300 text-sm ${
+                className={`relative px-4 py-3.5 whitespace-nowrap transition-colors duration-300 text-sm ${
                   activeSection === item.id
                     ? 'text-brand-dark font-medium'
                     : 'text-brand-dark/60 hover:text-brand-gold font-normal'
@@ -75,7 +75,7 @@ export function StickyNav() {
           {/* Return to channels */}
           <button
             onClick={() => scrollToSection('channel-selector')}
-            className="hidden lg:flex items-center gap-1.5 px-4 py-4 text-brand-dark/60 hover:text-brand-gold transition-colors whitespace-nowrap font-normal text-sm"
+            className="hidden lg:flex items-center gap-1.5 px-4 py-3.5 text-brand-dark/60 hover:text-brand-gold transition-colors duration-300 whitespace-nowrap font-normal text-sm"
             style={{ fontFamily: 'var(--font-sans)' }}
           >
             <ArrowUp className="h-3.5 w-3.5" />

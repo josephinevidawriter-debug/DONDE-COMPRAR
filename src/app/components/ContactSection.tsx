@@ -26,7 +26,7 @@ export function ContactSection() {
   };
 
   return (
-    <section id="contact" className="py-16 bg-brand-dark text-white relative overflow-hidden">
+    <section id="contact" className="py-16 md:py-20 bg-brand-dark text-white relative overflow-hidden">
       {/* Background Pattern */}
       <div className="absolute inset-0 z-0 opacity-5">
         <img
@@ -37,7 +37,7 @@ export function ContactSection() {
       </div>
 
       <div className="container mx-auto px-4 lg:px-8 relative z-10">
-        <div className="text-center mb-20">
+        <div className="text-center mb-16 md:mb-20">
           <h2 className="text-[32px] md:text-[44px] lg:text-[56px] mb-6" style={{ fontFamily: 'var(--font-serif)', fontWeight: 700, lineHeight: '110%', letterSpacing: '0px', color: '#FFFFFF' }}>
             Contáctenos
           </h2>

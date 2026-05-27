@@ -1,4 +1,4 @@
-import { MapPin, Phone, Clock, Search } from 'lucide-react';
+import { MapPin, Phone, Clock, Search, ChevronRight } from 'lucide-react';
 import { useState, useMemo } from 'react';
 
 type Country = 'Todos' | 'Nicaragua' | 'Costa Rica' | 'Guatemala';
@@ -124,21 +124,30 @@ export function ConcessionairesSection() {
   const countries: Country[] = ['Todos', 'Nicaragua', 'Costa Rica', 'Guatemala'];
 
   return (
-    <section id="concessionaires" className="py-16 bg-white">
+    <section id="concessionaires" className="py-16 md:py-20 bg-white">
       <div className="container mx-auto px-4 lg:px-8">
-        <div className="text-center mb-16">
-          <h2 className="text-[32px] md:text-[44px] lg:text-[56px] mb-6" style={{ fontFamily: 'var(--font-serif)', fontWeight: 700, lineHeight: '110%', letterSpacing: '0px', color: '#111111' }}>
-            Concesionarios y Puntos de Venta
-          </h2>
-          <p className="text-[18px] md:text-[20px] lg:text-[24px] max-w-2xl mx-auto" style={{ fontFamily: 'var(--font-sans)', fontWeight: 400, lineHeight: '150%', color: '#3A3A3A' }}>
+        <div className="text-center mb-8 md:mb-10 w-full">
+        <h2
+  className="w-full text-[32px] md:text-[44px] lg:text-[56px] mb-3 md:mb-4 whitespace-nowrap text-center"
+  style={{
+    fontFamily: 'var(--font-serif)',
+    fontWeight: 700,
+    lineHeight: '110%',
+    letterSpacing: '0px',
+    color: '#111111',
+  }}
+>
+  Concesionarios y Puntos de Venta
+</h2>
+          <p className="text-[18px] md:text-[20px] lg:text-[24px]" style={{ fontFamily: 'var(--font-sans)', fontWeight: 400, lineHeight: '152%', color: '#3A3A3A' }}>
             Encuentre nuestros puntos de venta autorizados más cercanos
           </p>
         </div>
 
         {/* Search + Country Filter - Horizontal Layout */}
-        <div className="flex flex-wrap items-center gap-4 mb-12">
+        <div className="flex flex-wrap items-center gap-3 md:gap-4 mb-7 md:mb-9">
           {/* Search Box - Left Side */}
-          <div className="relative w-80">
+          <div className="relative w-full md:w-80">
             <Search className="absolute left-4 top-1/2 -translate-y-1/2 h-5 w-5" style={{ color: '#6B7280' }} />
             <input
               type="text"
@@ -148,83 +157,109 @@ export function ConcessionairesSection() {
                 setSearchQuery(e.target.value);
                 setVisibleCount(6);
               }}
-              className="w-full pl-12 pr-4 py-4 focus:outline-none focus:ring-2 bg-white"
+              className="w-full pl-12 pr-4 py-3.5 focus:outline-none focus:ring-2 bg-white"
               style={{ border: '1px solid #E5E5E5', color: '#111111', borderRadius: '0px' }}
             />
           </div>
 
           {/* Country Filter - Right Side */}
-          <div className="inline-flex p-1 gap-1" style={{ backgroundColor: '#F8F8F8', border: '1px solid #E5E5E5' }}>
-            {countries.map((country) => (
-              <button
-                key={country}
-                onClick={() => {
-                  setSelectedCountry(country);
-                  setVisibleCount(6);
-                  setSearchQuery('');
-                }}
-                className={`px-8 py-4 transition-all duration-300 ${
-                  selectedCountry === country
-                    ? ''
-                    : 'bg-transparent hover:bg-white'
-                }`}
-                style={{
-                  fontFamily: 'var(--font-sans)',
-                  fontWeight: 500,
-                  backgroundColor: selectedCountry === country ? '#D4A93A' : 'transparent',
-                  color: '#111111'
-                }}
-              >
-                {country}
-              </button>
-            ))}
+          <div className="w-full md:w-auto">
+            <p
+              className="md:hidden mb-2 text-[11px] font-medium tracking-[0.12em] uppercase text-brand-dark/55"
+              style={{ fontFamily: 'var(--font-sans)' }}
+            >
+              Desliza para ver más países
+            </p>
+            <div className="relative md:static">
+              <div className="overflow-x-auto md:overflow-visible scrollbar-hide overscroll-x-contain -mr-4 pr-4 md:mr-0 md:pr-0">
+                <div
+                  className="inline-flex min-w-max md:min-w-0 p-1 gap-1 flex-nowrap pr-2 md:pr-0"
+                  style={{ backgroundColor: '#F8F8F8', border: '1px solid #E5E5E5' }}
+                >
+                  {countries.map((country) => (
+                    <button
+                      key={country}
+                      onClick={() => {
+                        setSelectedCountry(country);
+                        setVisibleCount(6);
+                        setSearchQuery('');
+                      }}
+                      className={`px-6 md:px-8 py-3 md:py-3.5 transition-all duration-300 whitespace-nowrap ${
+                        selectedCountry === country
+                          ? ''
+                          : 'bg-transparent hover:bg-white'
+                      }`}
+                      style={{
+                        fontFamily: 'var(--font-sans)',
+                        fontWeight: 500,
+                        backgroundColor: selectedCountry === country ? '#D4A93A' : 'transparent',
+                        color: '#111111'
+                      }}
+                    >
+                      {country}
+                    </button>
+                  ))}
+                </div>
+              </div>
+              <div
+                className="pointer-events-none absolute inset-y-0 right-0 w-12 bg-gradient-to-l from-white via-white/90 to-transparent md:hidden"
+                aria-hidden="true"
+              />
+              <ChevronRight
+                className="pointer-events-none absolute right-1 top-1/2 -translate-y-1/2 h-4 w-4 text-brand-dark/35 md:hidden"
+                strokeWidth={1.75}
+                aria-hidden="true"
+              />
+            </div>
           </div>
         </div>
 
         {/* Results count */}
         {searchQuery && (
-          <p className="text-center text-muted-foreground mb-8">
+          <p className="text-center text-muted-foreground mb-5 md:mb-6">
             {filteredAndSearchedConcessionaires.length} resultado{filteredAndSearchedConcessionaires.length !== 1 ? 's' : ''} encontrado{filteredAndSearchedConcessionaires.length !== 1 ? 's' : ''}
           </p>
         )}
 
         {/* Concessionaires Grid - STANDARDIZED CARD STRUCTURE */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-5 md:gap-6 mb-8 md:mb-10">
           {visibleConcessionaires.map((concessionaire, index) => (
             <div
               key={index}
-              className="bg-white p-8 hover:shadow-xl transition-all duration-300 relative"
-              style={{ border: '1px solid #E5E5E5' }}
+              className="bg-white p-6 md:p-7 hover:shadow-[0_10px_28px_rgba(17,17,17,0.08)] transition-all duration-300 relative border border-[#E5E5E5] hover:border-[#D0D0D0]"
             >
               {/* Country Badge - Top Right */}
-              <div className="absolute top-4 right-4">
-                <span className="inline-block px-3 py-1 text-xs font-medium tracking-wide" style={{ backgroundColor: 'rgba(212,169,58,0.12)', border: '1px solid rgba(212,169,58,0.3)', color: '#111111' }}>
+              <div className="absolute top-3 right-3">
+                <span className="inline-block px-2.5 py-0.5 text-[11px] font-medium tracking-wide" style={{ backgroundColor: 'rgba(212,169,58,0.12)', border: '1px solid rgba(212,169,58,0.3)', color: '#111111' }}>
                   {concessionaire.country}
                 </span>
               </div>
 
-              {/* Title with fixed height for alignment */}
-              <div style={{ minHeight: '88px', marginBottom: '10px' }}>
-                <h3 className="pr-16" style={{ fontFamily: 'var(--font-serif)', fontWeight: 600, lineHeight: '115%', color: '#111111', fontSize: '28px' }}>
+              {/* Title zone: fixed 2-line height, top-aligned */}
+              <div className="pr-14 mb-3 min-h-[3.65rem] md:min-h-[3.9rem]">
+                <h3
+                  className="line-clamp-2 text-[26px] md:text-[28px]"
+                  style={{ fontFamily: 'var(--font-serif)', fontWeight: 600, lineHeight: '114%', color: '#111111' }}
+                >
                   {concessionaire.name}
                 </h3>
               </div>
 
-              <div className="space-y-6">
+              <div className="space-y-4">
                 {/* Dirección */}
-                <div className="flex items-start gap-4">
+                <div className="flex items-start gap-3">
                   <MapPin className="h-5 w-5 flex-shrink-0" style={{ color: '#D4A93A', strokeWidth: '1.75px', marginTop: '2px' }} />
-                  <div className="flex-grow">
-                    <p className="mb-2" style={{ fontFamily: 'var(--font-sans)', fontWeight: 600, lineHeight: '140%', letterSpacing: '0.3px', color: '#111111', fontSize: '13px' }}>Dirección</p>
+                  <div className="flex-grow min-w-0">
+                    <p className="mb-1" style={{ fontFamily: 'var(--font-sans)', fontWeight: 600, lineHeight: '140%', letterSpacing: '0.3px', color: '#111111', fontSize: '13px' }}>Dirección</p>
                     <p style={{ fontFamily: 'var(--font-sans)', fontWeight: 400, lineHeight: '135%', color: '#3A3A3A', fontSize: '15px' }}>{concessionaire.address}</p>
                   </div>
                 </div>
 
                 {/* Teléfono */}
-                <div className="flex items-start gap-4">
+                <div className="flex items-start gap-3">
                   <Phone className="h-5 w-5 flex-shrink-0" style={{ color: '#D4A93A', strokeWidth: '1.75px', marginTop: '2px' }} />
-                  <div className="flex-grow">
-                    <p className="mb-2" style={{ fontFamily: 'var(--font-sans)', fontWeight: 600, lineHeight: '140%', letterSpacing: '0.3px', color: '#111111', fontSize: '13px' }}>Teléfono</p>
+                  <div className="flex-grow min-w-0">
+                    <p className="mb-1" style={{ fontFamily: 'var(--font-sans)', fontWeight: 600, lineHeight: '140%', letterSpacing: '0.3px', color: '#111111', fontSize: '13px' }}>Teléfono</p>
                     {concessionaire.phone ? (
                       <p style={{ fontFamily: 'var(--font-sans)', fontWeight: 400, lineHeight: '135%', color: '#3A3A3A', fontSize: '15px' }}>{concessionaire.phone}</p>
                     ) : (
@@ -234,10 +269,10 @@ export function ConcessionairesSection() {
                 </div>
 
                 {/* Horario - Multi-line format */}
-                <div className="flex items-start gap-4">
+                <div className="flex items-start gap-3">
                   <Clock className="h-5 w-5 flex-shrink-0" style={{ color: '#D4A93A', strokeWidth: '1.75px', marginTop: '2px' }} />
-                  <div className="flex-grow">
-                    <p className="mb-2" style={{ fontFamily: 'var(--font-sans)', fontWeight: 600, lineHeight: '140%', letterSpacing: '0.3px', color: '#111111', fontSize: '13px' }}>Horario</p>
+                  <div className="flex-grow min-w-0">
+                    <p className="mb-1" style={{ fontFamily: 'var(--font-sans)', fontWeight: 600, lineHeight: '140%', letterSpacing: '0.3px', color: '#111111', fontSize: '13px' }}>Horario</p>
                     {concessionaire.hours ? (
                       <p className="whitespace-pre-line" style={{ fontFamily: 'var(--font-sans)', fontWeight: 400, lineHeight: '135%', color: '#3A3A3A', fontSize: '15px' }}>{concessionaire.hours}</p>
                     ) : (
@@ -252,7 +287,7 @@ export function ConcessionairesSection() {
 
         {/* No results */}
         {filteredAndSearchedConcessionaires.length === 0 && (
-          <div className="text-center py-12">
+          <div className="text-center py-8 md:py-10">
             <p className="text-muted-foreground text-lg">No se encontraron resultados</p>
           </div>
         )}
@@ -262,8 +297,8 @@ export function ConcessionairesSection() {
           <div className="text-center">
             <button
               onClick={() => setVisibleCount(prev => prev + 9)}
-              className="px-6 bg-transparent hover:bg-brand-gold transition-all duration-300 text-[16px] lg:text-[18px]"
-              style={{ fontFamily: 'var(--font-sans)', fontWeight: 600, lineHeight: '100%', letterSpacing: '0.5px', color: '#111111', height: '56px', border: '1px solid #111111', borderRadius: '0px' }}
+              className="px-7 bg-transparent hover:bg-brand-gold transition-all duration-500 text-[16px] lg:text-[18px] shadow-[0_8px_20px_rgba(17,17,17,0.08)] hover:shadow-[0_12px_28px_rgba(17,17,17,0.16)] hover:-translate-y-0.5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-gold focus-visible:ring-offset-2"
+              style={{ fontFamily: 'var(--font-sans)', fontWeight: 600, lineHeight: '100%', letterSpacing: '0.04em', color: '#111111', height: '56px', border: '1px solid #111111', borderRadius: '0px' }}
             >
               VER MÁS UBICACIONES
             </button>
@@ -271,7 +306,7 @@ export function ConcessionairesSection() {
         )}
 
         {/* Total Count */}
-        <p className="text-center text-muted-foreground mt-8">
+        <p className="text-center text-muted-foreground mt-6 md:mt-7">
           Mostrando {visibleConcessionaires.length} de {filteredAndSearchedConcessionaires.length} ubicaciones
           {selectedCountry !== 'Todos' && ` en ${selectedCountry}`}
         </p>

@@ -33,10 +33,10 @@ export function ChannelSelector() {
     <section id="channel-selector" className="py-16 bg-white relative">
       <div className="container mx-auto px-4 lg:px-8">
         <div className="text-center mb-16">
-          <h2 className="text-[32px] md:text-[44px] lg:text-[56px] mb-6" style={{ fontFamily: 'var(--font-serif)', fontWeight: 700, lineHeight: '110%', letterSpacing: '0px', color: '#111111' }}>
+          <h2 className="text-[32px] md:text-[44px] lg:text-[56px] mb-6" style={{ fontFamily: 'var(--font-serif)', fontWeight: 700, lineHeight: '108%', letterSpacing: '-0.01em', color: '#111111' }}>
             Seleccione su canal de compra
           </h2>
-          <p className="text-[18px] md:text-[20px] lg:text-[24px] max-w-2xl mx-auto" style={{ fontFamily: 'var(--font-sans)', fontWeight: 400, lineHeight: '150%', color: '#3A3A3A' }}>
+          <p className="text-[18px] md:text-[20px] lg:text-[24px] max-w-2xl mx-auto" style={{ fontFamily: 'var(--font-sans)', fontWeight: 400, lineHeight: '152%', color: '#3A3A3A' }}>
             Encuentre la opción que mejor se adapte a sus necesidades
           </p>
         </div>
@@ -74,15 +74,18 @@ export function ChannelSelector() {
 
               {/* Content with refined spacing */}
               <div className="p-8 flex flex-col flex-grow">
-                <h3 className="text-2xl font-bold text-brand-dark mb-4 leading-tight group-hover:text-brand-gold transition-colors duration-500 whitespace-pre-line" style={{ fontFamily: 'var(--font-serif)' }}>
-                  {channel.title}
+                <h3
+  className="text-2xl font-bold text-brand-dark mb-4 leading-[115%] min-h-[5.5rem] flex items-start group-hover:text-brand-gold transition-colors duration-500 whitespace-pre-line"
+  style={{ fontFamily: 'var(--font-serif)' }}
+>
+  {channel.title}
                 </h3>
                 <p className="text-muted-foreground mb-8 flex-grow leading-relaxed">
                   {channel.description}
                 </p>
 
                 {/* CTA with enhanced interaction */}
-                <button className="self-start px-8 py-3 bg-white text-brand-dark border border-brand-dark hover:bg-brand-gold hover:border-brand-gold transition-all duration-500 font-medium group-hover:shadow-lg">
+                <button className="self-start px-8 py-3 bg-white text-brand-dark border border-brand-dark hover:bg-brand-gold hover:border-brand-gold transition-all duration-500 font-semibold tracking-[0.02em] group-hover:shadow-[0_12px_28px_rgba(17,17,17,0.14)] hover:-translate-y-0.5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-gold focus-visible:ring-offset-2">
                   Explorar
                 </button>
               </div>

@@ -45,7 +45,7 @@ export function SupermarketsSection() {
   const countries: Country[] = ['Nicaragua', 'Costa Rica', 'Guatemala', 'El Salvador'];
 
   return (
-    <section id="supermarkets" className="py-16 bg-[#F5F3EE] relative overflow-hidden">
+    <section id="supermarkets" className="py-16 md:py-20 bg-[#F5F3EE] relative overflow-hidden">
       {/* Subtle texture background */}
       <div
         className="absolute inset-0 opacity-[0.28]"
@@ -58,7 +58,7 @@ export function SupermarketsSection() {
       ></div>
 
       <div className="container mx-auto px-4 lg:px-8 relative z-10">
-        <div className="text-center mb-16">
+        <div className="text-center mb-14 md:mb-16">
           <h2 className="text-[32px] md:text-[44px] lg:text-[56px] mb-6" style={{ fontFamily: 'var(--font-serif)', fontWeight: 700, lineHeight: '110%', letterSpacing: '0px', color: '#111111' }}>
             Disponible en Supermercados
           </h2>

@@ -21,7 +21,7 @@ export function CertificationsSection() {
   ];
 
   return (
-    <section id="certifications" className="py-16 bg-[#F5F3EE] relative overflow-hidden">
+    <section id="certifications" className="py-16 md:py-20 bg-[#F5F3EE] relative overflow-hidden">
       {/* Subtle texture background */}
       <div
         className="absolute inset-0 opacity-[0.28]"
@@ -35,7 +35,7 @@ export function CertificationsSection() {
 
       <div className="container mx-auto px-4 lg:px-8 relative z-10">
         {/* Header */}
-        <div className="text-center mb-10 max-w-4xl mx-auto">
+        <div className="text-center mb-12 md:mb-14 max-w-4xl mx-auto">
           <h2 className="text-[32px] md:text-[44px] lg:text-[56px] mb-6" style={{ fontFamily: 'var(--font-serif)', fontWeight: 700, lineHeight: '110%', letterSpacing: '0px', color: '#111111' }}>
             Certificaciones Internacionales
           </h2>

@@ -58,7 +58,7 @@ function CostaRicaDistributor() {
 
       {/* SECONDARY HUB - ACCORDION */}
       <div className={`overflow-hidden transition-all duration-500 ${showSecondary ? 'max-h-[600px] opacity-100 mb-3' : 'max-h-0 opacity-0'}`}>
-        <div className="pt-3" style={{ borderTop: '1px solid rgba(255,255,255,0.14)' }}>
+        <div className="pt-2" style={{ borderTop: '1px solid rgba(255,255,255,0.14)' }}>
           <p className="font-medium mb-2" style={{ color: 'rgba(255,255,255,0.82)', fontSize: '16px', fontFamily: 'var(--font-sans)' }}>Centro de Distribución Heredia</p>
           <div className="space-y-3.5">
             <div className="flex items-start gap-4">
@@ -96,7 +96,7 @@ function CostaRicaDistributor() {
       {/* EXPAND CTA */}
       <button
         onClick={() => setShowSecondary(!showSecondary)}
-        className="mt-3 flex items-center justify-between w-full px-4 py-3 transition-all duration-300 group"
+        className="mt-3 flex items-center justify-between w-full px-4 py-2.5 transition-all duration-300 group"
         style={{ backgroundColor: 'transparent', border: '1px solid rgba(255,255,255,0.18)' }}
       >
         <span className="text-sm font-medium transition-colors uppercase" style={{ fontFamily: 'var(--font-sans)', fontWeight: 600, letterSpacing: '0.5px', color: '#FFFFFF' }}>

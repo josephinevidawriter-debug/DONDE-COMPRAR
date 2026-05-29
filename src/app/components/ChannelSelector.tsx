@@ -123,7 +123,7 @@ const scrollToSection = (id: string) => {
    text-[20px]
    md:text-[24px]
    lg:text-[28px]
-   mb-1
+   mb-6
    leading-[1.2]
    min-h-[72px]
    md:min-h-[88px]

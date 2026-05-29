@@ -218,9 +218,11 @@ function GuatemalaDistributor() {
     </div>
   );
 }
-
+/* ==========================================
+   AQUI EMPIEZA_MAP_LOVABLE_CHANGES
+========================================== */
 export function ExportSection() {
-  const [expandedRegion, setExpandedRegion] = useState<string | null>(null);
+  const [selectedRegion, setSelectedRegion] = useState<string | null>(null);
 
   const regions = [
     {
@@ -277,12 +279,20 @@ export function ExportSection() {
     },
   ];
   
+  const activeRegion = regions.find((r) => r.id === selectedRegion);
+  // Tamaños adaptativos para las banderas según cuántos países
+const getFlagSizing = (n: number) => {
+  if (n <= 2) return { flag: 'w-20 h-14', text: 'text-lg', cols: 'grid-cols-1', gap: 'gap-6' };
+  if (n === 3) return { flag: 'w-16 h-11', text: 'text-base', cols: 'grid-cols-1', gap: 'gap-5' };
+  if (n === 4) return { flag: 'w-14 h-10', text: 'text-sm', cols: 'grid-cols-2', gap: 'gap-4' };
+  return { flag: 'w-12 h-8', text: 'text-sm', cols: 'grid-cols-2', gap: 'gap-3' }; // 5–6
+};
 
-  const toggleRegion = (regionId: string) => {
-    setExpandedRegion(expandedRegion === regionId ? null : regionId);
-  };
+  /* ==========================================
+   AQUI TERMINA_MAP_LOVABLE_CHANGES
+========================================== */
 
-  return (
+return (
     <section
       id="export"
         className="pt-14 md:pt-16 pb-16 md:pb-16 bg-brand-dark relative"
@@ -463,169 +473,187 @@ Oficina principal - Managua, Nicaragua</p>
         </div>
 
         {/* 2. EXPORT DESTINATIONS MAP */}
-        <div className="mb-20">
-          {/* Centered Title */}
-          <div className="text-center mb-12 max-w-4xl mx-auto">
-          <h3
-  className="
-    text-[22px]
-    md:text-[28px]
-    lg:text-[34px]
-    mb-3
-  "
-  style={{
-    fontFamily: 'var(--font-serif)',
-    fontWeight: 700,
-    lineHeight: '1.15',
-    letterSpacing: '-0.02em',
-    color: '#FFFFFF'
-  }}
->
-              Estamos Certificados Para Exportar:
-            </h3>
+<div className="mb-20">
+  {/* Title */}
+  <div className="text-center mb-10 max-w-4xl mx-auto px-4">
+    <h3
+      className="text-[22px] md:text-[28px] lg:text-[34px] mb-3"
+      style={{
+        fontFamily: 'var(--font-serif)',
+        fontWeight: 700,
+        lineHeight: '1.15',
+        letterSpacing: '-0.02em',
+        color: '#FFFFFF',
+      }}
+    >
+      Estamos Certificados Para Exportar:
+    </h3>
+    <p
+      className="text-[14px] md:text-[16px] lg:text-[18px]"
+      style={{ color: 'rgba(255,255,255,0.70)', fontWeight: 400, lineHeight: '1.6' }}
+    >
+      Nuestra presencia internacional respaldada por certificaciones y trazabilidad de clase mundial.
+    </p>
+  </div>
 
-            <p
-  className="
-    text-[15px]
-    md:text-[17px]
-    lg:text-[18px]
-  "
-  style={{
-    color: 'rgba(255,255,255,0.70)',
-    fontWeight: 400,
-    lineHeight: '1.6'
-  }}
->
-              Nuestra presencia internacional respaldada por certificaciones y trazabilidad de clase mundial.
-            </p>
-          </div>
+  {/* 60% Map / 40% Info — mobile first */}
+  <div className="grid grid-cols-1 lg:grid-cols-5 gap-6 lg:gap-8 items-stretch px-4 lg:px-8">
+    {/* LEFT — Map (60%) */}
+    <div className="lg:col-span-3">
+      <div className="relative bg-white/5 backdrop-blur-sm border border-white/10 p-3 overflow-hidden group h-full flex items-center">
+        <img
+          src={mapImage}
+          alt="Mapa de exportación Carnes San Martín"
+          className="w-full h-auto transition-transform duration-700 group-hover:scale-105"
+          style={{ filter: 'drop-shadow(0 10px 40px rgba(0,0,0,0.4))' }}
+        />
+      </div>
+    </div>
 
-          {/* 40% / 60% Layout - Map Dominant */}
-          <div className="grid lg:grid-cols-5 gap-1 items-center">
-          {/* LEFT - 60% (3 columns) - Map Hero */}
-<div className="lg:col-span-3 lg:pl-35">
-              <div className="relative bg-white/5 backdrop-blur-sm border border-white/10 p-3 overflow-hidden group cursor-zoom-in">
-                <img
-                  src={mapImage}
-                  alt="Mapa de exportación Carnes San Martín"
-                  className="w-full h-auto transition-transform duration-700 group-hover:scale-110"
-                  style={{
-                    filter: 'drop-shadow(0 10px 40px rgba(0,0,0,0.4))',
-                  }}
-                />
-              </div>
-
-              {/* Map caption */}
-              <p className="text-center text-white/50 text-xs mt-3 italic mb-12">
-              </p>
-            </div>
-        
-            {/* RIGHT - 40% (2 columns) - Metrics + Accordion */}
-            <div className="lg:col-span-2 lg:pl-6">
-              {/* Regional Stats - Reformatted */}
-              <div className="flex gap-12 mb-10">
-                <div className="border-l-2 border-brand-gold pl-10">
-                <div
-                    className="text-2xl font-bold text-brand-gold mb-2"
+    {/* RIGHT — Info panel (40%) */}
+    <div className="lg:col-span-2 min-h-[280px] lg:min-h-0">
+      <div
+        key={selectedRegion ?? 'default'}
+        className="h-full flex flex-col bg-white/5 backdrop-blur-sm border border-white/10 px-6 py-6 animate-in fade-in duration-500"
+      >
+        {!activeRegion ? (
+          // ---------- DEFAULT: stats ----------
+          <>
+            <div className="flex-[0.2]" />
+            <div className="flex-[0.6] flex items-center justify-center">
+              <div className="flex gap-8 sm:gap-12">
+                <div className="border-l-2 border-brand-gold pl-5 sm:pl-6">
+                  <div
+                    className="text-xl sm:text-2xl font-bold text-brand-gold mb-2"
                     style={{ fontFamily: 'var(--font-serif)' }}
                   >
                     Hacia
                   </div>
                   <div
-                    className="text-5xl font-bold text-brand-gold mb-1"
+                    className="text-4xl sm:text-5xl font-bold text-brand-gold mb-1 leading-none"
                     style={{ fontFamily: 'var(--font-serif)' }}
                   >
-                    16
+                    17
                   </div>
-                  <div className="text-white/70 text-xs uppercase tracking-wider font-medium">
+                  <div className="text-white/70 text-[10px] sm:text-xs uppercase tracking-wider font-medium">
                     PAÍSES
                   </div>
                 </div>
-                <div className="border-l-2 border-brand-gold/50 pl-6 mt-4">
-  <div
-    className="text-5xl font-bold text-white mb-1"
-    style={{ fontFamily: 'var(--font-serif)' }}
-  >
-    5
-  </div>
-  <div className="text-white/70 text-xs uppercase tracking-wider font-medium leading-tight">
-    REGIONES<br />GLOBALES
-  </div>
-</div>
-              </div>
-
-              {/* Regional Expandable Cards - Narrower */}
-              <div className="space-y-3 max-w-sm">
-              </div>
-              </div>
-                {regions.map((region) => (
+                <div className="border-l-2 border-brand-gold/50 pl-5 sm:pl-6 self-end">
                   <div
-                    key={region.id}
-                    className="bg-white/5 backdrop-blur-sm border border-white/10 overflow-hidden transition-all duration-300 hover:border-brand-gold/40"
+                    className="text-4xl sm:text-5xl font-bold text-white mb-1 leading-none"
+                    style={{ fontFamily: 'var(--font-serif)' }}
                   >
-                    <button
-                      onClick={() => toggleRegion(region.id)}
-                      className="
-                      w-full
-                      min-h-[80px]
-                      px-6
-                      py-4
-                      flex
-                      items-center
-                      justify-between
-                      group
-                    "
->
-                      <div className="flex-1 flex items-center justify-center gap-2">
-  <div
-    className="w-3 h-3 rounded-full flex-shrink-0"
-    style={{ backgroundColor: region.color }}
-  ></div>
-
-  <span
-    className="
-      text-center
-      font-md
-      text-white
-      text-sm
-      group-hover:text-brand-gold
-      transition-colors
-    "
-  >
-    {region.name}
-  </span>
-</div>
-                      <ChevronDown
-                        className={`h-4 w-4 text-brand-gold transition-transform duration-300 ${
-                          expandedRegion === region.id ? 'rotate-180' : ''
-                        }`}
-                      />
-                    </button>
-
-                    {/* Expanded Country List */}
-                    <div
-                      className={`overflow-hidden transition-all duration-300 ${
-                        expandedRegion === region.id ? 'max-h-96' : 'max-h-0'
-                      }`}
-                    >
-                      <div className="px-5 pb-4 pt-2 border-t border-white/10">
-                        <ul className="grid grid-cols-1 gap-2">
-                          {region.countries.map((country) => (
-                            <li
-                              key={country}
-                              className="text-white/70 text-sm flex items-start gap-2"
-                            >
-                              <span className="text-brand-gold mt-1">•</span>
-                              <span>{country}</span>
-                            </li>
-                          ))}
-                        </ul>
-                      </div>
-                    </div>
+                    5
                   </div>
-                ))}
+                  <div className="text-white/70 text-[10px] sm:text-xs uppercase tracking-wider font-medium leading-tight">
+                    REGIONES<br />GLOBALES
+                  </div>
+                </div>
               </div>
             </div>
+            <div className="flex-[0.2]" />
+          </>
+        ) : (
+          // ---------- ACTIVE REGION: flags + countries ----------
+          (() => {
+            const sizing = getFlagSizing(activeRegion.countries.length);
+            return (
+              <>
+                {/* Header chico */}
+                <div className="flex items-center justify-between mb-3">
+                  <div className="flex items-center gap-2">
+                    <span
+                      className="w-2.5 h-2.5 rounded-full inline-block"
+                      style={{ backgroundColor: activeRegion.color }}
+                    />
+                    <span
+                      className="text-brand-gold text-xs sm:text-sm uppercase tracking-wider font-semibold"
+                      style={{ fontFamily: 'var(--font-serif)' }}
+                    >
+                      {activeRegion.name}
+                    </span>
+                  </div>
+                  <button
+                    onClick={() => setSelectedRegion(null)}
+                    className="text-white/50 hover:text-brand-gold text-xs transition-colors cursor-pointer"
+                    aria-label="Cerrar"
+                  >
+                    ✕
+                  </button>
+                </div>
+
+                {/* 20% top */}
+                <div className="flex-[0.15]" />
+
+                {/* 60% center — flags grid */}
+                <div className="flex-[0.7] flex items-center justify-center w-full">
+                  <ul className={`grid ${sizing.cols} ${sizing.gap} w-full max-w-md mx-auto`}>
+                    {activeRegion.countries.map((c) => (
+                      <li key={c.code} className="flex items-center gap-3 sm:gap-4">
+                        <img
+                          src={`https://flagcdn.com/${c.code}.svg`}
+                          alt={c.name}
+                          loading="lazy"
+                          className={`${sizing.flag} object-cover rounded-sm shadow-md ring-1 ring-white/10 flex-shrink-0`}
+                        />
+                        <span
+                          className={`${sizing.text} text-white font-medium tracking-wide truncate`}
+                        >
+                          {c.name}
+                        </span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+
+                {/* 20% bottom */}
+                <div className="flex-[0.15]" />
+              </>
+            );
+          })()
+        )}
+      </div>
+    </div>
+  </div>
+
+  {/* Region cards row — debajo del mapa */}
+  <div className="mt-6 px-4 lg:px-8">
+    <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-3">
+      {regions.map((region) => {
+        const isActive = selectedRegion === region.id;
+        return (
+          <button
+            key={region.id}
+            onClick={() => setSelectedRegion(isActive ? null : region.id)}
+            className={`
+              group relative flex items-center justify-center gap-2
+              min-h-[60px] px-4 py-3
+              bg-white/5 backdrop-blur-sm border transition-all duration-300
+              cursor-pointer
+              ${isActive
+                ? 'border-brand-gold bg-white/10 scale-[1.02] shadow-lg'
+                : 'border-white/10 hover:border-brand-gold/60 hover:bg-white/8'}
+            `}
+            aria-pressed={isActive}
+          >
+            <span
+              className="w-2.5 h-2.5 rounded-full flex-shrink-0"
+              style={{ backgroundColor: region.color }}
+            />
+            <span
+              className={`text-center text-xs sm:text-sm font-medium transition-colors ${
+                isActive ? 'text-brand-gold' : 'text-white group-hover:text-brand-gold'
+              }`}
+            >
+              {region.name}
+            </span>
+          </button>
+        );
+      })}
+    </div>
+  </div>
+</div>
 
             
 

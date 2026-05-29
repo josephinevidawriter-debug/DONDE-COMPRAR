@@ -95,10 +95,7 @@ export function ContactSection() {
           >
             Nuestro equipo comercial está listo para atender sus necesidades
           </p>
-          <div
-            className="mx-auto mt-6 h-[2px] w-16"
-            style={{ backgroundColor: TOKENS.gold }}
-          />
+          
         </header>
 
         {/* Grid: 40% cards (vertical stack) / 60% form */}

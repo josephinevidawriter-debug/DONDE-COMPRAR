@@ -272,7 +272,10 @@ export function ExportSection() {
   };
 
   return (
-    <section id="export" className="py-16 bg-brand-dark text-white relative overflow-hidden">
+    <section
+      id="export"
+        className="pt-14 md:pt-16 pb-16 md:pb-16 bg-brand-dark relative"
+    >
       {/* Background Image with Overlay */}
       <div className="absolute inset-0 z-0 opacity-10">
         <img
@@ -282,13 +285,46 @@ export function ExportSection() {
         />
       </div>
 
-      <div className="container mx-auto px-4 lg:px-8 relative z-10">
-        {/* Intro */}
-        <div className="text-center mb-16">
-          <h2 className="text-[32px] md:text-[44px] lg:text-[56px] mb-6" style={{ fontFamily: 'var(--font-serif)', fontWeight: 700, lineHeight: '110%', letterSpacing: '0px', color: '#FFFFFF' }}>
+      <div className="max-w-7xl mx-auto px-3 sm:px-6 md:px-8 lg:px-12 relative z-10">
+
+{/* Intro */}
+<div className="text-center mb-6">
+<h2
+  className="
+    text-[24px]
+    md:text-[32px]
+    lg:text-[42px]
+    mb-6
+  "
+  style={{
+    fontFamily: '"Space Grotesk", sans-serif',
+    fontWeight: 600,
+    lineHeight: '1.12',
+    letterSpacing: '-0.03em',
+    color: '#FFFFFF',
+    textTransform: 'uppercase'
+  }}
+>
+
             Exportación y Ventas al Por Mayor
           </h2>
-          <p className="text-[18px] md:text-[20px] lg:text-[24px] max-w-3xl mx-auto" style={{ fontFamily: 'var(--font-sans)', fontWeight: 400, lineHeight: '150%', color: 'rgba(255,255,255,0.82)' }}>
+          <p
+  className="
+    text-[16px]
+    md:text-[18px]
+    lg:text-[20px]
+    mb-11
+    max-w-4xl
+    mx-auto
+  "
+  style={{
+    fontFamily: 'var(--font-sans)',
+    fontWeight: 400,
+    lineHeight: '1.7',
+    color: 'rgba(255,255,255,0.78)'
+  }}
+>
+
             Calidad internacional, trazabilidad completa y confianza garantizada.
             Abastecemos compradores institucionales, distribuidores y exportadores en más de 15 países.
           </p>
@@ -297,10 +333,37 @@ export function ExportSection() {
         {/* 1. EXPORT SALES HQ - NICARAGUA */}
         <div className="mb-20">
           <div className="text-center mb-10">
-            <h3 className="text-3xl font-bold mb-3" style={{ fontFamily: 'var(--font-serif)' }}>
+          <h3
+  className="
+    text-[22px]
+    md:text-[28px]
+    lg:text-[34px]
+    mb-3
+  "
+  style={{
+    fontFamily: 'var(--font-serif)',
+    fontWeight: 700,
+    lineHeight: '1.15',
+    letterSpacing: '-0.02em',
+    color: '#FFFFFF'
+  }}
+>
+
               Información de Ventas
             </h3>
-            <p className="text-white/70 text-lg">Oficina principal - Managua, Nicaragua</p>
+            <p
+  className="
+    text-[15px]
+    md:text-[17px]
+    lg:text-[18px]
+  "
+  style={{
+    color: 'rgba(255,255,255,0.70)',
+    fontWeight: 400,
+    lineHeight: '1.6'
+  }}
+>
+Oficina principal - Managua, Nicaragua</p>
           </div>
 
           <div className="grid md:grid-cols-2 gap-6 max-w-5xl mx-auto items-stretch">
@@ -342,13 +405,21 @@ export function ExportSection() {
             </div>
 
             {/* Ventas Internacionales - PERFECTLY BALANCED */}
-            <div className="backdrop-blur-sm p-8 flex flex-col" style={{ backgroundColor: 'rgba(17,17,17,0.72)', border: '1px solid rgba(255,255,255,0.14)' }}>
+            <div className="p-8 relative overflow-hidden flex flex-col"
+            style={{
+              backgroundImage: "url('https://sanmartin.com.ni/wp-content/uploads/2025/02/Careers.jpg')",
+              backgroundSize: '50px',
+              backgroundRepeat: 'repeat',
+              backgroundPosition: 'center',
+              border: '1px solid rgba(255,255,255,0.14)'
+            }}
+          >
               <div className="mb-6">
-                <span className="inline-block px-4 py-2 bg-transparent text-transparent text-xs font-bold mb-4 tracking-wide select-none">
-                  SPACING MATCH
+              <span className="inline-block px-4 py-2 bg-brand-dark text-brand-gold text-xs font-bold mb-4 tracking-wide">
+                  OFICINA PRINCIPAL
                 </span>
-                <h4 className="text-3xl font-bold text-white" style={{ fontFamily: 'var(--font-serif)', lineHeight: '1.2' }}>
-                  Ventas Internacionales
+                <h4 className="text-3xl font-bold text-brand-dark " style={{ fontFamily: 'var(--font-serif)', lineHeight: '1.2' }}>
+                  Ventas Internacionales 
                 </h4>
               </div>
 
@@ -356,14 +427,14 @@ export function ExportSection() {
                 <div className="flex items-start gap-4">
                   <MapPin className="h-6 w-6 text-brand-gold mt-0.5 flex-shrink-0" />
                   <div>
-                    <p className="font-medium text-white/90 text-lg">Managua, Nicaragua</p>
+                    <p className="font-medium text-brand-dark text-lg">Managua, Nicaragua</p>
                   </div>
                 </div>
 
                 <div className="flex items-start gap-4">
                   <Phone className="h-6 w-6 text-brand-gold mt-0.5 flex-shrink-0" />
                   <div>
-                    <a href="tel:+50522545011" className="font-medium text-white/90 text-lg hover:text-brand-gold transition-colors">(505) 2254-5011</a>
+                    <a href="tel:+50522545011" className="font-medium text-brand-dark  text-lg hover:text-brand-gold transition-colors">(505) 2254-5011</a>
                   </div>
                 </div>
 
@@ -384,25 +455,72 @@ export function ExportSection() {
         <div className="mb-20">
           {/* Centered Title */}
           <div className="text-center mb-12 max-w-4xl mx-auto">
-            <h2
-              className="text-[32px] md:text-[44px] lg:text-[56px] mb-6"
-              style={{ fontFamily: 'var(--font-serif)', fontWeight: 700, lineHeight: '110%', letterSpacing: '0px', color: '#FFFFFF' }}
-            >
-              Certificados para exportar hacia:
-            </h2>
+          <h3
+  className="
+    text-[22px]
+    md:text-[28px]
+    lg:text-[34px]
+    mb-3
+  "
+  style={{
+    fontFamily: 'var(--font-serif)',
+    fontWeight: 700,
+    lineHeight: '1.15',
+    letterSpacing: '-0.02em',
+    color: '#FFFFFF'
+  }}
+>
+              Estamos Certificados Para Exportar:
+            </h3>
 
-            <p className="text-[18px] md:text-[20px] lg:text-[24px]" style={{ fontFamily: 'var(--font-sans)', fontWeight: 400, lineHeight: '150%', color: 'rgba(255,255,255,0.82)' }}>
+            <p
+  className="
+    text-[15px]
+    md:text-[17px]
+    lg:text-[18px]
+  "
+  style={{
+    color: 'rgba(255,255,255,0.70)',
+    fontWeight: 400,
+    lineHeight: '1.6'
+  }}
+>
               Nuestra presencia internacional respaldada por certificaciones y trazabilidad de clase mundial.
             </p>
           </div>
 
           {/* 40% / 60% Layout - Map Dominant */}
-          <div className="grid lg:grid-cols-5 gap-10 items-center">
-            {/* LEFT - 40% (2 columns) - Metrics + Accordion */}
-            <div className="lg:col-span-2">
+          <div className="grid lg:grid-cols-5 gap-1 items-center">
+          {/* LEFT - 60% (3 columns) - Map Hero */}
+<div className="lg:col-span-3 lg:pl-35">
+              <div className="relative bg-white/5 backdrop-blur-sm border border-white/10 p-3 overflow-hidden group cursor-zoom-in">
+                <img
+                  src={mapImage}
+                  alt="Mapa de exportación Carnes San Martín"
+                  className="w-full h-auto transition-transform duration-700 group-hover:scale-110"
+                  style={{
+                    filter: 'drop-shadow(0 10px 40px rgba(0,0,0,0.4))',
+                  }}
+                />
+              </div>
+
+              {/* Map caption */}
+              <p className="text-center text-white/50 text-xs mt-3 italic mb-12">
+                Destinos
+              </p>
+            </div>
+        
+            {/* RIGHT - 40% (2 columns) - Metrics + Accordion */}
+            <div className="lg:col-span-2 lg:pl-6">
               {/* Regional Stats - Reformatted */}
-              <div className="flex gap-12 mb-8">
-                <div className="border-l-2 border-brand-gold pl-6">
+              <div className="flex gap-12 mb-10">
+                <div className="border-l-2 border-brand-gold pl-10">
+                <div
+                    className="text-2xl font-bold text-brand-gold mb-2"
+                    style={{ fontFamily: 'var(--font-serif)' }}
+                  >
+                    Hacia
+                  </div>
                   <div
                     className="text-5xl font-bold text-brand-gold mb-1"
                     style={{ fontFamily: 'var(--font-serif)' }}
@@ -413,21 +531,23 @@ export function ExportSection() {
                     PAÍSES
                   </div>
                 </div>
-                <div className="border-l-2 border-brand-gold/50 pl-6">
-                  <div
-                    className="text-5xl font-bold text-white mb-1"
-                    style={{ fontFamily: 'var(--font-serif)' }}
-                  >
-                    5
-                  </div>
-                  <div className="text-white/70 text-xs uppercase tracking-wider font-medium leading-tight">
-                    REGIONES<br />GLOBALES
-                  </div>
-                </div>
+                <div className="border-l-2 border-brand-gold/50 pl-6 mt-4">
+  <div
+    className="text-5xl font-bold text-white mb-1"
+    style={{ fontFamily: 'var(--font-serif)' }}
+  >
+    5
+  </div>
+  <div className="text-white/70 text-xs uppercase tracking-wider font-medium leading-tight">
+    REGIONES<br />GLOBALES
+  </div>
+</div>
               </div>
 
               {/* Regional Expandable Cards - Narrower */}
               <div className="space-y-3 max-w-sm">
+              </div>
+              </div>
                 {regions.map((region) => (
                   <div
                     key={region.id}
@@ -435,7 +555,16 @@ export function ExportSection() {
                   >
                     <button
                       onClick={() => toggleRegion(region.id)}
-                      className="w-full px-5 py-3.5 flex items-center justify-between group"
+                      className="
+                      w-full
+                      h-[88px]
+                      px-5
+                      py-3.5
+                      flex
+                      items-center
+                      justify-between
+                      group
+                    "
                     >
                       <div className="flex items-center gap-3">
                         <div
@@ -478,30 +607,11 @@ export function ExportSection() {
               </div>
             </div>
 
-            {/* RIGHT - 60% (3 columns) - Map Hero */}
-            <div className="lg:col-span-3">
-              <div className="relative bg-white/5 backdrop-blur-sm border border-white/10 p-3 overflow-hidden group cursor-zoom-in">
-                <img
-                  src={mapImage}
-                  alt="Mapa de exportación Carnes San Martín"
-                  className="w-full h-auto transition-transform duration-700 group-hover:scale-110"
-                  style={{
-                    filter: 'drop-shadow(0 10px 40px rgba(0,0,0,0.4))',
-                  }}
-                />
-              </div>
-
-              {/* Map caption */}
-              <p className="text-center text-white/50 text-xs mt-3 italic">
-                Mapa de destinos de exportación certificados
-              </p>
-            </div>
-          </div>
-        </div>
+            
 
 {/* 3. REGIONAL DISTRIBUTION HUBS (NO NICARAGUA) */}
 <div>
-  <div className="text-center mb-10">
+  <div className="text-center mb-16">
     <h3
       className="text-3xl font-bold mb-3"
       style={{ fontFamily: 'var(--font-serif)' }}

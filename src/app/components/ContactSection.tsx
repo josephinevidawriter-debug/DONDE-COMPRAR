@@ -37,11 +37,31 @@ export function ContactSection() {
       </div>
 
       <div className="container mx-auto px-4 lg:px-8 relative z-10">
-        <div className="text-center mb-16 md:mb-20">
-          <h2 className="text-[32px] md:text-[44px] lg:text-[56px] mb-6" style={{ fontFamily: 'var(--font-serif)', fontWeight: 700, lineHeight: '110%', letterSpacing: '0px', color: '#FFFFFF' }}>
+      <div className="text-center mb-6 w-full max-w-full overflow-hidden px-3 sm:px-6 md:px-8 lg:px-12">
+  <h2
+    className="text-[18px] sm:text-[20px] md:text-[28px] lg:text-[42px] mb-2 px-3 sm:px-6 md:px-8 lg:px-12"
+    style={{
+      fontFamily: '"Space Grotesk", sans-serif',
+      fontWeight: 600,
+      lineHeight: '1.12',
+      letterSpacing: '-0.03em',
+      color: '#FFFFFF',
+      textTransform: 'uppercase'
+    }}
+  >
             Contáctenos
           </h2>
-          <p className="text-[18px] md:text-[20px] lg:text-[24px] max-w-2xl mx-auto" style={{ fontFamily: 'var(--font-sans)', fontWeight: 400, lineHeight: '150%', color: 'rgba(255,255,255,0.82)' }}>
+          <p
+   className="
+     text-[16px]
+     md:text-[18px]
+     lg:text-[20px]
+     leading-[170%]
+     font-normal
+     text-white/78
+     mb-11
+   "
+ >
             Nuestro equipo comercial está listo para atender sus necesidades
           </p>
         </div>

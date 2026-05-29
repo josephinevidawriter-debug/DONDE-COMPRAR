@@ -284,11 +284,39 @@ export function ExportSection() {
 
       <div className="container mx-auto px-4 lg:px-8 relative z-10">
         {/* Intro */}
-        <div className="text-center mb-16">
-          <h2 className="text-[32px] md:text-[44px] lg:text-[56px] mb-6" style={{ fontFamily: 'var(--font-serif)', fontWeight: 700, lineHeight: '110%', letterSpacing: '0px', color: '#FFFFFF' }}>
+        <div className="pt-16 text-center">
+
+  <h2
+    className="
+      text-[24px]
+      md:text-[32px]
+      lg:text-[42px]
+      mb-6
+    "
+    style={{
+      fontFamily: '"Space Grotesk", sans-serif',
+      fontWeight: 600,
+      lineHeight: '1.12',
+      letterSpacing: '-0.03em',
+      color: '#FFFFFF',
+      textTransform: 'uppercase'
+    }}
+  >
             Exportación y Ventas al Por Mayor
           </h2>
-          <p className="text-[18px] md:text-[20px] lg:text-[24px] max-w-3xl mx-auto" style={{ fontFamily: 'var(--font-sans)', fontWeight: 400, lineHeight: '150%', color: 'rgba(255,255,255,0.82)' }}>
+          <p
+    className="
+      text-[16px]
+      md:text-[18px]
+      lg:text-[20px]
+      mb-11
+    "
+    style={{
+      color: 'rgba(255,255,255,0.78)',
+      fontWeight: 400,
+      lineHeight: '1.7'
+    }}
+  >
             Calidad internacional, trazabilidad completa y confianza garantizada.
             Abastecemos compradores institucionales, distribuidores y exportadores en más de 15 países.
           </p>
@@ -342,7 +370,8 @@ export function ExportSection() {
             </div>
 
             {/* Ventas Internacionales - PERFECTLY BALANCED */}
-            <div className="backdrop-blur-sm p-8 flex flex-col" style={{ backgroundColor: 'rgba(17,17,17,0.72)', border: '1px solid rgba(255,255,255,0.14)' }}>
+            <div className="backdrop-blur-sm p-8 flex flex-col" 
+            style={{ backgroundColor: 'rgba(17,17,17,0.72)', border: '1px solid rgba(255,255,255,0.14)' }}>
               <div className="mb-6">
                 <span className="inline-block px-4 py-2 bg-transparent text-transparent text-xs font-bold mb-4 tracking-wide select-none">
                   SPACING MATCH
@@ -391,7 +420,19 @@ export function ExportSection() {
               Certificados para exportar hacia:
             </h2>
 
-            <p className="text-[18px] md:text-[20px] lg:text-[24px]" style={{ fontFamily: 'var(--font-sans)', fontWeight: 400, lineHeight: '150%', color: 'rgba(255,255,255,0.82)' }}>
+            <p
+    className="
+      text-[16px]
+      md:text-[18px]
+      lg:text-[20px]
+      leading-[170%]
+      font-normal
+      text-white/78
+      mb-11
+      max-w-4xl
+      mx-auto
+    "
+  >
               Nuestra presencia internacional respaldada por certificaciones y trazabilidad de clase mundial.
             </p>
           </div>

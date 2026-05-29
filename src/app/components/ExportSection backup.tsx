@@ -218,85 +218,61 @@ function GuatemalaDistributor() {
     </div>
   );
 }
-/* ==========================================
-   AQUI EMPIEZA_MAP_LOVABLE_CHANGES
-========================================== */
-export function ExportSection() {
-  const [selectedRegion, setSelectedRegion] = useState<string | null>(null);
 
-  const regions = [
+export function ExportSection() {
+  const [expandedRegion, setExpandedRegion] = useState<string | null>(null);
+
+  const regions: Region[] = [
     {
-      id: 'centroamerica',
+      id: 'centralAmerica',
       name: 'Centroamérica y Caribe',
-      color: '#E8D9A8',
+      color: '#D4A849',
       countries: [
-        { name: 'Guatemala', code: 'gt' },
-        { name: 'El Salvador', code: 'sv' },
-        { name: 'Honduras', code: 'hn' },
-        { name: 'Costa Rica', code: 'cr' },
-        { name: 'República Dominicana', code: 'do' },
-        { name: 'Puerto Rico', code: 'pr' },
+        'Costa Rica',
+        'El Salvador',
+        'Guatemala',
+        'Honduras',
+        'Nicaragua',
+        'Puerto Rico',
+        'República Dominicana',
       ],
     },
     {
-      id: 'norteamerica',
+      id: 'northAmerica',
       name: 'América del Norte',
-      color: '#D97757',
-      countries: [
-        { name: 'Estados Unidos', code: 'us' },
-        { name: 'México', code: 'mx' },
-      ],
+      color: '#C45250',
+      countries: ['Estados Unidos', 'México'],
     },
     {
-      id: 'europa',
+      id: 'europe',
       name: 'Europa',
-      color: '#F5E6C8',
-      countries: [
-        { name: 'España', code: 'es' },
-        { name: 'Italia', code: 'it' },
-        { name: 'Rusia', code: 'ru' },
-      ],
+      color: '#E8D4B8',
+      countries: ['España', 'Italia', 'Rusia'],
     },
     {
       id: 'asia',
       name: 'Asia',
-      color: '#E8B860',
-      countries: [
-        { name: 'Japón', code: 'jp' },
-        { name: 'Taiwan', code: 'tw' },
-        { name: 'Tailandia', code: 'th' },
-      ],
+      color: '#E8CFA0',
+      countries: ['Japón', 'Tailandia', 'Taiwán'],
     },
     {
       id: 'africa',
       name: 'África',
-      color: '#C9885A',
+      color: '#B8856A',
       countries: [
-        { name: 'Luanda', code: 'ao' },
-        { name: 'Pointe Noire', code: 'cg' },
-        { name: 'Costa de Marfil', code: 'ci' },
+        'Costa de Marfil',
+        'Luanda (Angola)',
+        'Pointe-Noire (República del Congo)',
       ],
     },
   ];
-  
-  const activeRegion = regions.find((r) => r.id === selectedRegion);
-  // Tamaños adaptativos para las banderas según cuántos países
-const getFlagSizing = (n: number) => {
-  if (n <= 2) return { flag: 'w-20 h-14', text: 'text-lg', cols: 'grid-cols-1', gap: 'gap-6' };
-  if (n === 3) return { flag: 'w-16 h-11', text: 'text-base', cols: 'grid-cols-1', gap: 'gap-5' };
-  if (n === 4) return { flag: 'w-14 h-10', text: 'text-sm', cols: 'grid-cols-2', gap: 'gap-4' };
-  return { flag: 'w-12 h-8', text: 'text-sm', cols: 'grid-cols-2', gap: 'gap-3' }; // 5–6
-};
 
-  /* ==========================================
-   AQUI TERMINA_MAP_LOVABLE_CHANGES
-========================================== */
+  const toggleRegion = (regionId: string) => {
+    setExpandedRegion(expandedRegion === regionId ? null : regionId);
+  };
 
-return (
-    <section
-      id="export"
-        className="pt-14 md:pt-16 pb-16 md:pb-16 bg-brand-dark relative"
-    >
+  return (
+    <section id="export" className="py-16 bg-brand-dark text-white relative overflow-hidden">
       {/* Background Image with Overlay */}
       <div className="absolute inset-0 z-0 opacity-10">
         <img
@@ -306,46 +282,41 @@ return (
         />
       </div>
 
-      <div className="max-w-7xl mx-auto px-3 sm:px-6 md:px-8 lg:px-12 relative z-10">
+      <div className="container mx-auto px-4 lg:px-8 relative z-10">
+        {/* Intro */}
+        <div className="pt-16 text-center">
 
-{/* Intro */}
-<div className="text-center mb-6">
-<h2
-  className="
-    text-[24px]
-    md:text-[32px]
-    lg:text-[42px]
-    mb-6
-  "
-  style={{
-    fontFamily: '"Space Grotesk", sans-serif',
-    fontWeight: 600,
-    lineHeight: '1.12',
-    letterSpacing: '-0.03em',
-    color: '#FFFFFF',
-    textTransform: 'uppercase'
-  }}
->
-
+  <h2
+    className="
+      text-[24px]
+      md:text-[32px]
+      lg:text-[42px]
+      mb-6
+    "
+    style={{
+      fontFamily: '"Space Grotesk", sans-serif',
+      fontWeight: 600,
+      lineHeight: '1.12',
+      letterSpacing: '-0.03em',
+      color: '#FFFFFF',
+      textTransform: 'uppercase'
+    }}
+  >
             Exportación y Ventas al Por Mayor
           </h2>
           <p
-  className="
-    text-[16px]
-    md:text-[18px]
-    lg:text-[20px]
-    mb-11
-    max-w-4xl
-    mx-auto
-  "
-  style={{
-    fontFamily: 'var(--font-sans)',
-    fontWeight: 400,
-    lineHeight: '1.7',
-    color: 'rgba(255,255,255,0.78)'
-  }}
->
-
+    className="
+      text-[16px]
+      md:text-[18px]
+      lg:text-[20px]
+      mb-11
+    "
+    style={{
+      color: 'rgba(255,255,255,0.78)',
+      fontWeight: 400,
+      lineHeight: '1.7'
+    }}
+  >
             Calidad internacional, trazabilidad completa y confianza garantizada.
             Abastecemos compradores institucionales, distribuidores y exportadores en más de 15 países.
           </p>
@@ -354,37 +325,10 @@ return (
         {/* 1. EXPORT SALES HQ - NICARAGUA */}
         <div className="mb-20">
           <div className="text-center mb-10">
-          <h3
-  className="
-    text-[22px]
-    md:text-[28px]
-    lg:text-[34px]
-    mb-3
-  "
-  style={{
-    fontFamily: 'var(--font-serif)',
-    fontWeight: 700,
-    lineHeight: '1.15',
-    letterSpacing: '-0.02em',
-    color: '#FFFFFF'
-  }}
->
-
+            <h3 className="text-3xl font-bold mb-3" style={{ fontFamily: 'var(--font-serif)' }}>
               Información de Ventas
             </h3>
-            <p
-  className="
-    text-[15px]
-    md:text-[17px]
-    lg:text-[18px]
-  "
-  style={{
-    color: 'rgba(255,255,255,0.70)',
-    fontWeight: 400,
-    lineHeight: '1.6'
-  }}
->
-Oficina principal - Managua, Nicaragua</p>
+            <p className="text-white/70 text-lg">Oficina principal - Managua, Nicaragua</p>
           </div>
 
           <div className="grid md:grid-cols-2 gap-6 max-w-5xl mx-auto items-stretch">
@@ -426,21 +370,14 @@ Oficina principal - Managua, Nicaragua</p>
             </div>
 
             {/* Ventas Internacionales - PERFECTLY BALANCED */}
-            <div className="p-8 relative overflow-hidden flex flex-col"
-            style={{
-              backgroundImage: "url('https://sanmartin.com.ni/wp-content/uploads/2025/02/Careers.jpg')",
-              backgroundSize: '50px',
-              backgroundRepeat: 'repeat',
-              backgroundPosition: 'center',
-              border: '1px solid rgba(255,255,255,0.14)'
-            }}
-          >
+            <div className="backdrop-blur-sm p-8 flex flex-col" 
+            style={{ backgroundColor: 'rgba(17,17,17,0.72)', border: '1px solid rgba(255,255,255,0.14)' }}>
               <div className="mb-6">
-              <span className="inline-block px-4 py-2 bg-brand-dark text-brand-gold text-xs font-bold mb-4 tracking-wide">
-                  OFICINA PRINCIPAL
+                <span className="inline-block px-4 py-2 bg-transparent text-transparent text-xs font-bold mb-4 tracking-wide select-none">
+                  SPACING MATCH
                 </span>
-                <h4 className="text-3xl font-bold text-brand-dark " style={{ fontFamily: 'var(--font-serif)', lineHeight: '1.2' }}>
-                  Ventas Internacionales 
+                <h4 className="text-3xl font-bold text-white" style={{ fontFamily: 'var(--font-serif)', lineHeight: '1.2' }}>
+                  Ventas Internacionales
                 </h4>
               </div>
 
@@ -448,14 +385,14 @@ Oficina principal - Managua, Nicaragua</p>
                 <div className="flex items-start gap-4">
                   <MapPin className="h-6 w-6 text-brand-gold mt-0.5 flex-shrink-0" />
                   <div>
-                    <p className="font-medium text-brand-dark text-lg">Managua, Nicaragua</p>
+                    <p className="font-medium text-white/90 text-lg">Managua, Nicaragua</p>
                   </div>
                 </div>
 
                 <div className="flex items-start gap-4">
                   <Phone className="h-6 w-6 text-brand-gold mt-0.5 flex-shrink-0" />
                   <div>
-                    <a href="tel:+50522545011" className="font-medium text-brand-dark  text-lg hover:text-brand-gold transition-colors">(505) 2254-5011</a>
+                    <a href="tel:+50522545011" className="font-medium text-white/90 text-lg hover:text-brand-gold transition-colors">(505) 2254-5011</a>
                   </div>
                 </div>
 
@@ -473,238 +410,160 @@ Oficina principal - Managua, Nicaragua</p>
         </div>
 
         {/* 2. EXPORT DESTINATIONS MAP */}
-<div className="mb-20">
-  {/* Title */}
-  <div className="text-center mb-10 max-w-4xl mx-auto px-4">
-    <h3
-      className="text-[22px] md:text-[28px] lg:text-[34px] mb-3"
-      style={{
-        fontFamily: 'var(--font-serif)',
-        fontWeight: 700,
-        lineHeight: '1.15',
-        letterSpacing: '-0.02em',
-        color: '#FFFFFF',
-      }}
-    >
-      Estamos Certificados Para Exportar:
-    </h3>
-    <p
-      className="text-[14px] md:text-[16px] lg:text-[18px]"
-      style={{ color: 'rgba(255,255,255,0.70)', fontWeight: 400, lineHeight: '1.6' }}
-    >
-      Nuestra presencia internacional respaldada por certificaciones y trazabilidad de clase mundial.
-    </p>
-  </div>
+        <div className="mb-20">
+          {/* Centered Title */}
+          <div className="text-center mb-12 max-w-4xl mx-auto">
+            <h2
+              className="text-[32px] md:text-[44px] lg:text-[56px] mb-6"
+              style={{ fontFamily: 'var(--font-serif)', fontWeight: 700, lineHeight: '110%', letterSpacing: '0px', color: '#FFFFFF' }}
+            >
+              Certificados para exportar hacia:
+            </h2>
 
-  {/* 60% Map / 40% Info — mobile first */}
-  <div className="grid grid-cols-1 lg:grid-cols-5 gap-6 lg:gap-8 items-stretch px-4 lg:px-8">
-    {/* LEFT — Map (60%) */}
-    <div className="lg:col-span-3">
-      <div className="relative bg-white/5 backdrop-blur-sm border border-white/10 p-3 overflow-hidden group h-full flex items-center">
-        <img
-          src={mapImage}
-          alt="Mapa de exportación Carnes San Martín"
-          className="w-full h-auto transition-transform duration-700 group-hover:scale-105"
-          style={{ filter: 'drop-shadow(0 10px 40px rgba(0,0,0,0.4))' }}
-        />
-      </div>
-    </div>
+            <p
+    className="
+      text-[16px]
+      md:text-[18px]
+      lg:text-[20px]
+      leading-[170%]
+      font-normal
+      text-white/78
+      mb-11
+      max-w-4xl
+      mx-auto
+    "
+  >
+              Nuestra presencia internacional respaldada por certificaciones y trazabilidad de clase mundial.
+            </p>
+          </div>
 
-    {/* RIGHT — Info panel (40%) */}
-    <div className="lg:col-span-2 min-h-[280px] lg:min-h-0">
-      <div
-        key={selectedRegion ?? 'default'}
-        className="h-full flex flex-col bg-white/5 backdrop-blur-sm border border-white/10 px-6 py-6 animate-in fade-in duration-500"
-      >
-        {!activeRegion ? (
-          // ---------- DEFAULT: stats ----------
-          <>
-            <div className="flex-[0.2]" />
-            <div className="flex-[0.6] flex items-center justify-center">
-              <div className="flex gap-8 sm:gap-12">
-                <div className="border-l-2 border-brand-gold pl-5 sm:pl-6">
+          {/* 40% / 60% Layout - Map Dominant */}
+          <div className="grid lg:grid-cols-5 gap-10 items-center">
+            {/* LEFT - 40% (2 columns) - Metrics + Accordion */}
+            <div className="lg:col-span-2">
+              {/* Regional Stats - Reformatted */}
+              <div className="flex gap-12 mb-8">
+                <div className="border-l-2 border-brand-gold pl-6">
                   <div
-                    className="text-xl sm:text-2xl font-bold text-brand-gold mb-2"
+                    className="text-5xl font-bold text-brand-gold mb-1"
                     style={{ fontFamily: 'var(--font-serif)' }}
                   >
-                    Hacia
+                    16
                   </div>
-                  <div
-                    className="text-4xl sm:text-5xl font-bold text-brand-gold mb-1 leading-none"
-                    style={{ fontFamily: 'var(--font-serif)' }}
-                  >
-                    17
-                  </div>
-                  <div className="text-white/70 text-[10px] sm:text-xs uppercase tracking-wider font-medium">
+                  <div className="text-white/70 text-xs uppercase tracking-wider font-medium">
                     PAÍSES
                   </div>
                 </div>
-                <div className="border-l-2 border-brand-gold/50 pl-5 sm:pl-6 self-end">
+                <div className="border-l-2 border-brand-gold/50 pl-6">
                   <div
-                    className="text-4xl sm:text-5xl font-bold text-white mb-1 leading-none"
+                    className="text-5xl font-bold text-white mb-1"
                     style={{ fontFamily: 'var(--font-serif)' }}
                   >
                     5
                   </div>
-                  <div className="text-white/70 text-[10px] sm:text-xs uppercase tracking-wider font-medium leading-tight">
+                  <div className="text-white/70 text-xs uppercase tracking-wider font-medium leading-tight">
                     REGIONES<br />GLOBALES
                   </div>
                 </div>
               </div>
-            </div>
-            <div className="flex-[0.2]" />
-          </>
-        ) : (
-          // ---------- ACTIVE REGION: flags + countries ----------
-          (() => {
-            const sizing = getFlagSizing(activeRegion.countries.length);
-            return (
-              <>
-                {/* Header chico */}
-                <div className="flex items-center justify-between mb-3">
-                  <div className="flex items-center gap-2">
-                    <span
-                      className="w-2.5 h-2.5 rounded-full inline-block"
-                      style={{ backgroundColor: activeRegion.color }}
-                    />
-                    <span
-                      className="text-brand-gold text-xs sm:text-sm uppercase tracking-wider font-semibold"
-                      style={{ fontFamily: 'var(--font-serif)' }}
-                    >
-                      {activeRegion.name}
-                    </span>
-                  </div>
-                  <button
-                    onClick={() => setSelectedRegion(null)}
-                    className="text-white/50 hover:text-brand-gold text-xs transition-colors cursor-pointer"
-                    aria-label="Cerrar"
+
+              {/* Regional Expandable Cards - Narrower */}
+              <div className="space-y-3 max-w-sm">
+                {regions.map((region) => (
+                  <div
+                    key={region.id}
+                    className="bg-white/5 backdrop-blur-sm border border-white/10 overflow-hidden transition-all duration-300 hover:border-brand-gold/40"
                   >
-                    ✕
-                  </button>
-                </div>
-
-                {/* 20% top */}
-                <div className="flex-[0.15]" />
-
-                {/* 60% center — flags grid */}
-                <div className="flex-[0.7] flex items-center justify-center w-full">
-                  <ul className={`grid ${sizing.cols} ${sizing.gap} w-full max-w-md mx-auto`}>
-                    {activeRegion.countries.map((c) => (
-                      <li key={c.code} className="flex items-center gap-3 sm:gap-4">
-                        <img
-                          src={`https://flagcdn.com/${c.code}.svg`}
-                          alt={c.name}
-                          loading="lazy"
-                          className={`${sizing.flag} object-cover rounded-sm shadow-md ring-1 ring-white/10 flex-shrink-0`}
-                        />
-                        <span
-                          className={`${sizing.text} text-white font-medium tracking-wide truncate`}
-                        >
-                          {c.name}
+                    <button
+                      onClick={() => toggleRegion(region.id)}
+                      className="w-full px-5 py-3.5 flex items-center justify-between group"
+                    >
+                      <div className="flex items-center gap-3">
+                        <div
+                          className="w-3 h-3 rounded-sm flex-shrink-0"
+                          style={{ backgroundColor: region.color }}
+                        ></div>
+                        <span className="font-medium text-white text-sm group-hover:text-brand-gold transition-colors">
+                          {region.name}
                         </span>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
+                      </div>
+                      <ChevronDown
+                        className={`h-4 w-4 text-brand-gold transition-transform duration-300 ${
+                          expandedRegion === region.id ? 'rotate-180' : ''
+                        }`}
+                      />
+                    </button>
 
-                {/* 20% bottom */}
-                <div className="flex-[0.15]" />
-              </>
-            );
-          })()
-        )}
-      </div>
-    </div>
-  </div>
+                    {/* Expanded Country List */}
+                    <div
+                      className={`overflow-hidden transition-all duration-300 ${
+                        expandedRegion === region.id ? 'max-h-96' : 'max-h-0'
+                      }`}
+                    >
+                      <div className="px-5 pb-4 pt-2 border-t border-white/10">
+                        <ul className="grid grid-cols-1 gap-2">
+                          {region.countries.map((country) => (
+                            <li
+                              key={country}
+                              className="text-white/70 text-sm flex items-start gap-2"
+                            >
+                              <span className="text-brand-gold mt-1">•</span>
+                              <span>{country}</span>
+                            </li>
+                          ))}
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
 
-  {/* Region cards row — debajo del mapa */}
-  <div className="mt-6 px-4 lg:px-8">
-    <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-3">
-      {regions.map((region) => {
-        const isActive = selectedRegion === region.id;
-        return (
-          <button
-            key={region.id}
-            onClick={() => setSelectedRegion(isActive ? null : region.id)}
-            className={`
-              group relative flex items-center justify-center gap-2
-              min-h-[60px] px-4 py-3
-              bg-white/5 backdrop-blur-sm border transition-all duration-300
-              cursor-pointer
-              ${isActive
-                ? 'border-brand-gold bg-white/10 scale-[1.02] shadow-lg'
-                : 'border-white/10 hover:border-brand-gold/60 hover:bg-white/8'}
-            `}
-            aria-pressed={isActive}
-          >
-            <span
-              className="w-2.5 h-2.5 rounded-full flex-shrink-0"
-              style={{ backgroundColor: region.color }}
-            />
-            <span
-              className={`text-center text-xs sm:text-sm font-medium transition-colors ${
-                isActive ? 'text-brand-gold' : 'text-white group-hover:text-brand-gold'
-              }`}
-            >
-              {region.name}
-            </span>
-          </button>
-        );
-      })}
-    </div>
-  </div>
-</div>
+            {/* RIGHT - 60% (3 columns) - Map Hero */}
+            <div className="lg:col-span-3">
+              <div className="relative bg-white/5 backdrop-blur-sm border border-white/10 p-3 overflow-hidden group cursor-zoom-in">
+                <img
+                  src={mapImage}
+                  alt="Mapa de exportación Carnes San Martín"
+                  className="w-full h-auto transition-transform duration-700 group-hover:scale-110"
+                  style={{
+                    filter: 'drop-shadow(0 10px 40px rgba(0,0,0,0.4))',
+                  }}
+                />
+              </div>
 
-            
+              {/* Map caption */}
+              <p className="text-center text-white/50 text-xs mt-3 italic">
+                Mapa de destinos de exportación certificados
+              </p>
+            </div>
+          </div>
+        </div>
 
 {/* 3. REGIONAL DISTRIBUTION HUBS (NO NICARAGUA) */}
 <div>
   <div className="text-center mb-10">
-  <h3
-  className="
-    text-[22px]
-    md:text-[28px]
-    lg:text-[34px]
-    mb-1
-  "
-  style={{
-    fontFamily: 'var(--font-serif)',
-    fontWeight: 400,
-    lineHeight: '1.15',
-    letterSpacing: '-0.02em',
-    color: '#FFFFFF'
-  }}
->
-
+    <h3
+      className="text-3xl font-bold mb-3"
+      style={{ fontFamily: 'var(--font-serif)' }}
+    >
       Distribuidores Regionales
     </h3>
-    <p
-  className="
-    text-[15px]
-    md:text-[17px]
-    lg:text-[18px]
-  "
-  style={{
-    color: 'rgba(255,255,255,0.70)',
-    fontWeight: 400,
-    lineHeight: '1.6'
-  }}
->
-Red comercial en Centroamérica</p>
+    <p className="text-white/70">Red comercial en Centroamérica</p>
   </div>
 
-  <div className="grid md:grid-cols-2 gap-5 md:gap-6 max-w-6xl mx-auto">
+  <div className="grid md:grid-cols-2 gap-5 md:gap-6 max-w-5xl mx-auto">
 
     {/* COSTA RICA */}
     <div
-       className="backdrop-blur-sm flex flex-col p-1 md:p-8 flex flex-col h-fit "
-       style={{
-         backgroundColor: 'rgba(17,17,17,0.72)',
-         border: '1px solid rgba(255,255,255,0.14)',
-        minHeight: '100px',
+      className="backdrop-blur-sm p-5 md:p-5 flex flex-col"
+      style={{
+        backgroundColor: 'rgba(17,17,17,0.72)',
+        border: '1px solid rgba(255,255,255,0.14)',
+        minHeight: '360px',
       }}
     >
-      <div className="flex items-center gap-3 mb-1">
+      <div className="flex items-center gap-3 mb-3">
         <Building className="h-6 w-6" style={{ color: '#D4A93A', strokeWidth: '1.75px' }} />
         <h4
           style={{
@@ -720,27 +579,27 @@ Red comercial en Centroamérica</p>
       </div>
 
       <p
-        className="mb-2"
+        className="mb-3"
         style={{
           color: 'rgba(255,255,255,0.82)',
-          fontSize: '12px',
+          fontSize: '16px',
           fontWeight: 600,
         }}
       >
         Carnes San Martín Costa Rica
       </p>
 
-      <div className="space-y-0 flex-none">
+      <div className="space-y-2.5 flex-1">
         <div className="flex items-start gap-3">
           <MapPin className="h-5 w-5 flex-shrink-0 mt-1" style={{ color: '#D4A93A' }} />
-          <p style={{ color: '#FFFFFF', fontSize: '14px', lineHeight: '135%' }}>
+          <p style={{ color: '#FFFFFF', fontSize: '15px', lineHeight: '135%' }}>
             Liberia, Business Park Solarium Bodega #21, frente aeropuerto
           </p>
         </div>
 
         <div className="flex items-start gap-3">
           <Phone className="h-5 w-5 flex-shrink-0 mt-1" style={{ color: '#D4A93A' }} />
-          <a href="tel:26681360" style={{ color: '#FFFFFF', fontSize: '14px' }}>
+          <a href="tel:26681360" style={{ color: '#FFFFFF', fontSize: '15px' }}>
             2668-1360
           </a>
         </div>
@@ -749,7 +608,7 @@ Red comercial en Centroamérica</p>
           <Mail className="h-5 w-5 flex-shrink-0 mt-1" style={{ color: '#D4A93A' }} />
           <a
             href="mailto:guanaventas@carnessanmartincr.com"
-            style={{ color: '#D4A93A', fontSize: '14px', wordBreak: 'break-word' }}
+            style={{ color: '#D4A93A', fontSize: '15px', wordBreak: 'break-word' }}
           >
             guanaventas@carnessanmartincr.com
           </a>
@@ -758,77 +617,107 @@ Red comercial en Centroamérica</p>
         <div className="flex items-start gap-3 min-h-[44px]">
           <Clock className="h-5 w-5 flex-shrink-0 mt-1" style={{ color: '#D4A93A' }} />
           <div>
-            <p style={{ color: '#FFFFFF', fontSize: '14px', lineHeight: '135%' }}>
+            <p style={{ color: '#FFFFFF', fontSize: '15px', lineHeight: '135%' }}>
               Lunes a Viernes 7:00 AM–4:30 PM
+            </p>
+            <p style={{ visibility: 'hidden', fontSize: '15px' }}>
+              placeholder
             </p>
           </div>
         </div>
 
-        <div className="pt-1">
-          <button className="w-full px-4 py-2 border border-white/20 text-white uppercase flex items-center">
+        <div className="mt-auto pt-2">
+          <button className="w-full px-4 py-3 border border-white/20 text-white uppercase flex items-center justify-between">
             <span>VER OTRO CENTRO</span>
-            <ChevronDown className="h- w-5" style={{ color: '#D4A93A' }} />
+            <ChevronDown className="h-5 w-5" style={{ color: '#D4A93A' }} />
           </button>
         </div>
       </div>
-      
     </div>
 
     {/* EL SALVADOR */}
     <div
-  className="backdrop-blur-sm flex flex-col p-1 md:p-8 h-fit"
-  style={{
-    backgroundColor: 'rgba(17,17,17,0.72)',
-    border: '1px solid rgba(255,255,255,0.14)',
-    minHeight: '290px',
-  }}
->
-  <div className="flex items-center gap-3 mb-3">
-    <Building
-      className="h-6 w-6"
-      style={{ color: '#D4A93A', strokeWidth: '1.75px' }}
-    />
-    <h4
+      className="backdrop-blur-sm p-5 md:p-5 flex flex-col"
       style={{
-        color: '#FFFFFF',
-        fontSize: '28px',
-        lineHeight: '115%',
-        fontFamily: 'var(--font-serif)',
-        fontWeight: 700,
+        backgroundColor: 'rgba(17,17,17,0.72)',
+        border: '1px solid rgba(255,255,255,0.14)',
+        minHeight: '360px',
       }}
     >
-      El Salvador
-    </h4>
-  </div>
+      <div className="flex items-center gap-3 mb-3">
+        <Building className="h-6 w-6" style={{ color: '#D4A93A', strokeWidth: '1.75px' }} />
+        <h4
+          style={{
+            color: '#FFFFFF',
+            fontSize: '28px',
+            lineHeight: '115%',
+            fontFamily: 'var(--font-serif)',
+            fontWeight: 700,
+          }}
+        >
+          El Salvador
+        </h4>
+      </div>
 
-  <div className="flex flex-col flex-1 ">
-    <div className="flex items-center justify-center mt-6">
-      <a
-        href="https://www.superselectos.com/Contactenos"
-        target="_blank"
-        rel="noopener noreferrer"
-        className="flex justify-center transition-opacity hover:opacity-80"
-      >
-        <img
-          src={superSelectosLogo}
-          alt="Super Selectos"
-          className="w-full max-w-[120px] h-auto object-contain"
-        />
-      </a>
+      <div className="flex flex-col flex-1">
+      <div className="flex items-center justify-center mt-10 mb-2">
+          <img
+            src={superSelectosLogo}
+            alt="Super Selectos"
+            className="w-full max-w-[88px] h-auto object-contain"
+          />
+        </div>
+
+        <div className="min-h-[49px] flex items-start justify-center pt-5">
+          <p
+            className="text-center"
+            style={{
+              color: 'rgba(255,255,255,0.82)',
+              fontSize: '15px',
+              lineHeight: '135%',
+              maxWidth: '420px',
+            }}
+          >
+            Disponible a través de nuestro socio retail autorizado
+          </p>
+        </div>
+
+        <div className="mt-auto pt-2">
+          <a
+            href="https://www.superselectos.com/Contactenos"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="w-full px-4 py-3 border border-white/20 text-white uppercase flex items-center justify-center gap-2"
+          >
+            <span>VISITAR SUPER SELECTOS</span>
+            <svg
+              className="h-4 w-4"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+              style={{ color: '#D4A93A', strokeWidth: '1.75px' }}
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"
+              />
+            </svg>
+          </a>
+        </div>
+      </div>
     </div>
-  </div>
-</div>
 
     {/* GUATEMALA */}
     <div
-       className="backdrop-blur-sm flex flex-col p-1 md:p-8 flex flex-col h-fit"
-       style={{
-         backgroundColor: 'rgba(17,17,17,0.72)',
-         border: '1px solid rgba(255,255,255,0.14)',
-        minHeight: '100px',
+      className="backdrop-blur-sm p-5 md:p-5 flex flex-col"
+      style={{
+        backgroundColor: 'rgba(17,17,17,0.72)',
+        border: '1px solid rgba(255,255,255,0.14)',
+        minHeight: '360px',
       }}
     >
-      <div className="flex items-center gap-3 mb-1">
+      <div className="flex items-center gap-3 mb-3">
         <Building className="h-6 w-6" style={{ color: '#D4A93A', strokeWidth: '1.75px' }} />
         <h4
           style={{
@@ -842,38 +731,36 @@ Red comercial en Centroamérica</p>
           Guatemala
         </h4>
       </div>
+
       <p
-        className="mb-2"
+        className="mb-3"
         style={{
           color: 'rgba(255,255,255,0.82)',
-          fontSize: '12px',
+          fontSize: '16px',
           fontWeight: 600,
         }}
       >
-        Carnes San Martín Central
+        CSM CENTRAL
       </p>
 
-      <div className="space-y-0 flex-none">
+      <div className="space-y-2.5 flex-1">
         <div className="flex items-start gap-3">
           <MapPin className="h-5 w-5 flex-shrink-0 mt-1" style={{ color: '#D4A93A' }} />
-          <p style={{ color: '#FFFFFF', fontSize: '14px', lineHeight: '135%' }}>
-          Calzada Atanasio Tzul 22-00 Zona 12 El Cortijo Empresarial II
+          <p style={{ color: '#FFFFFF', fontSize: '15px', lineHeight: '135%' }}>
+            Calzada Atanasio Tzul 22-00 Zona 12 El Cortijo Empresarial II, Ofibodega 215
           </p>
         </div>
 
         <div className="flex items-start gap-3">
           <Phone className="h-5 w-5 flex-shrink-0 mt-1" style={{ color: '#D4A93A' }} />
-          <a href="tel:26681360" style={{ color: '#FFFFFF', fontSize: '14px' }}>
-          3511-6105
+          <a href="tel:35116105" style={{ color: '#FFFFFF', fontSize: '15px' }}>
+            3511 6105
           </a>
         </div>
 
         <div className="flex items-start gap-3">
           <Mail className="h-5 w-5 flex-shrink-0 mt-1" style={{ color: '#D4A93A' }} />
-          <a
-            href="mailto:guanaventas@carnessanmartincr.com"
-            style={{ color: '#D4A93A', fontSize: '14px', wordBreak: 'break-word' }}
-          >
+          <a href="mailto:sac@carnessanmartinsa.com" style={{ color: '#D4A93A', fontSize: '15px' }}>
             sac@carnessanmartinsa.com
           </a>
         </div>
@@ -881,32 +768,34 @@ Red comercial en Centroamérica</p>
         <div className="flex items-start gap-3 min-h-[44px]">
           <Clock className="h-5 w-5 flex-shrink-0 mt-1" style={{ color: '#D4A93A' }} />
           <div>
-            <p style={{ color: '#FFFFFF', fontSize: '14px', lineHeight: '135%' }}>
-            Lunes a Viernes 08:00am A 17:00pm  sabado 08:00am A 12:00 medio dia
+            <p style={{ color: '#FFFFFF', fontSize: '15px' }}>
+              Lunes a Viernes 8:00 AM–5:00 PM
+            </p>
+            <p style={{ color: '#FFFFFF', fontSize: '15px' }}>
+              Sábado 8:00 AM–12:00 PM
             </p>
           </div>
         </div>
 
-        <div className="pt-1">
-          <button className="w-full px-4 py-2 border border-white/20 text-white uppercase flex items-center">
+        <div className="mt-auto pt-2">
+          <button className="w-full px-4 py-3 border border-white/20 text-white uppercase flex items-center justify-between">
             <span>VER OTRO CENTRO</span>
-            <ChevronDown className="h- w-5" style={{ color: '#D4A93A' }} />
+            <ChevronDown className="h-5 w-5" style={{ color: '#D4A93A' }} />
           </button>
         </div>
       </div>
     </div>
 
-
     {/* HONDURAS */}
     <div
-       className="backdrop-blur-sm flex flex-col p-1 md:p-8 flex flex-col h-fit"
-       style={{
-         backgroundColor: 'rgba(17,17,17,0.72)',
-         border: '1px solid rgba(255,255,255,0.14)',
-        minHeight: '100px',
+      className="backdrop-blur-sm p-5 md:p-5 flex flex-col"
+      style={{
+        backgroundColor: 'rgba(17,17,17,0.72)',
+        border: '1px solid rgba(255,255,255,0.14)',
+        minHeight: '360px',
       }}
     >
-      <div className="flex items-center gap-3 mb-1">
+      <div className="flex items-center gap-3 mb-3">
         <Building className="h-6 w-6" style={{ color: '#D4A93A', strokeWidth: '1.75px' }} />
         <h4
           style={{
@@ -917,64 +806,40 @@ Red comercial en Centroamérica</p>
             fontWeight: 700,
           }}
         >
-        Honduras
+          Honduras
         </h4>
       </div>
+
       <p
-        className="mb-2"
+        className="mb-3"
         style={{
           color: 'rgba(255,255,255,0.82)',
-          fontSize: '12px',
+          fontSize: '16px',
           fontWeight: 600,
         }}
       >
-        Carnes San Marin Honduras
+        Carnes San Martín Honduras
       </p>
 
-      <div className="space-y-0 flex-none">
-        <div className="flex items-start gap-3">
-          <MapPin className="h-5 w-5 flex-shrink-0 mt-1" style={{ color: '#D4A93A' }} />
-          <p style={{ color: '#FFFFFF', fontSize: '14px', lineHeight: '135%' }}>
-          Calzada Atanasio Tzul 22-00 Zona 12 El Cortijo Empresarial II
-          </p>
-        </div>
-
+      <div className="space-y-2.5 flex-1">
         <div className="flex items-start gap-3">
           <Phone className="h-5 w-5 flex-shrink-0 mt-1" style={{ color: '#D4A93A' }} />
-          <a href="tel:26681360" style={{ color: '#FFFFFF', fontSize: '14px' }}>
-          (504) 228-2530
+          <a href="tel:+5042282530" style={{ color: '#FFFFFF', fontSize: '15px' }}>
+            (504) 228-2530
           </a>
         </div>
 
         <div className="flex items-start gap-3">
           <Mail className="h-5 w-5 flex-shrink-0 mt-1" style={{ color: '#D4A93A' }} />
-          <a
-            href="mailto:guanaventas@carnessanmartincr.com"
-            style={{ color: '#D4A93A', fontSize: '14px', wordBreak: 'break-word' }}
-          >
+          <a href="mailto:ventassanmartin@md.hn" style={{ color: '#D4A93A', fontSize: '15px' }}>
             ventassanmartin@md.hn
           </a>
         </div>
-
-        <div className="flex items-start gap-3 min-h-[44px]">
-          <Clock className="h-5 w-5 flex-shrink-0 mt-1" style={{ color: '#D4A93A' }} />
-          <div>
-            <p style={{ color: '#FFFFFF', fontSize: '14px', lineHeight: '135%' }}>
-            Lunes a Viernes 08:00am A 17:00pm  sabado 08:00am A 12:00 medio dia
-            </p>
-          </div>
-        </div>
-
-        <div className="pt-1">
-          <button className="w-full px-4 py-2 border border-white/20 text-white uppercase flex items-center">
-            <span>VER OTRO CENTRO</span>
-            <ChevronDown className="h- w-5" style={{ color: '#D4A93A' }} />
-          </button>
-        </div>
       </div>
     </div>
-    </div>
-    </div>
+
+  </div>
+</div>
         {/* CTA */}
         <div className="text-center mt-16">
           <button

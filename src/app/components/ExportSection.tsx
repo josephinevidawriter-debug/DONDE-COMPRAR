@@ -222,50 +222,61 @@ function GuatemalaDistributor() {
 export function ExportSection() {
   const [expandedRegion, setExpandedRegion] = useState<string | null>(null);
 
-  const regions: Region[] = [
+  const regions = [
     {
-      id: 'centralAmerica',
+      id: 'centroamerica',
       name: 'Centroamérica y Caribe',
-      color: '#D4A849',
+      color: '#E8D9A8',
       countries: [
-        'Costa Rica',
-        'El Salvador',
-        'Guatemala',
-        'Honduras',
-        'Nicaragua',
-        'Puerto Rico',
-        'República Dominicana',
+        { name: 'Guatemala', code: 'gt' },
+        { name: 'El Salvador', code: 'sv' },
+        { name: 'Honduras', code: 'hn' },
+        { name: 'Costa Rica', code: 'cr' },
+        { name: 'República Dominicana', code: 'do' },
+        { name: 'Puerto Rico', code: 'pr' },
       ],
     },
     {
-      id: 'northAmerica',
+      id: 'norteamerica',
       name: 'América del Norte',
-      color: '#C45250',
-      countries: ['Estados Unidos', 'México'],
+      color: '#D97757',
+      countries: [
+        { name: 'Estados Unidos', code: 'us' },
+        { name: 'México', code: 'mx' },
+      ],
     },
     {
-      id: 'europe',
+      id: 'europa',
       name: 'Europa',
-      color: '#E8D4B8',
-      countries: ['España', 'Italia', 'Rusia'],
+      color: '#F5E6C8',
+      countries: [
+        { name: 'España', code: 'es' },
+        { name: 'Italia', code: 'it' },
+        { name: 'Rusia', code: 'ru' },
+      ],
     },
     {
       id: 'asia',
       name: 'Asia',
-      color: '#E8CFA0',
-      countries: ['Japón', 'Tailandia', 'Taiwán'],
+      color: '#E8B860',
+      countries: [
+        { name: 'Japón', code: 'jp' },
+        { name: 'Taiwan', code: 'tw' },
+        { name: 'Tailandia', code: 'th' },
+      ],
     },
     {
       id: 'africa',
       name: 'África',
-      color: '#B8856A',
+      color: '#C9885A',
       countries: [
-        'Costa de Marfil',
-        'Luanda (Angola)',
-        'Pointe-Noire (República del Congo)',
+        { name: 'Luanda', code: 'ao' },
+        { name: 'Pointe Noire', code: 'cg' },
+        { name: 'Costa de Marfil', code: 'ci' },
       ],
     },
   ];
+  
 
   const toggleRegion = (regionId: string) => {
     setExpandedRegion(expandedRegion === regionId ? null : regionId);
@@ -506,7 +517,6 @@ Oficina principal - Managua, Nicaragua</p>
 
               {/* Map caption */}
               <p className="text-center text-white/50 text-xs mt-3 italic mb-12">
-                Destinos
               </p>
             </div>
         
@@ -557,24 +567,34 @@ Oficina principal - Managua, Nicaragua</p>
                       onClick={() => toggleRegion(region.id)}
                       className="
                       w-full
-                      h-[88px]
-                      px-5
-                      py-3.5
+                      min-h-[80px]
+                      px-6
+                      py-4
                       flex
                       items-center
                       justify-between
                       group
                     "
-                    >
-                      <div className="flex items-center gap-3">
-                        <div
-                          className="w-3 h-3 rounded-sm flex-shrink-0"
-                          style={{ backgroundColor: region.color }}
-                        ></div>
-                        <span className="font-medium text-white text-sm group-hover:text-brand-gold transition-colors">
-                          {region.name}
-                        </span>
-                      </div>
+>
+                      <div className="flex-1 flex items-center justify-center gap-2">
+  <div
+    className="w-3 h-3 rounded-full flex-shrink-0"
+    style={{ backgroundColor: region.color }}
+  ></div>
+
+  <span
+    className="
+      text-center
+      font-md
+      text-white
+      text-sm
+      group-hover:text-brand-gold
+      transition-colors
+    "
+  >
+    {region.name}
+  </span>
+</div>
                       <ChevronDown
                         className={`h-4 w-4 text-brand-gold transition-transform duration-300 ${
                           expandedRegion === region.id ? 'rotate-180' : ''

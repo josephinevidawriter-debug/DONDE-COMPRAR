@@ -13,7 +13,7 @@ interface Concessionaire {
 
 export function ConcessionairesSection() {
   const [selectedCountry, setSelectedCountry] = useState<Country>('Nicaragua');
-  const [visibleCount, setVisibleCount] = useState(6);
+  const [visibleCount, setVisibleCount] = useState(3);
   const [searchQuery, setSearchQuery] = useState('');
 
   // REAL DATA - All 70 records
@@ -148,7 +148,7 @@ export function ConcessionairesSection() {
     leading-[170%]
     font-normal
     text-brand-dark/75
-    mb-11
+    mb-6
   "
 >
             Encuentre nuestros puntos de venta autorizados más cercanos

@@ -35,7 +35,7 @@ export function Hero() {
    backgroundColor: 'rgba(212,169,58,0.14)'
  }}
 >
-<span className="text-[11px] md:text-xs font-semibold tracking-[0.12em] uppercase text-center" style={{ color: '#D4A93A' }}>CALIDAD PREMIUM DESDE 1960</span>
+<span className="text-[11px] md:text-xs font-semibold tracking-[0.12em] uppercase text-center" style={{ color: '#D4A93A' }}>CALIDAD PREMIUM DESDE 1975</span>
        </div>
 
 

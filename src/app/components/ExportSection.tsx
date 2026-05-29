@@ -660,13 +660,37 @@ Oficina principal - Managua, Nicaragua</p>
 {/* 3. REGIONAL DISTRIBUTION HUBS (NO NICARAGUA) */}
 <div>
   <div className="text-center mb-16">
-    <h3
-      className="text-3xl font-bold mb-3"
-      style={{ fontFamily: 'var(--font-serif)' }}
-    >
+  <h3
+  className="
+    text-[22px]
+    md:text-[28px]
+    lg:text-[34px]
+    mb-3
+  "
+  style={{
+    fontFamily: 'var(--font-serif)',
+    fontWeight: 700,
+    lineHeight: '1.15',
+    letterSpacing: '-0.02em',
+    color: '#FFFFFF'
+  }}
+>
+
       Distribuidores Regionales
     </h3>
-    <p className="text-white/70">Red comercial en Centroamérica</p>
+    <p
+  className="
+    text-[15px]
+    md:text-[17px]
+    lg:text-[18px]
+  "
+  style={{
+    color: 'rgba(255,255,255,0.70)',
+    fontWeight: 400,
+    lineHeight: '1.6'
+  }}
+>
+Red comercial en Centroamérica</p>
   </div>
 
   <div className="grid md:grid-cols-2 gap-5 md:gap-6 max-w-5xl mx-auto">

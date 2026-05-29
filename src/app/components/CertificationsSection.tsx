@@ -21,19 +21,21 @@ export function CertificationsSection() {
   ];
 
   return (
-    <section id="certifications" className="py-16 md:py-20 bg-[#F5F3EE] relative overflow-hidden">
-      {/* Subtle texture background */}
-      <div
-        className="absolute inset-0 opacity-[0.28]"
-        style={{
-          backgroundImage: `url(${textureBackground})`,
-          backgroundSize: '200px 200px',
-          backgroundPosition: 'center',
-          backgroundRepeat: 'repeat'
-        }}
-      ></div>
-
+    <section
+      id="certifications"
+      className="py-16 md:py-20 relative overflow-hidden"
+      style={{
+        backgroundColor: '#F5F3EE',
+        backgroundImage:
+          "url('https://sanmartin.com.ni/wp-content/uploads/2025/02/Careers.jpg')",
+        backgroundSize: '111px',
+        backgroundRepeat: 'repeat',
+        backgroundPosition: 'center'
+      }}
+    >
+  
       <div className="container mx-auto px-4 lg:px-8 relative z-10">
+  
         {/* Header */}
         <div className="text-center mb-6 w-full max-w-full overflow-hidden px-3 sm:px-6 md:px-8 lg:px-12">
      <h2
@@ -60,7 +62,10 @@ export function CertificationsSection() {
       mb-11
     "
   >
-            Cumplimos con los estándares más exigentes de inocuidad, trazabilidad, calidad y sostenibilidad para exportación internacional.
+           Cumplimos con certificaciones internacionales que garantizan inocuidad alimentaria, trazabilidad, sostenibilidad
+            y excelencia operativa en toda nuestra cadena de producción. 
+           Cada proceso es auditado bajo estándares reconocidos globalmente 
+           para brindar confianza, consistencia y acceso a mercados internacionales exigentes.
           </p>
         </div>
 
@@ -93,6 +98,10 @@ export function CertificationsSection() {
             );
           })}
         </div>
+        {/* Certification Trust Banner */}
+<div className="mt-10">
+
+</div>
       </div>
     </section>
   );

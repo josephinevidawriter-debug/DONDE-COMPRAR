@@ -220,7 +220,7 @@ function GuatemalaDistributor() {
 }
 
 export function ExportSection() {
-  const [expandedRegion, setExpandedRegion] = useState<string | null>(null);
+  const [selectedRegion, setSelectedRegion] = useState<string | null>(null);
 
   const regions: Region[] = [
     {

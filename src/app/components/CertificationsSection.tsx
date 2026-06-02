@@ -53,6 +53,8 @@ export function CertificationsSection() {
           </h2>
           <p
     className="
+      hidden
+      md:block
       text-[16px]
       md:text-[18px]
       lg:text-[20px]

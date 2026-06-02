@@ -13,8 +13,10 @@
 
   export function ConcessionairesSection() {
     const [selectedCountry, setSelectedCountry] = useState<Country>('Nicaragua');
-    const [visibleCount, setVisibleCount] = useState(3);
-    const [searchQuery, setSearchQuery] = useState('');
+const [visibleCount, setVisibleCount] = useState(3);
+const [searchQuery, setSearchQuery] = useState('');
+const [expandedCard, setExpandedCard] = useState<string | null>(null);
+const [showAll, setShowAll] = useState(false);
 
     // REAL DATA - All 70 records
     const concessionaires: Concessionaire[] = [
@@ -203,7 +205,7 @@
                         style={{
                           fontFamily: 'var(--font-sans)',
                           fontWeight: 500,
-                          backgroundColor: selectedCountry === country ? '#D4A93A' : 'transparent',
+                          backgroundColor: selectedCountry === country ? '#D4A93A' : 'transparent', 
                           color: '#111111'
                         }}
                       >
@@ -296,32 +298,32 @@
             ))}
           </div>
 
-          {/* No results */}
-          {filteredAndSearchedConcessionaires.length === 0 && (
-            <div className="text-center py-8 md:py-10">
-              <p className="text-muted-foreground text-lg">No se encontraron resultados</p>
-            </div>
-          )}
+            {/* No results */}
+            {filteredAndSearchedConcessionaires.length === 0 && (
+              <div className="text-center py-8 md:py-10">
+                <p className="text-muted-foreground text-lg">No se encontraron resultados</p>
+              </div>
+            )}
 
-          {/* Load More */}
-          {hasMore && (
-            <div className="text-center">
-              <button
-                onClick={() => setVisibleCount(prev => prev + 9)}
-                className="px-7 bg-transparent hover:bg-brand-gold transition-all duration-500 text-[16px] lg:text-[18px] shadow-[0_8px_20px_rgba(17,17,17,0.08)] hover:shadow-[0_12px_28px_rgba(17,17,17,0.16)] hover:-translate-y-0.5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-gold focus-visible:ring-offset-2"
-                style={{ fontFamily: 'var(--font-sans)', fontWeight: 600, lineHeight: '100%', letterSpacing: '0.04em', color: '#111111', height: '56px', border: '1px solid #111111', borderRadius: '0px' }}
-              >
-                VER MÁS UBICACIONES
-              </button>
-            </div>
-          )}
+            {/* Load More */}
+            {hasMore && (
+              <div className="text-center">
+                <button
+                  onClick={() => setVisibleCount(prev => prev + 9)}
+                  className="px-7 bg-transparent hover:bg-brand-gold transition-all duration-500 text-[16px] lg:text-[18px] shadow-[0_8px_20px_rgba(17,17,17,0.08)] hover:shadow-[0_12px_28px_rgba(17,17,17,0.16)] hover:-translate-y-0.5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-gold focus-visible:ring-offset-2"
+                  style={{ fontFamily: 'var(--font-sans)', fontWeight: 600, lineHeight: '100%', letterSpacing: '0.04em', color: '#111111', height: '56px', border: '1px solid #111111', borderRadius: '0px' }}
+                >
+                  VER MÁS UBICACIONES
+                </button>
+              </div>
+            )}
 
-          {/* Total Count */}
-          <p className="text-center text-muted-foreground mt-6 md:mt-7">
-            Mostrando {visibleConcessionaires.length} de {filteredAndSearchedConcessionaires.length} ubicaciones
-            {selectedCountry !== 'Todos' && ` en ${selectedCountry}`}
-          </p>
-        </div>
-      </section>
-    );
-  }
+            {/* Total Count */}
+            <p className="text-center text-muted-foreground mt-6 md:mt-7">
+              Mostrando {visibleConcessionaires.length} de {filteredAndSearchedConcessionaires.length} ubicaciones
+              {selectedCountry !== 'Todos' && ` en ${selectedCountry}`}
+            </p>
+          </div>
+        </section>
+      );
+    }

@@ -222,6 +222,7 @@ function GuatemalaDistributor() {
 ========================================== */
 export function ExportSection() {
   const [selectedRegion, setSelectedRegion] = useState<string | null>(null);
+  const [expandedDistributor, setExpandedDistributor] = useState<string | null>(null);
 
   const regions = [
     {
@@ -731,7 +732,7 @@ return (
 
 {/* 3. REGIONAL DISTRIBUTION HUBS (NO NICARAGUA) */}
 <div>
-  <div className="text-center mb-10">
+<div className="min-h-[12vh] md:min-h-0 mb-12 md:mb-10">
   <h3
   className="
     text-[22px]
@@ -752,9 +753,8 @@ return (
     </h3>
     <p
   className="
+    md:hidden
     text-[15px]
-    md:text-[17px]
-    lg:text-[18px]
   "
   style={{
     color: 'rgba(255,255,255,0.70)',
@@ -762,13 +762,13 @@ return (
     lineHeight: '1.6'
   }}
 >
-Red comercial en Centroamérica</p>
+Seleccione su país para contactar al distribuidor autorizado de Carnes San Martín. Nuestra red comercial regional brinda atención local a supermercados, distribuidores, restaurantes y empresas que buscan productos cárnicos de calidad internacional.
+</p>
   </div>
 
   <div className="grid md:grid-cols-2 gap-5 md:gap-5 max-w-5xl mx-auto items-start">
 
     {/* COSTA RICA */}
-   {/* COSTA RICA */}
 <div
    className="backdrop-blur-sm flex flex-col p-1 md:px-6 md:py-5 h-fit"
    style={{
@@ -776,9 +776,16 @@ Red comercial en Centroamérica</p>
      border: '1px solid rgba(255,255,255,0.14)',
   }}
 >
-  <button
-    className="md:hidden w-full flex items-center justify-between px-4 py-4"
-  >
+<button
+  onClick={() =>
+    setExpandedDistributor(
+      expandedDistributor === 'costa-rica'
+        ? null
+        : 'costa-rica'
+    )
+  }
+  className="md:hidden w-full flex items-center justify-between px-4 py-4"
+>
     <span
       style={{
         color: '#FFFFFF',
@@ -791,15 +798,24 @@ Red comercial en Centroamérica</p>
     </span>
 
     <span
-      style={{
-        color: '#D4A93A',
-        fontSize: '28px',
-        lineHeight: '1',
-      }}
-    >
-      +
-    </span>
+  style={{
+    color: '#D4A93A',
+    fontSize: '28px',
+    lineHeight: '1',
+    fontWeight: 700,
+    minWidth: '24px',
+    textAlign: 'center',
+  }}
+>
+  {expandedDistributor === 'costa-rica' ? '−' : '+'}
+</span>
   </button>
+  <div
+  className={`
+    ${expandedDistributor === 'costa-rica' ? 'block' : 'hidden'}
+    md:block
+  `}
+>
   <div className="hidden md:flex items-center gap-3 mb-1">
         <Building className="h-6 w-6" style={{ color: '#D4A93A', strokeWidth: '1.75px' }} />
         <h4
@@ -861,225 +877,439 @@ Red comercial en Centroamérica</p>
         </div>
 
         <div className="pt-1">
-          <button className="w-full px-4 py-2 border border-white/20 text-white uppercase flex items-center">
-            <span>VER OTRO CENTRO</span>
-            <ChevronDown className="h- w-5" style={{ color: '#D4A93A' }} />
-          </button>
-        </div>
-      </div>
-      
-    </div>
+  <button className="w-full px-4 py-2 border border-white/20 text-white uppercase flex items-center">
+    <span>VER OTRO CENTRO</span>
+    <ChevronDown className="h- w-5" style={{ color: '#D4A93A' }} />
+  </button>
+</div>
+</div>
 
-    {/* EL SALVADOR */}
-    <div
-  className="backdrop-blur-sm flex flex-col p-1 md:px-6 md:py-5 h-fit"
+</div>
+</div>
+
+   {/* EL SALVADOR */}
+<div
+  className="backdrop-blur-sm flex flex-col p-0 md:px-6 md:py-5 h-fit"
   style={{
     backgroundColor: 'rgba(17,17,17,0.72)',
     border: '1px solid rgba(255,255,255,0.14)',
-    minHeight: '268px',
+    minHeight: expandedDistributor === 'el-salvador'
+    ? '268px'
+    : 'auto',
   }}
 >
-  <div className="flex items-center gap-3 mb-3">
-    <Building
-      className="h-6 w-6"
-      style={{ color: '#D4A93A', strokeWidth: '1.75px' }}
-    />
-    <h4
+  <button
+    onClick={() =>
+      setExpandedDistributor(
+        expandedDistributor === 'el-salvador'
+          ? null
+          : 'el-salvador'
+      )
+    }
+    className="md:hidden w-full flex items-center justify-between px-4 py-4"
+  >
+    <span
       style={{
         color: '#FFFFFF',
-        fontSize: '28px',
-        lineHeight: '115%',
+        fontSize: '22px',
         fontFamily: 'var(--font-serif)',
         fontWeight: 700,
       }}
     >
       El Salvador
-    </h4>
-  </div>
+    </span>
 
-  <div className="flex flex-col">
-  <div className="flex items-center justify-center mt-3">
-  <a
-  href="https://www.superselectos.com/Contactenos"
-  target="_blank"
-  rel="noopener noreferrer"
-  className="flex flex-col items-center transition-opacity hover:opacity-80"
->
-  <img
-    src={superSelectosLogo}
-    alt="Super Selectos"
-    className="w-auto h-24 md:h-20 object-contain"
-  />
+    <span
+      style={{
+        color: '#D4A93A',
+        fontSize: '28px',
+        lineHeight: '1',
+        fontWeight: 700,
+        minWidth: '24px',
+        textAlign: 'center',
+      }}
+    >
+      {expandedDistributor === 'el-salvador' ? '−' : '+'}
+    </span>
+  </button>
 
-  <span className="mt-2 text-xs text-brand-gold font-medium">
-    Visitar Super Selectos →
-  </span>
-</a>
+  <div
+    className={`
+      ${expandedDistributor === 'el-salvador' ? 'block' : 'hidden'}
+      md:block
+    `}
+  >
+    <div className="hidden md:flex items-center gap-3 mb-3">
+      <Building
+        className="h-6 w-6"
+        style={{ color: '#D4A93A', strokeWidth: '1.75px' }}
+      />
+      <h4
+        style={{
+          color: '#FFFFFF',
+          fontSize: '28px',
+          lineHeight: '115%',
+          fontFamily: 'var(--font-serif)',
+          fontWeight: 700,
+        }}
+      >
+        El Salvador
+      </h4>
+    </div>
+
+    <div className="flex flex-col flex-1">
+      <div className="flex items-center justify-center mt-3">
+        <a
+          href="https://www.superselectos.com/Contactenos"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="flex flex-col items-center transition-opacity hover:opacity-80"
+        >
+          <img
+            src={superSelectosLogo}
+            alt="Super Selectos"
+            className="w-auto h-24 md:h-20 object-contain"
+          />
+
+          <span className="mt-2 text-xs text-brand-gold font-medium">
+            Visitar Super Selectos →
+          </span>
+        </a>
+      </div>
     </div>
   </div>
 </div>
 
     {/* GUATEMALA */}
-    <div
-       className="backdrop-blur-sm flex flex-col p-1 md:px-6 md:py-5 h-fit"
-       style={{
-         backgroundColor: 'rgba(17,17,17,0.72)',
-         border: '1px solid rgba(255,255,255,0.14)',
+<div
+  className="backdrop-blur-sm flex flex-col p-0 md:px-6 md:py-5 h-fit"
+  style={{
+    backgroundColor: 'rgba(17,17,17,0.72)',
+    border: '1px solid rgba(255,255,255,0.14)',
+  }}
+>
+  <button
+    onClick={() =>
+      setExpandedDistributor(
+        expandedDistributor === 'guatemala'
+          ? null
+          : 'guatemala'
+      )
+    }
+    className="md:hidden w-full flex items-center justify-between px-4 py-4"
+  >
+    <span
+      style={{
+        color: '#FFFFFF',
+        fontSize: '22px',
+        fontFamily: 'var(--font-serif)',
+        fontWeight: 700,
       }}
     >
-      <div className="flex items-center gap-3 mb-1">
-        <Building className="h-6 w-6" style={{ color: '#D4A93A', strokeWidth: '1.75px' }} />
-        <h4
-          style={{
-            color: '#FFFFFF',
-            fontSize: '28px',
-            lineHeight: '115%',
-            fontFamily: 'var(--font-serif)',
-            fontWeight: 700,
-          }}
-        >
-          Guatemala
-        </h4>
-      </div>
-      <p
-        className="mb-2"
+      Guatemala
+    </span>
+
+    <span
+      style={{
+        color: '#D4A93A',
+        fontSize: '28px',
+        lineHeight: '1',
+        fontWeight: 700,
+        minWidth: '24px',
+        textAlign: 'center',
+      }}
+    >
+      {expandedDistributor === 'guatemala' ? '−' : '+'}
+    </span>
+  </button>
+
+  <div
+    className={`
+      ${expandedDistributor === 'guatemala' ? 'block' : 'hidden'}
+      md:block
+    `}
+  >
+    <div className="hidden md:flex items-center gap-3 mb-1">
+      <Building
+        className="h-6 w-6"
+        style={{ color: '#D4A93A', strokeWidth: '1.75px' }}
+      />
+      <h4
         style={{
-          color: 'rgba(255,255,255,0.82)',
-          fontSize: '12px',
-          fontWeight: 600,
+          color: '#FFFFFF',
+          fontSize: '28px',
+          lineHeight: '115%',
+          fontFamily: 'var(--font-serif)',
+          fontWeight: 700,
         }}
       >
-        Carnes San Martín Central
-      </p>
-
-      <div className="space-y-0 flex-none">
-        <div className="flex items-start gap-3">
-          <MapPin className="h-5 w-5 flex-shrink-0 mt-1" style={{ color: '#D4A93A' }} />
-          <p style={{ color: '#FFFFFF', fontSize: '14px', lineHeight: '135%' }}>
-          Calzada Atanasio Tzul 22-00 Zona 12 El Cortijo Empresarial II
-          </p>
-        </div>
-
-        <div className="flex items-start gap-3">
-          <Phone className="h-5 w-5 flex-shrink-0 mt-1" style={{ color: '#D4A93A' }} />
-          <a href="tel:26681360" style={{ color: '#FFFFFF', fontSize: '14px' }}>
-          3511-6105
-          </a>
-        </div>
-
-        <div className="flex items-start gap-3">
-          <Mail className="h-5 w-5 flex-shrink-0 mt-1" style={{ color: '#D4A93A' }} />
-          <a
-            href="mailto:guanaventas@carnessanmartincr.com"
-            style={{ color: '#D4A93A', fontSize: '14px', wordBreak: 'break-word' }}
-          >
-            sac@carnessanmartinsa.com
-          </a>
-        </div>
-
-        <div className="flex items-start gap-3 min-h-[44px]">
-          <Clock className="h-5 w-5 flex-shrink-0 mt-1" style={{ color: '#D4A93A' }} />
-          <div>
-            <p style={{ color: '#FFFFFF', fontSize: '12px', lineHeight: '135%' }}>
-            <span>
-  Lunes a Viernes 7:00 AM–4:30 PM <br />
-Sábado 7:00 AM–12:00 PM
-</span>
-            </p>
-          </div>
-        </div>
-
-        <div className="pt-1">
-          <button className="w-full px-4 py-2 border border-white/20 text-white uppercase flex items-center">
-            <span>VER OTRO CENTRO</span>
-            <ChevronDown className="h- w-5" style={{ color: '#D4A93A' }} />
-          </button>
-        </div>
-      </div>
+        Guatemala
+      </h4>
     </div>
 
+    <p
+      className="mb-2"
+      style={{
+        color: 'rgba(255,255,255,0.82)',
+        fontSize: '12px',
+        fontWeight: 600,
+      }}
+    >
+      Carnes San Martín Central
+    </p>
+
+    <div className="space-y-0 flex-none">
+      <div className="flex items-start gap-3">
+        <MapPin
+          className="h-5 w-5 flex-shrink-0 mt-1"
+          style={{ color: '#D4A93A' }}
+        />
+        <p
+          style={{
+            color: '#FFFFFF',
+            fontSize: '14px',
+            lineHeight: '135%',
+          }}
+        >
+          Calzada Atanasio Tzul 22-00 Zona 12 El Cortijo Empresarial II
+        </p>
+      </div>
+
+      <div className="flex items-start gap-3">
+        <Phone
+          className="h-5 w-5 flex-shrink-0 mt-1"
+          style={{ color: '#D4A93A' }}
+        />
+        <a
+          href="tel:35116105"
+          style={{
+            color: '#FFFFFF',
+            fontSize: '14px',
+          }}
+        >
+          3511-6105
+        </a>
+      </div>
+
+      <div className="flex items-start gap-3">
+        <Mail
+          className="h-5 w-5 flex-shrink-0 mt-1"
+          style={{ color: '#D4A93A' }}
+        />
+        <a
+          href="mailto:sac@carnessanmartinsa.com"
+          style={{
+            color: '#D4A93A',
+            fontSize: '14px',
+            wordBreak: 'break-word',
+          }}
+        >
+          sac@carnessanmartinsa.com
+        </a>
+      </div>
+
+      <div className="flex items-start gap-3 min-h-[44px]">
+        <Clock
+          className="h-5 w-5 flex-shrink-0 mt-1"
+          style={{ color: '#D4A93A' }}
+        />
+        <div>
+          <p
+            style={{
+              color: '#FFFFFF',
+              fontSize: '12px',
+              lineHeight: '135%',
+            }}
+          >
+            <span>
+              Lunes a Viernes 7:00 AM–4:30 PM
+              <br />
+              Sábado 7:00 AM–12:00 PM
+            </span>
+          </p>
+        </div>
+      </div>
+
+      <div className="pt-1">
+        <button className="w-full px-4 py-2 border border-white/20 text-white uppercase flex items-center">
+          <span>VER OTRO CENTRO</span>
+          <ChevronDown
+            className="h- w-5"
+            style={{ color: '#D4A93A' }}
+          />
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
 
     {/* HONDURAS */}
-    <div
-       className="backdrop-blur-sm flex flex-col p-1 md:px-6 md:py-5 h-fit"
-       style={{
-         backgroundColor: 'rgba(17,17,17,0.72)',
-         border: '1px solid rgba(255,255,255,0.14)',
+<div
+  className="backdrop-blur-sm flex flex-col p-0 md:px-6 md:py-5 h-fit"
+  style={{
+    backgroundColor: 'rgba(17,17,17,0.72)',
+    border: '1px solid rgba(255,255,255,0.14)',
+  }}
+>
+  <button
+    onClick={() =>
+      setExpandedDistributor(
+        expandedDistributor === 'honduras'
+          ? null
+          : 'honduras'
+      )
+    }
+    className="md:hidden w-full flex items-center justify-between px-4 py-4"
+  >
+    <span
+      style={{
+        color: '#FFFFFF',
+        fontSize: '22px',
+        fontFamily: 'var(--font-serif)',
+        fontWeight: 700,
       }}
     >
-      <div className="flex items-center gap-3 mb-1">
-        <Building className="h-6 w-6" style={{ color: '#D4A93A', strokeWidth: '1.75px' }} />
-        <h4
-          style={{
-            color: '#FFFFFF',
-            fontSize: '28px',
-            lineHeight: '115%',
-            fontFamily: 'var(--font-serif)',
-            fontWeight: 700,
-          }}
-        >
-        Honduras
-        </h4>
-      </div>
-      <p
-        className="mb-2"
+      Honduras
+    </span>
+
+    <span
+      style={{
+        color: '#D4A93A',
+        fontSize: '28px',
+        lineHeight: '1',
+        fontWeight: 700,
+        minWidth: '24px',
+        textAlign: 'center',
+      }}
+    >
+      {expandedDistributor === 'honduras' ? '−' : '+'}
+    </span>
+  </button>
+
+  <div
+    className={`
+      ${expandedDistributor === 'honduras' ? 'block' : 'hidden'}
+      md:block
+    `}
+  >
+    <div className="hidden md:flex items-center gap-3 mb-1">
+      <Building
+        className="h-6 w-6"
+        style={{ color: '#D4A93A', strokeWidth: '1.75px' }}
+      />
+
+      <h4
         style={{
-          color: 'rgba(255,255,255,0.82)',
-          fontSize: '12px',
-          fontWeight: 600,
+          color: '#FFFFFF',
+          fontSize: '28px',
+          lineHeight: '115%',
+          fontFamily: 'var(--font-serif)',
+          fontWeight: 700,
         }}
       >
-        Carnes San Marin Honduras
-      </p>
+        Honduras
+      </h4>
+    </div>
 
-      <div className="space-y-0 flex-none">
-        <div className="flex items-start gap-3">
-          <MapPin className="h-5 w-5 flex-shrink-0 mt-1" style={{ color: '#D4A93A' }} />
-          <p style={{ color: '#FFFFFF', fontSize: '14px', lineHeight: '135%' }}>
+    <p
+      className="mb-2"
+      style={{
+        color: 'rgba(255,255,255,0.82)',
+        fontSize: '12px',
+        fontWeight: 600,
+      }}
+    >
+      Carnes San Martin Honduras
+    </p>
+
+    <div className="space-y-0 flex-none">
+      <div className="flex items-start gap-3">
+        <MapPin
+          className="h-5 w-5 flex-shrink-0 mt-1"
+          style={{ color: '#D4A93A' }}
+        />
+        <p
+          style={{
+            color: '#FFFFFF',
+            fontSize: '14px',
+            lineHeight: '135%',
+          }}
+        >
           Calzada Atanasio Tzul 22-00 Zona 12 El Cortijo Empresarial II
+        </p>
+      </div>
+
+      <div className="flex items-start gap-3">
+        <Phone
+          className="h-5 w-5 flex-shrink-0 mt-1"
+          style={{ color: '#D4A93A' }}
+        />
+        <a
+          href="tel:+5042282530"
+          style={{
+            color: '#FFFFFF',
+            fontSize: '14px',
+          }}
+        >
+          (504) 228-2530
+        </a>
+      </div>
+
+      <div className="flex items-start gap-3">
+        <Mail
+          className="h-5 w-5 flex-shrink-0 mt-1"
+          style={{ color: '#D4A93A' }}
+        />
+        <a
+          href="mailto:ventassanmartin@md.hn"
+          style={{
+            color: '#D4A93A',
+            fontSize: '14px',
+            wordBreak: 'break-word',
+          }}
+        >
+          ventassanmartin@md.hn
+        </a>
+      </div>
+
+      <div className="flex items-start gap-3 min-h-[44px]">
+        <Clock
+          className="h-5 w-5 flex-shrink-0 mt-1"
+          style={{ color: '#D4A93A' }}
+        />
+        <div>
+          <p
+            style={{
+              color: '#FFFFFF',
+              fontSize: '12px',
+              lineHeight: '135%',
+            }}
+          >
+            <span>
+              Lunes a Viernes 7:00 AM–4:30 PM
+              <br />
+              Sábado 7:00 AM–12:00 PM
+            </span>
           </p>
         </div>
+      </div>
 
-        <div className="flex items-start gap-3">
-          <Phone className="h-5 w-5 flex-shrink-0 mt-1" style={{ color: '#D4A93A' }} />
-          <a href="tel:26681360" style={{ color: '#FFFFFF', fontSize: '14px' }}>
-          (504) 228-2530
-          </a>
-        </div>
+      <div className="pt-1">
+        <button className="w-full px-4 py-2 border border-white/20 text-white uppercase flex items-center">
+          <span>VER OTRO CENTRO</span>
 
-        <div className="flex items-start gap-3">
-          <Mail className="h-5 w-5 flex-shrink-0 mt-1" style={{ color: '#D4A93A' }} />
-          <a
-            href="mailto:guanaventas@carnessanmartincr.com"
-            style={{ color: '#D4A93A', fontSize: '14px', wordBreak: 'break-word' }}
-          >
-            ventassanmartin@md.hn
-          </a>
-        </div>
-
-        <div className="flex items-start gap-3 min-h-[44px]">
-          <Clock className="h-5 w-5 flex-shrink-0 mt-1" style={{ color: '#D4A93A' }} />
-          <div>
-            <p style={{ color: '#FFFFFF', fontSize: '12px', lineHeight: '135%' }}>
-            <span>
-  Lunes a Viernes 7:00 AM–4:30 PM <br />
-Sábado 7:00 AM–12:00 PM
-</span>
-            </p>
-          </div>
-        </div>
-
-        <div className="pt-1">
-          <button className="w-full px-4 py-2 border border-white/20 text-white uppercase flex items-center">
-            <span>VER OTRO CENTRO</span>
-            <ChevronDown className="h- w-5" style={{ color: '#D4A93A' }} />
-          </button>
-        </div>
+          <ChevronDown
+            className="h- w-5"
+            style={{ color: '#D4A93A' }}
+          />
+        </button>
       </div>
     </div>
-    </div>
-        </div>
-      </div>
+  </div>
+</div>
+</div>
+</div>
+ </div>
     </section>
   );
 }

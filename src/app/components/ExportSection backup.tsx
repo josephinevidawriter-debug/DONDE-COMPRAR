@@ -468,7 +468,7 @@ export function ExportSection() {
               </div>
 
               {/* Regional Expandable Cards - Narrower */}
-              <div className="space-y-3 max-w-sm">
+              <div className="hidden md:block space-y-3 max-w-sm">
                 {regions.map((region) => (
                   <div
                     key={region.id}

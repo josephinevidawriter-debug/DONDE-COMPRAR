@@ -143,22 +143,24 @@ const [showAll, setShowAll] = useState(false);
     Concesionarios y Puntos de Venta
   </h2>
   <p
-    className="
-      text-[16px]
-      md:text-[18px]
-      lg:text-[20px]
-      leading-[170%]
-      font-normal
-      text-brand-dark/75
-      mb-6
-    "
-  >
-              Encuentre nuestros puntos de venta autorizados más cercanos
-            </p>
+  className="
+    hidden
+    md:block
+    text-[16px]
+    md:text-[18px]
+    lg:text-[20px]
+    leading-[170%]
+    font-normal
+    text-brand-dark/75
+    mb-6
+  "
+>
+  Encuentre nuestros puntos de venta autorizados más cercanos
+</p>
           </div>
 
           {/* Search + Country Filter - Horizontal Layout */}
-          <div className="flex flex-wrap items-center gap-3 md:gap-4 mb-7 md:mb-9">
+          <div className="flex flex-wrap items-center gap-3 md:gap-4 mb-3 md:mb-9">
             {/* Search Box - Left Side */}
             <div className="relative w-full md:w-80">
               <Search className="absolute left-4 top-1/2 -translate-y-1/2 h-5 w-5" style={{ color: '#6B7280' }} />
@@ -168,7 +170,7 @@ const [showAll, setShowAll] = useState(false);
                 value={searchQuery}
                 onChange={(e) => {
                   setSearchQuery(e.target.value);
-                  setVisibleCount(6);
+                  setVisibleCount(3);
                 }}
                 className="w-full pl-12 pr-4 py-3.5 focus:outline-none focus:ring-2 bg-white"
                 style={{ border: '1px solid #E5E5E5', color: '#111111', borderRadius: '0px' }}
@@ -194,9 +196,10 @@ const [showAll, setShowAll] = useState(false);
                         key={country}
                         onClick={() => {
                           setSelectedCountry(country);
-                          setVisibleCount(6);
+                          setVisibleCount(3);
                           setSearchQuery('');
                         }}
+                      
                         className={`px-6 md:px-8 py-3 md:py-3.5 transition-all duration-300 whitespace-nowrap ${
                           selectedCountry === country
                             ? ''
@@ -234,96 +237,226 @@ const [showAll, setShowAll] = useState(false);
             </p>
           )}
 
-          {/* Concessionaires Grid - STANDARDIZED CARD STRUCTURE */}
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-5 md:gap-6 mb-8 md:mb-10">
-            {visibleConcessionaires.map((concessionaire, index) => (
-              <div
+            {/* Concessionaires Grid - STANDARDIZED CARD STRUCTURE */}
+            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-5 md:gap-6 mb-8 md:mb-10">
+              {visibleConcessionaires.map((concessionaire, index) => (
+                <div
                 key={index}
-                className="bg-white p-6 md:p-7 hover:shadow-[0_10px_28px_rgba(17,17,17,0.08)] transition-all duration-300 relative border border-[#E5E5E5] hover:border-[#D0D0D0]"
+                className="bg-black p-2.5 md:p-5 transition-all duration-300 relative border border-white/15"
               >
-                {/* Country Badge - Top Right */}
-                <div className="absolute top-3 right-3">
-                  <span className="inline-block px-2.5 py-0.5 text-[11px] font-medium tracking-wide" style={{ backgroundColor: 'rgba(212,169,58,0.12)', border: '1px solid rgba(212,169,58,0.3)', color: '#111111' }}>
-                    {concessionaire.country}
-                  </span>
-                </div>
+                  {/* Country Badge - Top Right */}
+                  <div className="absolute top-4 right-4">
+  <span
+    className="text-[11px] uppercase tracking-[0.12em] font-medium"
+    style={{
+      color: '#D4A93A',
+    }}
+  >
+    {concessionaire.country}
+  </span>
+</div>
 
-                {/* Title zone: fixed 2-line height, top-aligned */}
-                <div className="pr-14 mb-3 min-h-[3.65rem] md:min-h-[3.9rem]">
-                  <h3
-                    className="line-clamp-2 text-[26px] md:text-[28px]"
-                    style={{ fontFamily: 'var(--font-serif)', fontWeight: 600, lineHeight: '114%', color: '#111111' }}
-                  >
-                    {concessionaire.name}
-                  </h3>
-                </div>
-
-                <div className="space-y-4">
-                  {/* Dirección */}
-                  <div className="flex items-start gap-3">
-                    <MapPin className="h-5 w-5 flex-shrink-0" style={{ color: '#D4A93A', strokeWidth: '1.75px', marginTop: '2px' }} />
-                    <div className="flex-grow min-w-0">
-                      <p className="mb-1" style={{ fontFamily: 'var(--font-sans)', fontWeight: 600, lineHeight: '140%', letterSpacing: '0.3px', color: '#111111', fontSize: '13px' }}>Dirección</p>
-                      <p style={{ fontFamily: 'var(--font-sans)', fontWeight: 400, lineHeight: '135%', color: '#3A3A3A', fontSize: '15px' }}>{concessionaire.address}</p>
-                    </div>
+                  {/* Title zone: fixed 2-line height, top-aligned */}
+                  <div className="pr-14 mb-2 min-h-[2.8rem] md:min-h-[3.9rem]">
+                    <h3
+                      className="line-clamp-2 text-[26px] md:text-[28px]"
+                      style={{ fontFamily: 'var(--font-serif)', fontWeight: 600, lineHeight: '114%', color: '#C62828' }}
+                    >
+                      {concessionaire.name}
+                    </h3>
                   </div>
 
-                  {/* Teléfono */}
-                  <div className="flex items-start gap-3">
-                    <Phone className="h-5 w-5 flex-shrink-0" style={{ color: '#D4A93A', strokeWidth: '1.75px', marginTop: '2px' }} />
-                    <div className="flex-grow min-w-0">
-                      <p className="mb-1" style={{ fontFamily: 'var(--font-sans)', fontWeight: 600, lineHeight: '140%', letterSpacing: '0.3px', color: '#111111', fontSize: '13px' }}>Teléfono</p>
-                      {concessionaire.phone ? (
-                        <p style={{ fontFamily: 'var(--font-sans)', fontWeight: 400, lineHeight: '135%', color: '#3A3A3A', fontSize: '15px' }}>{concessionaire.phone}</p>
-                      ) : (
-                        <p className="italic" style={{ fontFamily: 'var(--font-sans)', fontWeight: 400, lineHeight: '135%', color: '#6B7280', fontSize: '15px' }}>Próximamente disponible</p>
-                      )}
+                  <div className="space-y-2 md:space-y-4">
+                    {/* Dirección */}
+                   
+                    <div className="flex items-start gap-3 min-h-[48px] md:min-h-[88px]">
+                      <MapPin className="h-5 w-5 flex-shrink-0" style={{ color: '#D4A93A', strokeWidth: '1.75px', marginTop: '2px' }} />
+                      <div className="flex-grow min-w-0">
+                        <p className="mb-1" style={{ fontFamily: 'var(--font-sans)', fontWeight: 600, lineHeight: '140%', letterSpacing: '0.3px', color: '#FFFFFF', fontSize: '13px' }}>Dirección</p>
+                        <p style={{ fontFamily: 'var(--font-sans)', fontWeight: 400, lineHeight: '135%', color: 'rgba(255,255,255,0.82)', fontSize: '15px' }}>{concessionaire.address}</p>
+                      </div>
                     </div>
-                  </div>
 
-                  {/* Horario - Multi-line format */}
-                  <div className="flex items-start gap-3">
-                    <Clock className="h-5 w-5 flex-shrink-0" style={{ color: '#D4A93A', strokeWidth: '1.75px', marginTop: '2px' }} />
-                    <div className="flex-grow min-w-0">
-                      <p className="mb-1" style={{ fontFamily: 'var(--font-sans)', fontWeight: 600, lineHeight: '140%', letterSpacing: '0.3px', color: '#111111', fontSize: '13px' }}>Horario</p>
-                      {concessionaire.hours ? (
-                        <p className="whitespace-pre-line" style={{ fontFamily: 'var(--font-sans)', fontWeight: 400, lineHeight: '135%', color: '#3A3A3A', fontSize: '15px' }}>{concessionaire.hours}</p>
-                      ) : (
-                        <p className="italic" style={{ fontFamily: 'var(--font-sans)', fontWeight: 400, lineHeight: '135%', color: '#6B7280', fontSize: '15px' }}>Próximamente disponible</p>
-                      )}
-                    </div>
-                  </div>
-                </div>
-              </div>
-            ))}
-          </div>
-
-            {/* No results */}
-            {filteredAndSearchedConcessionaires.length === 0 && (
-              <div className="text-center py-8 md:py-10">
-                <p className="text-muted-foreground text-lg">No se encontraron resultados</p>
-              </div>
-            )}
-
-            {/* Load More */}
-            {hasMore && (
-              <div className="text-center">
-                <button
-                  onClick={() => setVisibleCount(prev => prev + 9)}
-                  className="px-7 bg-transparent hover:bg-brand-gold transition-all duration-500 text-[16px] lg:text-[18px] shadow-[0_8px_20px_rgba(17,17,17,0.08)] hover:shadow-[0_12px_28px_rgba(17,17,17,0.16)] hover:-translate-y-0.5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-gold focus-visible:ring-offset-2"
-                  style={{ fontFamily: 'var(--font-sans)', fontWeight: 600, lineHeight: '100%', letterSpacing: '0.04em', color: '#111111', height: '56px', border: '1px solid #111111', borderRadius: '0px' }}
-                >
-                  VER MÁS UBICACIONES
-                </button>
-              </div>
-            )}
-
-            {/* Total Count */}
-            <p className="text-center text-muted-foreground mt-6 md:mt-7">
-              Mostrando {visibleConcessionaires.length} de {filteredAndSearchedConcessionaires.length} ubicaciones
-              {selectedCountry !== 'Todos' && ` en ${selectedCountry}`}
-            </p>
-          </div>
-        </section>
-      );
+                    <div className="pt-2 border-t border-white/10">
+  <button
+    onClick={() =>
+      setExpandedCard(
+        expandedCard === concessionaire.name
+          ? null
+          : concessionaire.name
+      )
     }
+    className="w-full flex items-center justify-between"
+  >
+    <span
+      style={{
+        color: '#D4A93A',
+        fontSize: '13px',
+        fontWeight: 600,
+        letterSpacing: '0.04em',
+        textTransform: 'uppercase',
+      }}
+    >
+      Ver detalles
+    </span>
+
+    <span
+      style={{
+        color: '#D4A93A',
+        fontSize: '26px',
+        lineHeight: '1',
+        fontWeight: 700,
+      }}
+    >
+      {expandedCard === concessionaire.name ? '−' : '+'}
+    </span>
+  </button>
+
+  {expandedCard === concessionaire.name && (
+  <div className="mt-4 space-y-4">
+
+    <div className="flex items-start gap-3">
+      <Phone
+        className="h-5 w-5 flex-shrink-0"
+        style={{
+          color: '#D4A93A',
+          strokeWidth: '1.75px',
+          marginTop: '2px',
+        }}
+      />
+
+      <div className="flex-grow min-w-0">
+        <p
+          className="mb-1"
+          style={{
+            fontFamily: 'var(--font-sans)',
+            fontWeight: 600,
+            lineHeight: '140%',
+            letterSpacing: '0.3px',
+            color: '#FFFFFF',
+            fontSize: '13px',
+          }}
+        >
+          Teléfono
+        </p>
+
+        {concessionaire.phone ? (
+          <p
+            style={{
+              fontFamily: 'var(--font-sans)',
+              fontWeight: 400,
+              lineHeight: '135%',
+              color: 'rgba(255,255,255,0.82)',
+              fontSize: '15px',
+            }}
+          >
+            {concessionaire.phone}
+          </p>
+        ) : (
+          <p
+            className="italic"
+            style={{
+              fontFamily: 'var(--font-sans)',
+              fontWeight: 400,
+              lineHeight: '135%',
+              color: '#6B7280',
+              fontSize: '15px',
+            }}
+          >
+            Próximamente disponible
+          </p>
+        )}
+      </div>
+    </div>
+
+    <div className="flex items-start gap-3">
+      <Clock
+        className="h-5 w-5 flex-shrink-0"
+        style={{
+          color: '#D4A93A',
+          strokeWidth: '1.75px',
+          marginTop: '2px',
+        }}
+      />
+
+      <div className="flex-grow min-w-0">
+        <p
+          className="mb-1"
+          style={{
+            fontFamily: 'var(--font-sans)',
+            fontWeight: 600,
+            lineHeight: '140%',
+            letterSpacing: '0.3px',
+            color: '#FFFFFF',
+            fontSize: '13px',
+          }}
+        >
+          Horario
+        </p>
+
+        {concessionaire.hours ? (
+          <p
+            className="whitespace-pre-line"
+            style={{
+              fontFamily: 'var(--font-sans)',
+              fontWeight: 400,
+              lineHeight: '135%',
+              color: 'rgba(255,255,255,0.82)',
+              fontSize: '15px',
+            }}
+          >
+            {concessionaire.hours}
+          </p>
+        ) : (
+          <p
+            className="italic"
+            style={{
+              fontFamily: 'var(--font-sans)',
+              fontWeight: 400,
+              lineHeight: '135%',
+              color: '#6B7280',
+              fontSize: '15px',
+            }}
+          >
+            Próximamente disponible
+          </p>
+        )}
+      </div>
+    </div>
+    </div>
+)}
+</div>
+</div>
+</div>
+ ))}
+            </div>
+
+{/* No results */}
+              {filteredAndSearchedConcessionaires.length === 0 && (
+                <div className="text-center py-8 md:py-10">
+                  <p className="text-muted-foreground text-lg">No se encontraron resultados</p>
+                </div>
+              )}
+
+              {/* Load More */}
+              {hasMore && (
+                <div className="text-center">
+                  <button
+                    onClick={() => setVisibleCount(prev => prev + 9)}
+                    className="px-7 bg-transparent hover:bg-brand-gold transition-all duration-500 text-[16px] lg:text-[18px] shadow-[0_8px_20px_rgba(17,17,17,0.08)] hover:shadow-[0_12px_28px_rgba(17,17,17,0.16)] hover:-translate-y-0.5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-gold focus-visible:ring-offset-2"
+                    style={{ fontFamily: 'var(--font-sans)', fontWeight: 600, lineHeight: '100%', letterSpacing: '0.04em', color: '#111111', height: '56px', border: '1px solid #111111', borderRadius: '0px' }}
+                  >
+                    VER MÁS UBICACIONES
+                  </button>
+                </div>
+              )}
+
+              {/* Total Count */}
+              <p className="text-center text-muted-foreground mt-6 md:mt-7">
+                Mostrando {visibleConcessionaires.length} de {filteredAndSearchedConcessionaires.length} ubicaciones
+                {selectedCountry !== 'Todos' && ` en ${selectedCountry}`}
+              </p>
+            </div>
+          </section>
+        );
+      }

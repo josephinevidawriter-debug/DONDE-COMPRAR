@@ -732,7 +732,7 @@ return (
 
 {/* 3. REGIONAL DISTRIBUTION HUBS (NO NICARAGUA) */}
 <div>
-<div className="min-h-[12vh] md:min-h-0 mb-12 md:mb-10">
+<div className="min-h-[12vh] md:min-h-0 mb-12 md:mb-10 text-center">
   <h3
   className="
     text-[22px]
@@ -889,13 +889,10 @@ Seleccione su país para contactar al distribuidor autorizado de Carnes San Mart
 
    {/* EL SALVADOR */}
 <div
-  className="backdrop-blur-sm flex flex-col p-0 md:px-6 md:py-5 h-fit"
+  className="backdrop-blur-sm flex flex-col p-0 md:px-6 md:py-5 h-fit md:min-h-[268px]"
   style={{
     backgroundColor: 'rgba(17,17,17,0.72)',
     border: '1px solid rgba(255,255,255,0.14)',
-    minHeight: expandedDistributor === 'el-salvador'
-    ? '268px'
-    : 'auto',
   }}
 >
   <button

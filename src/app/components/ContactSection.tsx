@@ -101,51 +101,32 @@ export function ContactSection() {
         {/* Grid: 40% cards (vertical stack) / 60% form */}
         <div className="grid grid-cols-1 lg:grid-cols-5 gap-8 lg:gap-12 xl:gap-16 items-start">
           {/* ---------- LEFT: 2 cards stacked vertically (40%) ---------- */}
-          <aside className="lg:col-span-2 flex flex-col gap-6 lg:gap-8">
+          <aside className="order-2 lg:order-none lg:col-span-2 grid grid-cols-2 lg:flex lg:flex-col gap-3 lg:gap-8">
             {/* National Sales — Featured (gold) */}
             <article
-              className="p-6 sm:p-7 lg:p-8 transition-colors duration-300 group"
+              className="p-3 lg:p-8 transition-colors duration-300 group"
               style={{
                 backgroundColor: TOKENS.gold,
                 border: `1px solid ${TOKENS.gold}`,
                 borderRadius: 0,
               }}
             >
-              <span
-                className="inline-block px-3 py-1.5 text-[11px] font-bold mb-4 tracking-wider"
-                style={{ backgroundColor: TOKENS.text, color: TOKENS.gold }}
-              >
-                OFICINA PRINCIPAL
-              </span>
               <h3
-                className="text-2xl sm:text-3xl font-bold mb-5"
+              className="text-[17px] lg:text-3xl font-bold mb-2 lg:mb-5 leading-[1.1]"
                 style={{ fontFamily: 'var(--font-serif)', color: TOKENS.text }}
               >
                 Ventas Nacionales
               </h3>
-              <ul className="space-y-3.5">
-                <li className="flex items-start gap-3">
-                  <MapPin className="h-5 w-5 mt-0.5 flex-shrink-0" style={{ color: TOKENS.text }} />
+              <ul className="space-y-1.5 lg:space-y-3.5">
+              <li className="hidden lg:flex items-start gap-3">
                   <span style={{ color: TOKENS.text }}>Managua, Nicaragua</span>
                 </li>
                 <li className="flex items-start gap-3">
-                  <Phone className="h-5 w-5 mt-0.5 flex-shrink-0" style={{ color: TOKENS.text }} />
                   <a
-                    href="tel:+50522484356"
-                    className="hover:underline"
-                    style={{ color: TOKENS.text }}
-                  >
+  href="tel:..."
+  className="hover:underline text-[11px] lg:text-base whitespace-nowrap"
+>
                     (505) 2248-4356
-                  </a>
-                </li>
-                <li className="flex items-start gap-3">
-                  <Mail className="h-5 w-5 mt-0.5 flex-shrink-0" style={{ color: TOKENS.text }} />
-                  <a
-                    href="mailto:ventasnic@san-martin.com.ni"
-                    className="hover:underline break-all"
-                    style={{ color: TOKENS.text }}
-                  >
-                    ventasnic@san-martin.com.ni
                   </a>
                 </li>
               </ul>
@@ -153,7 +134,7 @@ export function ContactSection() {
 
             {/* International Sales — White card */}
             <article
-              className="p-6 sm:p-7 lg:p-8 transition-colors duration-300"
+             className="p-3 lg:p-8 transition-colors duration-300"
               style={{
                 backgroundImage: "url('https://sanmartin.com.ni/wp-content/uploads/2025/02/Careers.jpg')",
                 backgroundSize: '50px',
@@ -166,39 +147,23 @@ export function ContactSection() {
               }
               onMouseLeave={(e) => (e.currentTarget.style.borderColor = TOKENS.cardBorder)}
             >
-               <span className="inline-block px-4 py-2 bg-brand-dark text-brand-gold text-xs font-bold mb-4 tracking-wide">
-                  OFICINA PRINCIPAL
-                </span>
               <h3
-                className="text-2xl font-bold mb-5"
+               className="text-[17px] lg:text-2xl font-bold mb-2 lg:mb-5 leading-[1.1]"
                 style={{ fontFamily: 'var(--font-serif)', color: TOKENS.text }}
               >
                 Ventas Internacionales
               </h3>
             
-              <ul className="space-y-3.5">
-                <li className="flex items-start gap-3">
-                  <MapPin className="h-5 w-5 mt-0.5 flex-shrink-0" style={{ color: TOKENS.gold }} />
+              <ul className="space-y-1.5 lg:space-y-3.5">
+              <li className="hidden lg:flex items-start gap-3">
                   <span style={{ color: TOKENS.textSoft }}>Managua, Nicaragua</span>
                 </li>
                 <li className="flex items-start gap-3">
-                  <Phone className="h-5 w-5 mt-0.5 flex-shrink-0" style={{ color: TOKENS.gold }} />
                   <a
-                    href="tel:+50522545011"
-                    className="hover:underline"
-                    style={{ color: TOKENS.textSoft }}
-                  >
+  href="tel:..."
+  className="hover:underline text-[11px] lg:text-base whitespace-nowrap"
+>
                     (505) 2254-5011
-                  </a>
-                </li>
-                <li className="flex items-start gap-3">
-                  <Mail className="h-5 w-5 mt-0.5 flex-shrink-0" style={{ color: TOKENS.gold }} />
-                  <a
-                    href="mailto:exportsales@san-martin.com.ni"
-                    className="hover:underline break-all"
-                    style={{ color: TOKENS.gold }}
-                  >
-                    exportsales@san-martin.com.ni
                   </a>
                 </li>
               </ul>

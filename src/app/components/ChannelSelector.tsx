@@ -169,7 +169,7 @@ export function ChannelSelector() {
               </div>
 
               {/* DESKTOP */}
-              <div className="hidden md:flex md:flex-col">
+              <div className="hidden md:flex md:flex-1 md:flex-col">
                 <div className="relative aspect-[16/10] overflow-hidden rounded-t-xl">
                   <img
                     src={channel.image}
@@ -186,42 +186,48 @@ export function ChannelSelector() {
                   </div>
                 </div>
 
-                <div className="flex flex-grow flex-col p-6">
-                  <h3
-                    className="
-                      mb-6
-                      min-h-[96px]
-                      text-[20px]
-                      leading-[1.2]
-                      md:text-[24px]
-                      lg:text-[28px]
-                    "
-                    style={{
-                      fontFamily: '"Space Grotesk", sans-serif',
-                      fontWeight: 400,
-                      color: '#111111',
-                    }}
+                <div className="flex flex-1 flex-col p-6">
+                  <div
+                    className="mb-4 flex items-start"
+                    style={{ minHeight: '2.4em' }}
                   >
-                    {channel.title.map((line, i) => (
-                      <span key={i}>
-                        {line}
-                        <br />
-                      </span>
-                    ))}
-                  </h3>
+                    <h3
+                      className="
+                        text-[20px]
+                        leading-[1.2]
+                        md:text-[24px]
+                        lg:text-[28px]
+                      "
+                      style={{
+                        fontFamily: '"Space Grotesk", sans-serif',
+                        fontWeight: 400,
+                        color: '#111111',
+                      }}
+                    >
+                      {channel.title.map((line, i) => (
+                        <span key={i}>
+                          {line}
+                          <br />
+                        </span>
+                      ))}
+                    </h3>
+                  </div>
 
-                  <p
-                    className="mb-6 min-h-[170px] text-[16px] leading-[1.7] lg:text-[18px]"
-                    style={{
-                      color: '#3A3A3A',
-                      fontWeight: 400,
-                    }}
-                  >
-                    {channel.description}
-                  </p>
+                  <div className="flex flex-1">
+                    <p
+                      className="text-[16px] leading-[1.7] lg:text-[18px]"
+                      style={{
+                        color: '#3A3A3A',
+                        fontWeight: 400,
+                      }}
+                    >
+                      {channel.description}
+                    </p>
+                  </div>
 
                   <button
                     className="
+                      mt-4
                       h-12
                       self-start
                       border

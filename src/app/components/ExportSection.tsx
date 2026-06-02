@@ -1,388 +1,500 @@
-import { Mail, MapPin, Phone } from 'lucide-react';
+import { MapPin, Mail, Phone, Building, ChevronDown, Clock } from 'lucide-react';
+import { useState } from 'react';
+import mapImage from '../../imports/Mapa_Exortacion_CSM.png';
+import superSelectosLogo from '../../imports/image.png';
 
-export function ExportIntroBlock() {
+interface Region {
+  id: string;
+  name: string;
+  color: string;
+  countries: string[];
+}
+
+// Costa Rica Distributor with Accordion
+function CostaRicaDistributor() {
+  const [showSecondary, setShowSecondary] = useState(false);
+
   return (
-    <>
-      {/* ==========================================================
-          EXPORT INTRO
-      ========================================================== */}
-
-      <div className="mb-6 text-center">
-        <h2
-          className="
-            mb-6
-            text-[24px]
-            md:text-[32px]
-            lg:text-[42px]
-          "
-          style={{
-            fontFamily: '"Space Grotesk", sans-serif',
-            fontWeight: 600,
-            lineHeight: '1.12',
-            letterSpacing: '-0.03em',
-            color: '#FFFFFF',
-            textTransform: 'uppercase',
-          }}
-        >
-          Exportación y Ventas al Por Mayor
-        </h2>
-
-        <p
-          className="
-            mx-auto
-            mb-11
-            max-w-4xl
-            text-[16px]
-            md:text-[18px]
-            lg:text-[20px]
-          "
-          style={{
-            fontFamily: 'var(--font-sans)',
-            fontWeight: 400,
-            lineHeight: '1.7',
-            color: 'rgba(255,255,255,0.78)',
-          }}
-        >
-          Calidad internacional, trazabilidad completa y confianza garantizada.
-          Abastecemos compradores institucionales, distribuidores y exportadores
-          en más de 15 países.
-        </p>
+    <div className="backdrop-blur-sm p-8 transition-all duration-300 flex flex-col h-full" style={{ backgroundColor: 'rgba(17,17,17,0.72)', border: '1px solid rgba(255,255,255,0.14)' }}>
+      <div className="flex items-center gap-4 mb-3">
+        <Building className="h-6 w-6" style={{ color: '#D4A93A', strokeWidth: '1.75px' }} />
+        <h4 className="font-bold" style={{ color: '#FFFFFF', fontSize: '28px', lineHeight: '115%', fontFamily: 'var(--font-serif)' }}>Costa Rica</h4>
       </div>
 
-      {/* ==========================================================
-          SALES INFORMATION
-      ========================================================== */}
-
-      <div className="mb-20">
-        <div className="mb-10 text-center">
-          <h3
-            className="
-              mb-3
-              text-[22px]
-              md:text-[28px]
-              lg:text-[34px]
-            "
-            style={{
-              fontFamily: 'var(--font-serif)',
-              fontWeight: 700,
-              lineHeight: '1.15',
-              letterSpacing: '-0.02em',
-              color: '#FFFFFF',
-            }}
-          >
-            Información de Ventas
-          </h3>
-
-          <p
-            className="
-              text-[15px]
-              md:text-[17px]
-              lg:text-[18px]
-            "
-            style={{
-              color: 'rgba(255,255,255,0.70)',
-              fontWeight: 400,
-              lineHeight: '1.6',
-            }}
-          >
-            Oficina principal - Managua, Nicaragua
-          </p>
+      {/* PRIMARY HUB */}
+      <div className="mb-3">
+        <p className="font-medium mb-2" style={{ color: 'rgba(255,255,255,0.82)', fontSize: '16px', fontFamily: 'var(--font-sans)' }}>Carnes San Martín Costa Rica</p>
+        <div className="space-y-3.5">
+          <div className="flex items-start gap-4">
+            <MapPin className="h-5 w-5 flex-shrink-0" style={{ color: '#D4A93A', strokeWidth: '1.75px', marginTop: '2px' }} />
+            <p style={{ color: 'rgba(255,255,255,0.82)', fontSize: '15px', lineHeight: '135%', fontFamily: 'var(--font-sans)' }}>
+              Liberia, Business Park Solarium Bodega #21, frente aeropuerto
+            </p>
+          </div>
+          <div className="flex items-start gap-4">
+            <Phone className="h-5 w-5 flex-shrink-0" style={{ color: '#D4A93A', strokeWidth: '1.75px', marginTop: '2px' }} />
+            <a href="tel:+50626681360" className="hover:text-brand-gold transition-colors" style={{ color: '#FFFFFF', fontSize: '15px', lineHeight: '135%', fontFamily: 'var(--font-sans)' }}>
+              2668-1360
+            </a>
+          </div>
+          <div className="flex items-start gap-4">
+            <Mail className="h-5 w-5 flex-shrink-0" style={{ color: '#D4A93A', strokeWidth: '1.75px', marginTop: '2px' }} />
+            <a
+              href="mailto:guanaventas@carnessanmartincr.com"
+              className="hover:underline"
+              style={{ wordBreak: 'break-word', color: '#D4A93A', fontSize: '15px', lineHeight: '135%', fontFamily: 'var(--font-sans)' }}
+            >
+              guanaventas@carnessanmartincr.com
+            </a>
+          </div>
+          <div className="flex items-start gap-4">
+            <svg className="h-5 w-5 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" style={{ color: '#D4A93A', marginTop: '2px' }}>
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.75} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+            </svg>
+            <p style={{ color: 'rgba(255,255,255,0.82)', fontSize: '15px', lineHeight: '135%', fontFamily: 'var(--font-sans)' }}>Lunes a Viernes 7:00 AM–4:30 PM</p>
+          </div>
         </div>
+      </div>
 
-        <div className="mx-auto grid max-w-5xl items-stretch gap-6 md:grid-cols-2">
-          {/* ==========================================================
-              NATIONAL SALES
-          ========================================================== */}
-
-          <div
-            className="
-              relative
-              flex
-              flex-col
-              overflow-hidden
-              bg-brand-gold
-              p-8
-            "
-          >
-            <div className="mb-6">
-              <span
-                className="
-                  mb-4
-                  inline-block
-                  bg-brand-dark
-                  px-4
-                  py-2
-                  text-xs
-                  font-bold
-                  tracking-wide
-                  text-brand-gold
-                "
-              >
-                OFICINA PRINCIPAL
-              </span>
-
-              <h4
-                className="text-3xl font-bold text-brand-dark"
-                style={{
-                  fontFamily: 'var(--font-serif)',
-                  lineHeight: '1.2',
-                }}
-              >
-                Ventas Nacionales
-              </h4>
+      {/* SECONDARY HUB - ACCORDION */}
+      <div className={`overflow-hidden transition-all duration-500 ${showSecondary ? 'max-h-[600px] opacity-100 mb-3' : 'max-h-0 opacity-0'}`}>
+        <div className="pt-2" style={{ borderTop: '1px solid rgba(255,255,255,0.14)' }}>
+          <p className="font-medium mb-2" style={{ color: 'rgba(255,255,255,0.82)', fontSize: '16px', fontFamily: 'var(--font-sans)' }}>Centro de Distribución Heredia</p>
+          <div className="space-y-3.5">
+            <div className="flex items-start gap-4">
+              <MapPin className="h-5 w-5 flex-shrink-0" style={{ color: '#D4A93A', strokeWidth: '1.75px', marginTop: '2px' }} />
+              <p style={{ color: 'rgba(255,255,255,0.82)', fontSize: '15px', lineHeight: '135%', fontFamily: 'var(--font-sans)' }}>
+                Heredia, Ofibodegas Barreal 2da Etapa Local #12
+              </p>
             </div>
-
-            <div className="flex-grow space-y-2.5">
-              <div className="flex items-start gap-4">
-                <MapPin className="mt-0.5 h-6 w-6 flex-shrink-0 text-brand-dark" />
-
-                <p className="text-lg font-medium text-brand-dark">
-                  Managua, Nicaragua
-                </p>
-              </div>
-
-              <div className="flex items-start gap-4">
-                <Phone className="mt-0.5 h-6 w-6 flex-shrink-0 text-brand-dark" />
-
-                <a
-                  href="tel:+50522484356"
-                  className="text-lg font-medium text-brand-dark hover:underline"
-                >
-                  (505) 2248-4356
-                </a>
-              </div>
-
-              <div className="flex items-start gap-4">
-                <Mail className="mt-0.5 h-6 w-6 flex-shrink-0 text-brand-dark" />
-
-                <a
-                  href="mailto:ventasnic@san-martin.com.ni"
-                  className="break-words text-lg font-medium text-brand-dark hover:underline"
-                >
-                  ventasnic@san-martin.com.ni
-                </a>
-              </div>
+            <div className="flex items-start gap-4">
+              <Phone className="h-5 w-5 flex-shrink-0" style={{ color: '#D4A93A', strokeWidth: '1.75px', marginTop: '2px' }} />
+              <a href="tel:+50640100304" className="hover:text-brand-gold transition-colors" style={{ color: '#FFFFFF', fontSize: '15px', lineHeight: '135%', fontFamily: 'var(--font-sans)' }}>
+                4010-0304
+              </a>
+            </div>
+            <div className="flex items-start gap-4">
+              <Mail className="h-5 w-5 flex-shrink-0" style={{ color: '#D4A93A', strokeWidth: '1.75px', marginTop: '2px' }} />
+              <a
+                href="mailto:ventas@carnessanmartincr.com"
+                className="hover:underline"
+                style={{ wordBreak: 'break-word', color: '#D4A93A', fontSize: '15px', lineHeight: '135%', fontFamily: 'var(--font-sans)' }}
+              >
+                ventas@carnessanmartincr.com
+              </a>
+            </div>
+            <div className="flex items-start gap-4">
+              <svg className="h-5 w-5 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" style={{ color: '#D4A93A', marginTop: '2px' }}>
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.75} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+              </svg>
+              <p style={{ color: 'rgba(255,255,255,0.82)', fontSize: '15px', lineHeight: '135%', fontFamily: 'var(--font-sans)' }}>Lunes a Viernes 7:00 AM–4:30 PM</p>
             </div>
           </div>
+        </div>
+      </div>
 
-          {/* ==========================================================
-              INTERNATIONAL SALES
-          ========================================================== */}
+      {/* EXPAND CTA */}
+      <button
+        onClick={() => setShowSecondary(!showSecondary)}
+        className="mt-3 flex items-center justify-between w-full px-4 py-2.5 transition-all duration-300 group"
+        style={{ backgroundColor: 'transparent', border: '1px solid rgba(255,255,255,0.18)' }}
+      >
+        <span className="text-sm font-medium transition-colors uppercase" style={{ fontFamily: 'var(--font-sans)', fontWeight: 600, letterSpacing: '0.5px', color: '#FFFFFF' }}>
+          {showSecondary ? 'OCULTAR OTRO CENTRO' : 'VER OTRO CENTRO'}
+        </span>
+        <ChevronDown className={`h-4 w-4 text-brand-gold transition-transform duration-300 ${showSecondary ? 'rotate-180' : ''}`} />
+      </button>
+    </div>
+  );
+}
 
-          <div
-            className="
-              relative
-              flex
-              flex-col
-              overflow-hidden
-              p-8
-            "
+// Guatemala Distributor with Accordion
+function GuatemalaDistributor() {
+  const [showSecondary, setShowSecondary] = useState(false);
+
+  return (
+    <div className="backdrop-blur-sm p-8 transition-all duration-300 flex flex-col h-full" style={{ backgroundColor: 'rgba(17,17,17,0.72)', border: '1px solid rgba(255,255,255,0.14)' }}>
+      <div className="flex items-center gap-4 mb-3">
+        <Building className="h-6 w-6" style={{ color: '#D4A93A', strokeWidth: '1.75px' }} />
+        <h4 className="font-bold" style={{ color: '#FFFFFF', fontSize: '28px', lineHeight: '115%', fontFamily: 'var(--font-serif)' }}>Guatemala</h4>
+      </div>
+
+      {/* PRIMARY HUB */}
+      <div className="mb-3">
+        <p className="font-medium mb-2" style={{ color: 'rgba(255,255,255,0.82)', fontSize: '16px', fontFamily: 'var(--font-sans)' }}>CSM CENTRAL</p>
+        <div className="space-y-3.5">
+          <div className="flex items-start gap-4">
+            <MapPin className="h-5 w-5 flex-shrink-0" style={{ color: '#D4A93A', strokeWidth: '1.75px', marginTop: '2px' }} />
+            <p style={{ color: 'rgba(255,255,255,0.82)', fontSize: '15px', lineHeight: '135%', fontFamily: 'var(--font-sans)' }}>
+              Calzada Atanasio Tzul 22-00 Zona 12<br />
+              El Cortijo Empresarial II, Ofibodega 215
+            </p>
+          </div>
+          <div className="flex items-start gap-4">
+            <svg className="h-5 w-5 flex-shrink-0" fill="currentColor" viewBox="0 0 24 24" style={{ color: '#D4A93A', marginTop: '2px' }}>
+              <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/>
+            </svg>
+            <a href="https://wa.me/50235116105" className="hover:text-brand-gold transition-colors" style={{ color: '#FFFFFF', fontSize: '15px', lineHeight: '135%', fontFamily: 'var(--font-sans)' }}>
+              3511 6105
+            </a>
+          </div>
+          <div className="flex items-start gap-4">
+            <Mail className="h-5 w-5 flex-shrink-0" style={{ color: '#D4A93A', strokeWidth: '1.75px', marginTop: '2px' }} />
+            <a
+              href="mailto:sac@carnessanmartinsa.com"
+              className="hover:underline"
+              style={{ wordBreak: 'break-word', color: '#D4A93A', fontSize: '15px', lineHeight: '135%', fontFamily: 'var(--font-sans)' }}
+            >
+              sac@carnessanmartinsa.com
+            </a>
+          </div>
+          <div className="flex items-start gap-4">
+            <svg className="h-5 w-5 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" style={{ color: '#D4A93A', marginTop: '2px' }}>
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.75} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+            </svg>
+            <p style={{ color: 'rgba(255,255,255,0.82)', fontSize: '15px', lineHeight: '135%', fontFamily: 'var(--font-sans)' }}>
+              Lunes a Viernes 8:00 AM–5:00 PM<br />
+              Sábado 8:00 AM–12:00 PM
+            </p>
+          </div>
+        </div>
+      </div>
+
+      {/* SECONDARY HUB - ACCORDION */}
+      <div className={`overflow-hidden transition-all duration-500 ${showSecondary ? 'max-h-[600px] opacity-100 mb-3' : 'max-h-0 opacity-0'}`}>
+        <div className="pt-3" style={{ borderTop: '1px solid rgba(255,255,255,0.14)' }}>
+          <p className="font-medium mb-2" style={{ color: 'rgba(255,255,255,0.82)', fontSize: '16px', fontFamily: 'var(--font-sans)' }}>CSM XELA</p>
+          <div className="space-y-3.5">
+            <div className="flex items-start gap-4">
+              <MapPin className="h-5 w-5 flex-shrink-0" style={{ color: '#D4A93A', strokeWidth: '1.75px', marginTop: '2px' }} />
+              <p style={{ color: 'rgba(255,255,255,0.82)', fontSize: '15px', lineHeight: '135%', fontFamily: 'var(--font-sans)' }}>
+                Carretera Interamericana Labor Casa Blanca KM 190, Bodega 18<br />
+                Puerta de Occidente<br />
+                Salcajá, Quetzaltenango
+              </p>
+            </div>
+            <div className="flex items-start gap-4">
+              <svg className="h-5 w-5 flex-shrink-0" fill="currentColor" viewBox="0 0 24 24" style={{ color: '#D4A93A', marginTop: '2px' }}>
+                <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/>
+              </svg>
+              <a href="https://wa.me/50277688259" className="hover:text-brand-gold transition-colors" style={{ color: '#FFFFFF', fontSize: '15px', lineHeight: '135%', fontFamily: 'var(--font-sans)' }}>
+                7768-8259
+              </a>
+            </div>
+            <div className="flex items-start gap-4">
+              <Mail className="h-5 w-5 flex-shrink-0" style={{ color: '#D4A93A', strokeWidth: '1.75px', marginTop: '2px' }} />
+              <a
+                href="mailto:sac@carnessanmartinsa.com"
+                className="hover:underline"
+                style={{ wordBreak: 'break-word', color: '#D4A93A', fontSize: '15px', lineHeight: '135%', fontFamily: 'var(--font-sans)' }}
+              >
+                sac@carnessanmartinsa.com
+              </a>
+            </div>
+            <div className="flex items-start gap-4">
+              <svg className="h-5 w-5 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" style={{ color: '#D4A93A', marginTop: '2px' }}>
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.75} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+              </svg>
+              <p style={{ color: 'rgba(255,255,255,0.82)', fontSize: '15px', lineHeight: '135%', fontFamily: 'var(--font-sans)' }}>
+                Lunes a Viernes 8:00 AM–5:00 PM<br />
+                Sábado 8:00 AM–12:00 PM
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* EXPAND CTA */}
+      <button
+        onClick={() => setShowSecondary(!showSecondary)}
+        className="mt-3 flex items-center justify-between w-full px-4 py-3 transition-all duration-300 group"
+        style={{ backgroundColor: 'transparent', border: '1px solid rgba(255,255,255,0.18)' }}
+      >
+        <span className="text-sm font-medium transition-colors uppercase" style={{ fontFamily: 'var(--font-sans)', fontWeight: 600, letterSpacing: '0.5px', color: '#FFFFFF' }}>
+          {showSecondary ? 'OCULTAR OTRO CENTRO' : 'VER OTRO CENTRO'}
+        </span>
+        <ChevronDown className={`h-4 w-4 transition-transform duration-300 ${showSecondary ? 'rotate-180' : ''}`} style={{ color: '#D4A93A', strokeWidth: '1.75px' }} />
+      </button>
+    </div>
+  );
+}
+/* ==========================================
+   AQUI EMPIEZA_MAP_LOVABLE_CHANGES
+========================================== */
+export function ExportSection() {
+  const [selectedRegion, setSelectedRegion] = useState<string | null>(null);
+
+  const regions = [
+    {
+      id: 'centroamerica',
+      name: 'Centroamérica y Caribe',
+      color: '#E8D9A8',
+      countries: [
+        { name: 'Guatemala', code: 'gt' },
+        { name: 'El Salvador', code: 'sv' },
+        { name: 'Honduras', code: 'hn' },
+        { name: 'Costa Rica', code: 'cr' },
+        { name: 'República Dominicana', code: 'do' },
+        { name: 'Puerto Rico', code: 'pr' },
+      ],
+    },
+    {
+      id: 'norteamerica',
+      name: 'América del Norte',
+      color: '#D97757',
+      countries: [
+        { name: 'Estados Unidos', code: 'us' },
+        { name: 'México', code: 'mx' },
+      ],
+    },
+    {
+      id: 'europa',
+      name: 'Europa',
+      color: '#F5E6C8',
+      countries: [
+        { name: 'España', code: 'es' },
+        { name: 'Italia', code: 'it' },
+        { name: 'Rusia', code: 'ru' },
+      ],
+    },
+    {
+      id: 'asia',
+      name: 'Asia',
+      color: '#E8B860',
+      countries: [
+        { name: 'Japón', code: 'jp' },
+        { name: 'Taiwan', code: 'tw' },
+        { name: 'Tailandia', code: 'th' },
+      ],
+    },
+    {
+      id: 'africa',
+      name: 'África',
+      color: '#C9885A',
+      countries: [
+        { name: 'Luanda', code: 'ao' },
+        { name: 'Pointe Noire', code: 'cg' },
+        { name: 'Costa de Marfil', code: 'ci' },
+      ],
+    },
+  ];
+  
+  const activeRegion = regions.find((r) => r.id === selectedRegion);
+  // Tamaños adaptativos para las banderas según cuántos países
+const getFlagSizing = (n: number) => {
+  if (n <= 2) return { flag: 'w-20 h-14', text: 'text-lg', cols: 'grid-cols-1', gap: 'gap-6' };
+  if (n === 3) return { flag: 'w-16 h-11', text: 'text-base', cols: 'grid-cols-1', gap: 'gap-5' };
+  if (n === 4) return { flag: 'w-14 h-10', text: 'text-sm', cols: 'grid-cols-2', gap: 'gap-4' };
+  return { flag: 'w-12 h-8', text: 'text-sm', cols: 'grid-cols-2', gap: 'gap-3' }; // 5–6
+};
+
+  /* ==========================================
+   AQUI TERMINA_MAP_LOVABLE_CHANGES
+========================================== */
+
+return (
+    <section
+      id="export"
+        className="pt-14 md:pt-16 pb-16 md:pb-16 bg-brand-dark relative"
+    >
+      {/* Background Image with Overlay */}
+      <div className="absolute inset-0 z-0 opacity-10">
+        <img
+          src="https://images.unsplash.com/photo-1700478934617-75d2d4f01a04?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1920"
+          alt="Premium meat preparation"
+          className="w-full h-full object-cover"
+        />
+      </div>
+
+      <div className="max-w-7xl mx-auto px-3 sm:px-6 md:px-8 lg:px-12 relative z-10">
+
+{/* Intro */}
+<div className="text-center mb-6">
+<h2
+  className="
+    text-[24px]
+    md:text-[32px]
+    lg:text-[42px]
+    mb-6
+  "
+  style={{
+    fontFamily: '"Space Grotesk", sans-serif',
+    fontWeight: 600,
+    lineHeight: '1.12',
+    letterSpacing: '-0.03em',
+    color: '#FFFFFF',
+    textTransform: 'uppercase'
+  }}
+>
+
+            Exportación y Ventas al Por Mayor
+          </h2>
+          <p
+  className="
+    hidden
+    md:block
+    text-[16px]
+    md:text-[18px]
+    lg:text-[20px]
+    mb-11
+    max-w-4xl
+    mx-auto
+  "
+  style={{
+    fontFamily: 'var(--font-sans)',
+    fontWeight: 400,
+    lineHeight: '1.7',
+    color: 'rgba(255,255,255,0.78)'
+  }}
+>
+  Calidad internacional, trazabilidad completa y confianza garantizada.
+  Abastecemos compradores institucionales, distribuidores y exportadores en más de 15 países.
+</p>
+        </div>
+
+        {/* 1. EXPORT SALES HQ - NICARAGUA */}
+        <div className="mb-20">
+        <div className="hidden md:block text-center mb-10">
+  <h3
+    className="
+      text-[22px]
+      md:text-[28px]
+      lg:text-[34px]
+      mb-3
+    "
+    style={{
+      fontFamily: 'var(--font-serif)',
+      fontWeight: 700,
+      lineHeight: '1.15',
+      letterSpacing: '-0.02em',
+      color: '#FFFFFF'
+    }}
+  >
+    Información de Ventas
+  </h3>
+
+  <p
+    className="
+      text-[15px]
+      md:text-[17px]
+      lg:text-[18px]
+    "
+    style={{
+      color: 'rgba(255,255,255,0.70)',
+      fontWeight: 400,
+      lineHeight: '1.6'
+    }}
+  >
+    Oficina principal - Managua, Nicaragua
+  </p>
+</div>
+
+          <div className="grid md:grid-cols-2 gap-6 max-w-5xl mx-auto items-stretch">
+            {/* Ventas Nacionales - PREMIUM FEATURED */}
+            <div className="bg-brand-gold p-5 md:p-8 relative overflow-hidden flex flex-col">
+            <div className="mb-4 md:mb-6">
+            <span className="inline-block px-3 py-1.5 md:px-4 md:py-2 bg-brand-dark text-brand-gold text-xs font-bold mb-3 md:mb-4 tracking-wide">
+                  OFICINA PRINCIPAL
+                </span>
+                <h4
+  className="text-[24px] md:text-3xl font-bold text-brand-dark"
+  style={{ fontFamily: 'var(--font-serif)', lineHeight: '1.2' }}
+>
+                  Ventas Nacionales
+                </h4>
+              </div>
+
+              <div className="space-y-2 md:space-y-2.5 flex-grow">
+              <div className="flex items-start gap-3 md:gap-4">
+                  <MapPin className="h-6 w-6 text-brand-dark mt-0.5 flex-shrink-0" />
+                  <div>
+                  <p className="font-medium text-brand-dark text-[15px] md:text-lg">Managua, Nicaragua</p>
+                  </div>
+                </div>
+
+                <div className="flex items-start gap-3 md:gap-4">
+                  <Phone className="h-6 w-6 text-brand-dark mt-0.5 flex-shrink-0" />
+                  <div>
+                  <a href="tel:+50522484356" className="font-medium text-brand-dark text-[15px] md:text-lg hover:underline">(505) 2248-4356</a>
+                  </div>
+                </div>
+
+                <div className="flex items-start gap-3 md:gap-4">
+                  <Mail className="h-6 w-6 text-brand-dark mt-0.5 flex-shrink-0" />
+                  <div>
+                  <a
+  href="mailto:ventasnic@san-martin.com.ni"
+  className="text-brand-dark hover:underline font-medium text-[15px] md:text-lg whitespace-nowrap"
+>
+                      ventasnic@san-martin.com.ni
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* Ventas Internacionales - PERFECTLY BALANCED */}
+            <div className="p-5 md:p-8 relative overflow-hidden flex flex-col"
             style={{
-              backgroundImage:
-                "url('https://sanmartin.com.ni/wp-content/uploads/2025/02/Careers.jpg')",
+              backgroundImage: "url('https://sanmartin.com.ni/wp-content/uploads/2025/02/Careers.jpg')",
               backgroundSize: '50px',
               backgroundRepeat: 'repeat',
               backgroundPosition: 'center',
-              border: '1px solid rgba(255,255,255,0.14)',
+              border: '1px solid rgba(255,255,255,0.14)'
             }}
           >
-            <div className="mb-6">
-              <span
-                className="
-                  mb-4
-                  inline-block
-                  bg-brand-dark
-                  px-4
-                  py-2
-                  text-xs
-                  font-bold
-                  tracking-wide
-                  text-brand-gold
-                "
-              >
-                OFICINA PRINCIPAL
-              </span>
-
-              <h4
-                className="text-3xl font-bold text-brand-dark"
-                style={{
-                  fontFamily: 'var(--font-serif)',
-                  lineHeight: '1.2',
-                }}
-              >
-                Ventas Internacionales
-              </h4>
-            </div>
-
-            <div className="flex-grow space-y-2.5">
-              <div className="flex items-start gap-4">
-                <MapPin className="mt-0.5 h-6 w-6 flex-shrink-0 text-brand-gold" />
-
-                <p className="text-lg font-medium text-brand-dark">
-                  Managua, Nicaragua
-                </p>
+              <div className="mb-4 md:mb-6">
+              <span className="inline-block px-3 py-1.5 md:px-4 md:py-2 bg-brand-dark text-brand-gold text-xs font-bold mb-3 md:mb-4 tracking-wide">
+                  OFICINA PRINCIPAL
+                </span>
+                <h4
+  className="text-[24px] md:text-3xl font-bold text-brand-dark"
+  style={{ fontFamily: 'var(--font-serif)', lineHeight: '1.2' }}
+>
+                  Ventas Internacionales 
+                </h4>
               </div>
 
-              <div className="flex items-start gap-4">
-                <Phone className="mt-0.5 h-6 w-6 flex-shrink-0 text-brand-gold" />
+              <div className="space-y-2 md:space-y-2.5 flex-grow">
+              <div className="flex items-start gap-3 md:gap-4">
+                  <MapPin className="h-6 w-6 text-brand-gold mt-0.5 flex-shrink-0" />
+                  <div>
+                  <p className="font-medium text-brand-dark text-[15px] md:text-lg">Managua, Nicaragua</p>
+                  </div>
+                </div>
 
-                <a
-                  href="tel:+50522545011"
-                  className="
-                    text-lg
-                    font-medium
-                    text-brand-dark
-                    transition-colors
-                    hover:text-brand-gold
-                  "
-                >
-                  (505) 2254-5011
-                </a>
-              </div>
+                <div className="flex items-start gap-3 md:gap-4">
+                  <Phone className="h-6 w-6 text-brand-gold mt-0.5 flex-shrink-0" />
+                  <div>
+                  <a
+  href="tel:+50522545011"
+  className="font-medium text-brand-dark text-[15px] md:text-lg hover:text-brand-gold transition-colors"
+>(505) 2254-5011</a>
+                  </div>
+                </div>
 
-              <div className="flex items-start gap-4">
-                <Mail className="mt-0.5 h-6 w-6 flex-shrink-0 text-brand-gold" />
-
-                <a
-                  href="mailto:exportsales@san-martin.com.ni"
-                  className="
-                    break-words
-                    text-lg
-                    font-medium
-                    text-brand-gold
-                    hover:underline
-                  "
-                >
-                  exportsales@san-martin.com.ni
-                </a>
+                <div className="flex items-start gap-3 md:gap-4">
+                  <Mail className="h-6 w-6 text-brand-gold mt-0.5 flex-shrink-0" />
+                  <div>
+                  <a
+  href="mailto:exportsales@san-martin.com.ni"
+  className="text-brand-gold hover:underline font-medium text-[15px] md:text-lg whitespace-nowrap"
+>
+                      exportsales@san-martin.com.ni
+                    </a>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
         </div>
-      </div>
-    </>
-  );
-}
-import { useState } from 'react';
-import mapImage from '../../imports/Mapa_Exortacion_CSM.png';
-interface Country {
-name: string;
-code: string;
-}
-interface Region {
-id: string;
-name: string;
-color: string;
-countries: Country[];
-}
-const REGIONS: Region[] = [
-{
-id: 'centroamerica',
-name: 'Centroamérica y Caribe',
-color: '#E8D9A8',
-countries: [
-{ name: 'Guatemala', code: 'gt' },
-{ name: 'El Salvador', code: 'sv' },
-{ name: 'Honduras', code: 'hn' },
-{ name: 'Costa Rica', code: 'cr' },
-{ name: 'República Dominicana', code: 'do' },
-{ name: 'Puerto Rico', code: 'pr' },
-],
-},
-{
-id: 'norteamerica',
-name: 'América del Norte',
-color: '#D97757',
-countries: [
-{ name: 'Estados Unidos', code: 'us' },
-{ name: 'México', code: 'mx' },
-],
-},
-{
-id: 'europa',
-name: 'Europa',
-color: '#F5E6C8',
-countries: [
-{ name: 'España', code: 'es' },
-{ name: 'Italia', code: 'it' },
-{ name: 'Rusia', code: 'ru' },
-],
-},
-{
-id: 'asia',
-name: 'Asia',
-color: '#E8B860',
-countries: [
-{ name: 'Japón', code: 'jp' },
-{ name: 'Taiwan', code: 'tw' },
-{ name: 'Tailandia', code: 'th' },
-],
-},
-{
-id: 'africa',
-name: 'África',
-color: '#C9885A',
-countries: [
-{ name: 'Luanda', code: 'ao' },
-{ name: 'Pointe Noire', code: 'cg' },
-{ name: 'Costa de Marfil', code: 'ci' },
-],
-},
-];
-const getFlagSizing = (countryCount: number) => {
-if (countryCount <= 2) {
-return {
-flag: 'w-20 h-14',
-text: 'text-lg',
-cols: 'grid-cols-1',
-gap: 'gap-6',
-};
-}
-if (countryCount === 3) {
-return {
-flag: 'w-16 h-11',
-text: 'text-base',
-cols: 'grid-cols-1',
-gap: 'gap-5',
-};
-}
-if (countryCount === 4) {
-return {
-flag: 'w-14 h-10',
-text: 'text-sm',
-cols: 'grid-cols-2',
-gap: 'gap-4',
-};
-}
-return {
-flag: 'w-12 h-8',
-text: 'text-sm',
-cols: 'grid-cols-2',
-gap: 'gap-3',
-};
-};
-export function ExportWorldMapBlock() {
-const [selectedRegion, setSelectedRegion] = useState<string | null>(null);
-const activeRegion = REGIONS.find(
-(region) => region.id === selectedRegion
-);
-const sizing = activeRegion
-? getFlagSizing(activeRegion.countries.length)
-: null;
-return (
-  <>
-    {/* ==========================================================
-    SECTION HEADER
-    ========================================================== */}
 
-    <div className="mx-auto mb-10 max-w-4xl px-4 text-center">
+        {/* 2. EXPORT DESTINATIONS MAP */}
+<div className="mb-20">
+  {/* Title */}
+  <div className="text-center mb-10 max-w-4xl mx-auto px-4">
     <h3
-      className="
-        mb-3
-        text-[22px]
-        md:text-[28px]
-        lg:text-[34px]
-      "
+      className="text-[22px] md:text-[28px] lg:text-[34px] mb-3"
       style={{
         fontFamily: 'var(--font-serif)',
         fontWeight: 700,
@@ -393,361 +505,163 @@ return (
     >
       Estamos Certificados Para Exportar:
     </h3>
-
     <p
-      className="
-        text-[14px]
-        md:text-[16px]
-        lg:text-[18px]
-      "
-      style={{
-        color: 'rgba(255,255,255,0.70)',
-        fontWeight: 400,
-        lineHeight: '1.6',
-      }}
+      className="text-[14px] md:text-[16px] lg:text-[18px]"
+      style={{ color: 'rgba(255,255,255,0.70)', fontWeight: 400, lineHeight: '1.6' }}
     >
-      Nuestra presencia internacional respaldada por certificaciones y
-      trazabilidad de clase mundial.
+      Nuestra presencia internacional respaldada por certificaciones y trazabilidad de clase mundial.
     </p>
   </div>
 
-  {/* ==========================================================
-      MAP + DETAIL PANEL
-  ========================================================== */}
-
-  <div
-    className="
-      grid
-      grid-cols-1
-      items-stretch
-      gap-6
-      px-4
-      lg:grid-cols-5
-      lg:gap-8
-      lg:px-8
-    "
-  >
-    {/* MAP PANEL */}
-
+  {/* 60% Map / 40% Info — mobile first */}
+  <div className="grid grid-cols-1 lg:grid-cols-5 gap-6 lg:gap-8 items-stretch px-4 lg:px-8">
+    {/* LEFT — Map (60%) */}
     <div className="lg:col-span-3">
-      <div
-        className="
-          group
-          relative
-          flex
-          h-full
-          items-center
-          overflow-hidden
-          border
-          border-white/10
-          bg-white/5
-          p-3
-          backdrop-blur-sm
-        "
-      >
+      <div className="relative bg-white/5 backdrop-blur-sm border border-white/10 p-3 overflow-hidden group h-full flex items-center">
         <img
           src={mapImage}
           alt="Mapa de exportación Carnes San Martín"
-          className="
-            h-auto
-            w-full
-            transition-transform
-            duration-700
-            group-hover:scale-105
-          "
-          style={{
-            filter: 'drop-shadow(0 10px 40px rgba(0,0,0,0.4))',
-          }}
+          className="w-full h-auto transition-transform duration-700 group-hover:scale-105"
+          style={{ filter: 'drop-shadow(0 10px 40px rgba(0,0,0,0.4))' }}
         />
       </div>
     </div>
 
-    {/* DETAIL PANEL */}
-
-    <div className="min-h-[280px] lg:col-span-2 lg:min-h-0">
+    {/* RIGHT — Info panel (40%) */}
+    <div className="lg:col-span-2 min-h-[280px] lg:min-h-0">
       <div
         key={selectedRegion ?? 'default'}
-        className="
-          h-full
-          animate-in
-          fade-in
-          duration-500
-          border
-          border-white/10
-          bg-white/5
-          px-6
-          py-6
-          backdrop-blur-sm
-          flex
-          flex-col
-        "
+        className="h-full flex flex-col bg-white/5 backdrop-blur-sm border border-white/10 px-6 py-6 animate-in fade-in duration-500"
       >
         {!activeRegion ? (
+          // ---------- DEFAULT: stats ----------
           <>
             <div className="flex-[0.2]" />
-
             <div className="flex-[0.6] flex items-center justify-center">
               <div className="flex gap-8 sm:gap-12">
                 <div className="border-l-2 border-brand-gold pl-5 sm:pl-6">
                   <div
-                    className="
-                      mb-2
-                      text-xl
-                      font-bold
-                      text-brand-gold
-                      sm:text-2xl
-                    "
-                    style={{
-                      fontFamily: 'var(--font-serif)',
-                    }}
+                    className="text-xl sm:text-2xl font-bold text-brand-gold mb-2"
+                    style={{ fontFamily: 'var(--font-serif)' }}
                   >
                     Hacia
                   </div>
-
                   <div
-                    className="
-                      mb-1
-                      text-4xl
-                      font-bold
-                      leading-none
-                      text-brand-gold
-                      sm:text-5xl
-                    "
-                    style={{
-                      fontFamily: 'var(--font-serif)',
-                    }}
+                    className="text-4xl sm:text-5xl font-bold text-brand-gold mb-1 leading-none"
+                    style={{ fontFamily: 'var(--font-serif)' }}
                   >
                     17
                   </div>
-
-                  <div
-                    className="
-                      text-[10px]
-                      font-medium
-                      uppercase
-                      tracking-wider
-                      text-white/70
-                      sm:text-xs
-                    "
-                  >
+                  <div className="text-white/70 text-[10px] sm:text-xs uppercase tracking-wider font-medium">
                     PAÍSES
                   </div>
                 </div>
-
-                <div className="self-end border-l-2 border-brand-gold/50 pl-5 sm:pl-6">
+                <div className="border-l-2 border-brand-gold/50 pl-5 sm:pl-6 self-end">
                   <div
-                    className="
-                      mb-1
-                      text-4xl
-                      font-bold
-                      leading-none
-                      text-white
-                      sm:text-5xl
-                    "
-                    style={{
-                      fontFamily: 'var(--font-serif)',
-                    }}
+                    className="text-4xl sm:text-5xl font-bold text-white mb-1 leading-none"
+                    style={{ fontFamily: 'var(--font-serif)' }}
                   >
                     5
                   </div>
-
-                  <div
-                    className="
-                      text-[10px]
-                      font-medium
-                      uppercase
-                      leading-tight
-                      tracking-wider
-                      text-white/70
-                      sm:text-xs
-                    "
-                  >
-                    REGIONES
-                    <br />
-                    GLOBALES
+                  <div className="text-white/70 text-[10px] sm:text-xs uppercase tracking-wider font-medium leading-tight">
+                    REGIONES<br />GLOBALES
                   </div>
                 </div>
               </div>
             </div>
-
             <div className="flex-[0.2]" />
           </>
         ) : (
-          <>
-            <div className="mb-3 flex items-center justify-between">
-              <div className="flex items-center gap-2">
-                <span
-                  className="
-                    inline-block
-                    h-2.5
-                    w-2.5
-                    rounded-full
-                  "
-                  style={{
-                    backgroundColor: activeRegion.color,
-                  }}
-                />
-
-                <span
-                  className="
-                    text-xs
-                    font-semibold
-                    uppercase
-                    tracking-wider
-                    text-brand-gold
-                    sm:text-sm
-                  "
-                  style={{
-                    fontFamily: 'var(--font-serif)',
-                  }}
-                >
-                  {activeRegion.name}
-                </span>
-              </div>
-
-              <button
-                onClick={() => setSelectedRegion(null)}
-                className="
-                  cursor-pointer
-                  text-xs
-                  text-white/50
-                  transition-colors
-                  hover:text-brand-gold
-                "
-                aria-label="Cerrar"
-              >
-                ✕
-              </button>
-            </div>
-
-            <div className="flex-[0.15]" />
-
-            <div className="flex-[0.7] flex items-center justify-center w-full">
-              <ul
-                className={`
-                  grid
-                  ${sizing?.cols}
-                  ${sizing?.gap}
-                  mx-auto
-                  w-full
-                  max-w-md
-                `}
-              >
-                {activeRegion.countries.map((country) => (
-                  <li
-                    key={country.code}
-                    className="flex items-center gap-3 sm:gap-4"
-                  >
-                    <img
-                      src={`https://flagcdn.com/${country.code}.svg`}
-                      alt={country.name}
-                      loading="lazy"
-                      className={`
-                        ${sizing?.flag}
-                        rounded-sm
-                        object-cover
-                        shadow-md
-                        ring-1
-                        ring-white/10
-                        flex-shrink-0
-                      `}
-                    />
-
+          // ---------- ACTIVE REGION: flags + countries ----------
+          (() => {
+            const sizing = getFlagSizing(activeRegion.countries.length);
+            return (
+              <>
+                {/* Header chico */}
+                <div className="flex items-center justify-between mb-3">
+                  <div className="flex items-center gap-2">
                     <span
-                      className={`
-                        ${sizing?.text}
-                        truncate
-                        font-medium
-                        tracking-wide
-                        text-white
-                      `}
+                      className="w-2.5 h-2.5 rounded-full inline-block"
+                      style={{ backgroundColor: activeRegion.color }}
+                    />
+                    <span
+                      className="text-brand-gold text-xs sm:text-sm uppercase tracking-wider font-semibold"
+                      style={{ fontFamily: 'var(--font-serif)' }}
                     >
-                      {country.name}
+                      {activeRegion.name}
                     </span>
-                  </li>
-                ))}
-              </ul>
-            </div>
+                  </div>
+                  <button
+                    onClick={() => setSelectedRegion(null)}
+                    className="text-white/50 hover:text-brand-gold text-xs transition-colors cursor-pointer"
+                    aria-label="Cerrar"
+                  >
+                    ✕
+                  </button>
+                </div>
 
-            <div className="flex-[0.15]" />
-          </>
+                {/* 20% top */}
+                <div className="flex-[0.15]" />
+
+                {/* 60% center — flags grid */}
+                <div className="flex-[0.7] flex items-center justify-center w-full">
+                  <ul className={`grid ${sizing.cols} ${sizing.gap} w-full max-w-md mx-auto`}>
+                    {activeRegion.countries.map((c) => (
+                      <li key={c.code} className="flex items-center gap-3 sm:gap-4">
+                        <img
+                          src={`https://flagcdn.com/${c.code}.svg`}
+                          alt={c.name}
+                          loading="lazy"
+                          className={`${sizing.flag} object-cover rounded-sm shadow-md ring-1 ring-white/10 flex-shrink-0`}
+                        />
+                        <span
+                          className={`${sizing.text} text-white font-medium tracking-wide truncate`}
+                        >
+                          {c.name}
+                        </span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+
+                {/* 20% bottom */}
+                <div className="flex-[0.15]" />
+              </>
+            );
+          })()
         )}
       </div>
     </div>
   </div>
 
-  {/* ==========================================================
-      REGION FILTERS
-  ========================================================== */}
-
+  {/* Region cards row — debajo del mapa */}
   <div className="mt-6 px-4 lg:px-8">
-    <div
-      className="
-        grid
-        grid-cols-2
-        gap-3
-        sm:grid-cols-3
-        lg:grid-cols-5
-      "
-    >
-      {REGIONS.map((region) => {
+    <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-3">
+      {regions.map((region) => {
         const isActive = selectedRegion === region.id;
-
         return (
           <button
             key={region.id}
-            onClick={() =>
-              setSelectedRegion(isActive ? null : region.id)
-            }
-            aria-pressed={isActive}
+            onClick={() => setSelectedRegion(isActive ? null : region.id)}
             className={`
-              group
-              relative
-              flex
-              min-h-[60px]
+              group relative flex items-center justify-center gap-2
+              min-h-[60px] px-4 py-3
+              bg-white/5 backdrop-blur-sm border transition-all duration-300
               cursor-pointer
-              items-center
-              justify-center
-              gap-2
-              border
-              bg-white/5
-              px-4
-              py-3
-              backdrop-blur-sm
-              transition-all
-              duration-300
-              ${
-                isActive
-                  ? 'border-brand-gold bg-white/10 scale-[1.02] shadow-lg'
-                  : 'border-white/10 hover:border-brand-gold/60 hover:bg-white/8'
-              }
+              ${isActive
+                ? 'border-brand-gold bg-white/10 scale-[1.02] shadow-lg'
+                : 'border-white/10 hover:border-brand-gold/60 hover:bg-white/8'}
             `}
+            aria-pressed={isActive}
           >
             <span
-              className="
-                h-2.5
-                w-2.5
-                flex-shrink-0
-                rounded-full
-              "
-              style={{
-                backgroundColor: region.color,
-              }}
+              className="w-2.5 h-2.5 rounded-full flex-shrink-0"
+              style={{ backgroundColor: region.color }}
             />
-
             <span
-              className={`
-                text-center
-                text-xs
-                font-medium
-                transition-colors
-                sm:text-sm
-                ${
-                  isActive
-                    ? 'text-brand-gold'
-                    : 'text-white group-hover:text-brand-gold'
-                }
-              `}
+              className={`text-center text-xs sm:text-sm font-medium transition-colors ${
+                isActive ? 'text-brand-gold' : 'text-white group-hover:text-brand-gold'
+              }`}
             >
               {region.name}
             </span>
@@ -756,101 +670,59 @@ return (
       })}
     </div>
   </div>
-</>
-);
-}
-import {
-Building,
-ChevronDown,
-Clock,
-Mail,
-MapPin,
-Phone,
-} from 'lucide-react';
-import superSelectosLogo from '../../imports/image.png';
-export function RegionalDistributorsBlock() {
-return (
-  <>
-{/* ==========================================================
-SECTION HEADER
-========================================================== */}
- <div className="mb-10 text-center">
-    <h3
-      className="
-        mb-1
-        text-[22px]
-        md:text-[28px]
-        lg:text-[34px]
-      "
-      style={{
-        fontFamily: 'var(--font-serif)',
-        fontWeight: 400,
-        lineHeight: '1.15',
-        letterSpacing: '-0.02em',
-        color: '#FFFFFF',
-      }}
-    >
+</div>
+
+            
+
+{/* 3. REGIONAL DISTRIBUTION HUBS (NO NICARAGUA) */}
+<div>
+  <div className="text-center mb-10">
+  <h3
+  className="
+    text-[22px]
+    md:text-[28px]
+    lg:text-[34px]
+    mb-1
+  "
+  style={{
+    fontFamily: 'var(--font-serif)',
+    fontWeight: 400,
+    lineHeight: '1.15',
+    letterSpacing: '-0.02em',
+    color: '#FFFFFF'
+  }}
+>
+
       Distribuidores Regionales
     </h3>
-
     <p
-      className="
-        text-[15px]
-        md:text-[17px]
-        lg:text-[18px]
-      "
-      style={{
-        color: 'rgba(255,255,255,0.70)',
-        fontWeight: 400,
-        lineHeight: '1.6',
-      }}
-    >
-      Red comercial en Centroamérica
-    </p>
+  className="
+    text-[15px]
+    md:text-[17px]
+    lg:text-[18px]
+  "
+  style={{
+    color: 'rgba(255,255,255,0.70)',
+    fontWeight: 400,
+    lineHeight: '1.6'
+  }}
+>
+Red comercial en Centroamérica</p>
   </div>
 
-  {/* ==========================================================
-      DISTRIBUTORS GRID
-  ========================================================== */}
+  <div className="grid md:grid-cols-2 gap-5 md:gap-6 max-w-6xl mx-auto">
 
-  <div
-    className="
-      mx-auto
-      grid
-      max-w-6xl
-      gap-5
-      md:grid-cols-2
-      md:gap-6
-    "
-  >
-    {/* ==========================================================
-        COSTA RICA
-    ========================================================== */}
-
+    {/* COSTA RICA */}
     <div
-      className="
-        flex
-        h-fit
-        flex-col
-        p-1
-        backdrop-blur-sm
-        md:p-8
-      "
-      style={{
-        backgroundColor: 'rgba(17,17,17,0.72)',
-        border: '1px solid rgba(255,255,255,0.14)',
+       className="backdrop-blur-sm flex flex-col p-1 md:p-8 flex flex-col h-fit "
+       style={{
+         backgroundColor: 'rgba(17,17,17,0.72)',
+         border: '1px solid rgba(255,255,255,0.14)',
         minHeight: '100px',
       }}
     >
-      <div className="mb-1 flex items-center gap-3">
-        <Building
-          className="h-6 w-6"
-          style={{
-            color: '#D4A93A',
-            strokeWidth: '1.75px',
-          }}
-        />
-
+      <div className="flex items-center gap-3 mb-1">
+        <Building className="h-6 w-6" style={{ color: '#D4A93A', strokeWidth: '1.75px' }} />
         <h4
           style={{
             color: '#FFFFFF',
@@ -875,200 +747,106 @@ SECTION HEADER
         Carnes San Martín Costa Rica
       </p>
 
-      <div className="flex-none space-y-0">
+      <div className="space-y-0 flex-none">
         <div className="flex items-start gap-3">
-          <MapPin
-            className="mt-1 h-5 w-5 flex-shrink-0"
-            style={{ color: '#D4A93A' }}
-          />
-
-          <p
-            style={{
-              color: '#FFFFFF',
-              fontSize: '14px',
-              lineHeight: '135%',
-            }}
-          >
+          <MapPin className="h-5 w-5 flex-shrink-0 mt-1" style={{ color: '#D4A93A' }} />
+          <p style={{ color: '#FFFFFF', fontSize: '14px', lineHeight: '135%' }}>
             Liberia, Business Park Solarium Bodega #21, frente aeropuerto
           </p>
         </div>
 
         <div className="flex items-start gap-3">
-          <Phone
-            className="mt-1 h-5 w-5 flex-shrink-0"
-            style={{ color: '#D4A93A' }}
-          />
-
-          <a
-            href="tel:26681360"
-            style={{
-              color: '#FFFFFF',
-              fontSize: '14px',
-            }}
-          >
+          <Phone className="h-5 w-5 flex-shrink-0 mt-1" style={{ color: '#D4A93A' }} />
+          <a href="tel:26681360" style={{ color: '#FFFFFF', fontSize: '14px' }}>
             2668-1360
           </a>
         </div>
 
         <div className="flex items-start gap-3">
-          <Mail
-            className="mt-1 h-5 w-5 flex-shrink-0"
-            style={{ color: '#D4A93A' }}
-          />
-
+          <Mail className="h-5 w-5 flex-shrink-0 mt-1" style={{ color: '#D4A93A' }} />
           <a
             href="mailto:guanaventas@carnessanmartincr.com"
-            style={{
-              color: '#D4A93A',
-              fontSize: '14px',
-              wordBreak: 'break-word',
-            }}
+            style={{ color: '#D4A93A', fontSize: '14px', wordBreak: 'break-word' }}
           >
             guanaventas@carnessanmartincr.com
           </a>
         </div>
 
-        <div className="flex min-h-[44px] items-start gap-3">
-          <Clock
-            className="mt-1 h-5 w-5 flex-shrink-0"
-            style={{ color: '#D4A93A' }}
-          />
-
+        <div className="flex items-start gap-3 min-h-[44px]">
+          <Clock className="h-5 w-5 flex-shrink-0 mt-1" style={{ color: '#D4A93A' }} />
           <div>
-            <p
-              style={{
-                color: '#FFFFFF',
-                fontSize: '14px',
-                lineHeight: '135%',
-              }}
-            >
+            <p style={{ color: '#FFFFFF', fontSize: '14px', lineHeight: '135%' }}>
               Lunes a Viernes 7:00 AM–4:30 PM
             </p>
           </div>
         </div>
 
         <div className="pt-1">
-          <button
-            className="
-              flex
-              w-full
-              items-center
-              border
-              border-white/20
-              px-4
-              py-2
-              uppercase
-              text-white
-            "
-          >
+          <button className="w-full px-4 py-2 border border-white/20 text-white uppercase flex items-center">
             <span>VER OTRO CENTRO</span>
-
-            <ChevronDown
-              className="w-5"
-              style={{ color: '#D4A93A' }}
-            />
+            <ChevronDown className="h- w-5" style={{ color: '#D4A93A' }} />
           </button>
         </div>
       </div>
+      
     </div>
 
-    {/* ==========================================================
-        EL SALVADOR
-    ========================================================== */}
-
+    {/* EL SALVADOR */}
     <div
-      className="
-        flex
-        h-fit
-        flex-col
-        p-1
-        backdrop-blur-sm
-        md:p-8
-      "
+  className="backdrop-blur-sm flex flex-col p-1 md:p-8 h-fit"
+  style={{
+    backgroundColor: 'rgba(17,17,17,0.72)',
+    border: '1px solid rgba(255,255,255,0.14)',
+    minHeight: '290px',
+  }}
+>
+  <div className="flex items-center gap-3 mb-3">
+    <Building
+      className="h-6 w-6"
+      style={{ color: '#D4A93A', strokeWidth: '1.75px' }}
+    />
+    <h4
       style={{
-        backgroundColor: 'rgba(17,17,17,0.72)',
-        border: '1px solid rgba(255,255,255,0.14)',
-        minHeight: '290px',
+        color: '#FFFFFF',
+        fontSize: '28px',
+        lineHeight: '115%',
+        fontFamily: 'var(--font-serif)',
+        fontWeight: 700,
       }}
     >
-      <div className="mb-3 flex items-center gap-3">
-        <Building
-          className="h-6 w-6"
-          style={{
-            color: '#D4A93A',
-            strokeWidth: '1.75px',
-          }}
+      El Salvador
+    </h4>
+  </div>
+
+  <div className="flex flex-col flex-1 ">
+    <div className="flex items-center justify-center mt-6">
+      <a
+        href="https://www.superselectos.com/Contactenos"
+        target="_blank"
+        rel="noopener noreferrer"
+        className="flex justify-center transition-opacity hover:opacity-80"
+      >
+        <img
+          src={superSelectosLogo}
+          alt="Super Selectos"
+          className="w-full max-w-[120px] h-auto object-contain"
         />
-
-        <h4
-          style={{
-            color: '#FFFFFF',
-            fontSize: '28px',
-            lineHeight: '115%',
-            fontFamily: 'var(--font-serif)',
-            fontWeight: 700,
-          }}
-        >
-          El Salvador
-        </h4>
-      </div>
-
-      <div className="flex flex-1 flex-col">
-        <div className="mt-6 flex items-center justify-center">
-          <a
-            href="https://www.superselectos.com/Contactenos"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="
-              flex
-              justify-center
-              transition-opacity
-              hover:opacity-80
-            "
-          >
-            <img
-              src={superSelectosLogo}
-              alt="Super Selectos"
-              className="
-                h-auto
-                w-full
-                max-w-[120px]
-                object-contain
-              "
-            />
-          </a>
-        </div>
-      </div>
+      </a>
     </div>
+  </div>
+</div>
 
-    {/* ==========================================================
-        GUATEMALA
-    ========================================================== */}
-
+    {/* GUATEMALA */}
     <div
-      className="
-        flex
-        h-fit
-        flex-col
-        p-1
-        backdrop-blur-sm
-        md:p-8
-      "
-      style={{
-        backgroundColor: 'rgba(17,17,17,0.72)',
-        border: '1px solid rgba(255,255,255,0.14)',
+       className="backdrop-blur-sm flex flex-col p-1 md:p-8 flex flex-col h-fit"
+       style={{
+         backgroundColor: 'rgba(17,17,17,0.72)',
+         border: '1px solid rgba(255,255,255,0.14)',
         minHeight: '100px',
       }}
     >
-      <div className="mb-1 flex items-center gap-3">
-        <Building
-          className="h-6 w-6"
-          style={{
-            color: '#D4A93A',
-            strokeWidth: '1.75px',
-          }}
-        />
-
+      <div className="flex items-center gap-3 mb-1">
+        <Building className="h-6 w-6" style={{ color: '#D4A93A', strokeWidth: '1.75px' }} />
         <h4
           style={{
             color: '#FFFFFF',
@@ -1081,7 +859,6 @@ SECTION HEADER
           Guatemala
         </h4>
       </div>
-
       <p
         className="mb-2"
         style={{
@@ -1093,131 +870,61 @@ SECTION HEADER
         Carnes San Martín Central
       </p>
 
-      <div className="flex-none space-y-0">
+      <div className="space-y-0 flex-none">
         <div className="flex items-start gap-3">
-          <MapPin
-            className="mt-1 h-5 w-5 flex-shrink-0"
-            style={{ color: '#D4A93A' }}
-          />
-
-          <p
-            style={{
-              color: '#FFFFFF',
-              fontSize: '14px',
-              lineHeight: '135%',
-            }}
-          >
-            Calzada Atanasio Tzul 22-00 Zona 12 El Cortijo Empresarial II
+          <MapPin className="h-5 w-5 flex-shrink-0 mt-1" style={{ color: '#D4A93A' }} />
+          <p style={{ color: '#FFFFFF', fontSize: '14px', lineHeight: '135%' }}>
+          Calzada Atanasio Tzul 22-00 Zona 12 El Cortijo Empresarial II
           </p>
         </div>
 
         <div className="flex items-start gap-3">
-          <Phone
-            className="mt-1 h-5 w-5 flex-shrink-0"
-            style={{ color: '#D4A93A' }}
-          />
-
-          <a
-            href="tel:26681360"
-            style={{
-              color: '#FFFFFF',
-              fontSize: '14px',
-            }}
-          >
-            3511-6105
+          <Phone className="h-5 w-5 flex-shrink-0 mt-1" style={{ color: '#D4A93A' }} />
+          <a href="tel:26681360" style={{ color: '#FFFFFF', fontSize: '14px' }}>
+          3511-6105
           </a>
         </div>
 
         <div className="flex items-start gap-3">
-          <Mail
-            className="mt-1 h-5 w-5 flex-shrink-0"
-            style={{ color: '#D4A93A' }}
-          />
-
+          <Mail className="h-5 w-5 flex-shrink-0 mt-1" style={{ color: '#D4A93A' }} />
           <a
             href="mailto:guanaventas@carnessanmartincr.com"
-            style={{
-              color: '#D4A93A',
-              fontSize: '14px',
-              wordBreak: 'break-word',
-            }}
+            style={{ color: '#D4A93A', fontSize: '14px', wordBreak: 'break-word' }}
           >
             sac@carnessanmartinsa.com
           </a>
         </div>
 
-        <div className="flex min-h-[44px] items-start gap-3">
-          <Clock
-            className="mt-1 h-5 w-5 flex-shrink-0"
-            style={{ color: '#D4A93A' }}
-          />
-
+        <div className="flex items-start gap-3 min-h-[44px]">
+          <Clock className="h-5 w-5 flex-shrink-0 mt-1" style={{ color: '#D4A93A' }} />
           <div>
-            <p
-              style={{
-                color: '#FFFFFF',
-                fontSize: '14px',
-                lineHeight: '135%',
-              }}
-            >
-              Lunes a Viernes 08:00am A 17:00pm sabado 08:00am A 12:00 medio dia
+            <p style={{ color: '#FFFFFF', fontSize: '14px', lineHeight: '135%' }}>
+            Lunes a Viernes 08:00am A 17:00pm  sabado 08:00am A 12:00 medio dia
             </p>
           </div>
         </div>
 
         <div className="pt-1">
-          <button
-            className="
-              flex
-              w-full
-              items-center
-              border
-              border-white/20
-              px-4
-              py-2
-              uppercase
-              text-white
-            "
-          >
+          <button className="w-full px-4 py-2 border border-white/20 text-white uppercase flex items-center">
             <span>VER OTRO CENTRO</span>
-
-            <ChevronDown
-              className="w-5"
-              style={{ color: '#D4A93A' }}
-            />
+            <ChevronDown className="h- w-5" style={{ color: '#D4A93A' }} />
           </button>
         </div>
       </div>
     </div>
 
-    {/* ==========================================================
-        HONDURAS
-    ========================================================== */}
 
+    {/* HONDURAS */}
     <div
-      className="
-        flex
-        h-fit
-        flex-col
-        p-1
-        backdrop-blur-sm
-        md:p-8
-      "
-      style={{
-        backgroundColor: 'rgba(17,17,17,0.72)',
-        border: '1px solid rgba(255,255,255,0.14)',
+       className="backdrop-blur-sm flex flex-col p-1 md:p-8 flex flex-col h-fit"
+       style={{
+         backgroundColor: 'rgba(17,17,17,0.72)',
+         border: '1px solid rgba(255,255,255,0.14)',
         minHeight: '100px',
       }}
     >
-      <div className="mb-1 flex items-center gap-3">
-        <Building
-          className="h-6 w-6"
-          style={{
-            color: '#D4A93A',
-            strokeWidth: '1.75px',
-          }}
-        />
-
+      <div className="flex items-center gap-3 mb-1">
+        <Building className="h-6 w-6" style={{ color: '#D4A93A', strokeWidth: '1.75px' }} />
         <h4
           style={{
             color: '#FFFFFF',
@@ -1227,10 +934,9 @@ SECTION HEADER
             fontWeight: 700,
           }}
         >
-          Honduras
+        Honduras
         </h4>
       </div>
-
       <p
         className="mb-2"
         style={{
@@ -1242,113 +948,61 @@ SECTION HEADER
         Carnes San Marin Honduras
       </p>
 
-      <div className="flex-none space-y-0">
+      <div className="space-y-0 flex-none">
         <div className="flex items-start gap-3">
-          <MapPin
-            className="mt-1 h-5 w-5 flex-shrink-0"
-            style={{ color: '#D4A93A' }}
-          />
-
-          <p
-            style={{
-              color: '#FFFFFF',
-              fontSize: '14px',
-              lineHeight: '135%',
-            }}
-          >
-            Calzada Atanasio Tzul 22-00 Zona 12 El Cortijo Empresarial II
+          <MapPin className="h-5 w-5 flex-shrink-0 mt-1" style={{ color: '#D4A93A' }} />
+          <p style={{ color: '#FFFFFF', fontSize: '14px', lineHeight: '135%' }}>
+          Calzada Atanasio Tzul 22-00 Zona 12 El Cortijo Empresarial II
           </p>
         </div>
 
         <div className="flex items-start gap-3">
-          <Phone
-            className="mt-1 h-5 w-5 flex-shrink-0"
-            style={{ color: '#D4A93A' }}
-          />
-
-          <a
-            href="tel:26681360"
-            style={{
-              color: '#FFFFFF',
-              fontSize: '14px',
-            }}
-          >
-            (504) 228-2530
+          <Phone className="h-5 w-5 flex-shrink-0 mt-1" style={{ color: '#D4A93A' }} />
+          <a href="tel:26681360" style={{ color: '#FFFFFF', fontSize: '14px' }}>
+          (504) 228-2530
           </a>
         </div>
 
         <div className="flex items-start gap-3">
-          <Mail
-            className="mt-1 h-5 w-5 flex-shrink-0"
-            style={{ color: '#D4A93A' }}
-          />
-
+          <Mail className="h-5 w-5 flex-shrink-0 mt-1" style={{ color: '#D4A93A' }} />
           <a
             href="mailto:guanaventas@carnessanmartincr.com"
-            style={{
-              color: '#D4A93A',
-              fontSize: '14px',
-              wordBreak: 'break-word',
-            }}
+            style={{ color: '#D4A93A', fontSize: '14px', wordBreak: 'break-word' }}
           >
             ventassanmartin@md.hn
           </a>
         </div>
 
-        <div className="flex min-h-[44px] items-start gap-3">
-          <Clock
-            className="mt-1 h-5 w-5 flex-shrink-0"
-            style={{ color: '#D4A93A' }}
-          />
-
+        <div className="flex items-start gap-3 min-h-[44px]">
+          <Clock className="h-5 w-5 flex-shrink-0 mt-1" style={{ color: '#D4A93A' }} />
           <div>
-            <p
-              style={{
-                color: '#FFFFFF',
-                fontSize: '14px',
-                lineHeight: '135%',
-              }}
-            >
-              Lunes a Viernes 08:00am A 17:00pm sabado 08:00am A 12:00 medio dia
+            <p style={{ color: '#FFFFFF', fontSize: '14px', lineHeight: '135%' }}>
+            Lunes a Viernes 08:00am A 17:00pm  sabado 08:00am A 12:00 medio dia
             </p>
           </div>
         </div>
 
         <div className="pt-1">
-          <button
-            className="
-              flex
-              w-full
-              items-center
-              border
-              border-white/20
-              px-4
-              py-2
-              uppercase
-              text-white
-            "
-          >
+          <button className="w-full px-4 py-2 border border-white/20 text-white uppercase flex items-center">
             <span>VER OTRO CENTRO</span>
-
-            <ChevronDown
-              className="w-5"
-              style={{ color: '#D4A93A' }}
-            />
+            <ChevronDown className="h- w-5" style={{ color: '#D4A93A' }} />
           </button>
         </div>
       </div>
     </div>
-  </div>
-</>
-);
-}
-
-export function ExportSection() {
-  return (
-    <>
-      <ExportIntroBlock />
-      <ExportWorldMapBlock />
-      <RegionalDistributorsBlock />
-    </>
+    </div>
+    </div>
+        {/* CTA */}
+        <div className="text-center mt-16">
+          <button
+            onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}
+            className="px-7 bg-white hover:bg-brand-gold transition-all duration-500 text-[16px] lg:text-[18px] shadow-[0_12px_32px_rgba(0,0,0,0.28)] hover:shadow-[0_16px_34px_rgba(212,169,58,0.26)] hover:-translate-y-0.5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-gold focus-visible:ring-offset-2 focus-visible:ring-offset-brand-dark"
+            style={{ height: '56px', fontFamily: 'var(--font-sans)', fontWeight: 600, lineHeight: '100%', letterSpacing: '0.04em', color: '#111111', border: '1px solid rgba(255,255,255,0.2)', borderRadius: '0px' }}
+          >
+            CONTACTAR EQUIPO COMERCIAL
+          </button>
+        </div>
+      </div>
+    </section>
   );
 }

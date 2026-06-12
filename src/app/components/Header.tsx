@@ -35,6 +35,7 @@ export function Header() {
       <aside
         className={`fixed top-0 right-0 z-[142] h-full w-[82%] max-w-[340px] bg-white shadow-2xl border-l border-border/40 transition-transform duration-300 ease-out ${isMobileMenuOpen ? 'translate-x-0' : 'translate-x-full'}`}
         aria-label="Menú móvil"
+        style={{ fontFamily: "'Space Grotesk', sans-serif" }}
       >
         <div className="flex items-center justify-between px-5 h-20 border-b border-border/40">
           <span className="text-[11px] font-medium tracking-[0.14em] uppercase text-brand-dark/70">Menú</span>
@@ -47,7 +48,7 @@ export function Header() {
           </button>
         </div>
 
-        <nav className="px-5 py-4 flex flex-col">
+        <nav className="px-5 py-4 flex flex-col overflow-y-auto">
           <a href="#" className="py-3 border-b border-border/30 text-sm font-medium text-brand-dark hover:text-brand-gold transition-colors tracking-wide uppercase">
             Quiénes Somos
           </a>
@@ -58,29 +59,54 @@ export function Header() {
             Productos
           </a>
 
+          {/* Dónde Comprar — agrupado B2B / B2C */}
           <div className="py-3 border-b border-border/30">
             <p className="text-xs font-semibold text-brand-dark/70 tracking-wider uppercase mb-3">
               Dónde Comprar
             </p>
-            <div className="flex flex-col gap-2">
-              <button onClick={() => scrollToSection('channel-selector')} className="text-left text-sm text-brand-dark hover:text-brand-gold transition-colors">
-                Canales
-              </button>
-              <button onClick={() => scrollToSection('export')} className="text-left text-sm text-brand-dark hover:text-brand-gold transition-colors">
-                Exportación
-              </button>
-              <button onClick={() => scrollToSection('certifications')} className="text-left text-sm text-brand-dark hover:text-brand-gold transition-colors">
-                Certificaciones
-              </button>
-              <button onClick={() => scrollToSection('concessionaires')} className="text-left text-sm text-brand-dark hover:text-brand-gold transition-colors">
-                Concesionarios
-              </button>
-              <button onClick={() => scrollToSection('supermarkets')} className="text-left text-sm text-brand-dark hover:text-brand-gold transition-colors">
-                Supermercados
-              </button>
-              <button onClick={() => scrollToSection('contact')} className="text-left text-sm text-brand-dark hover:text-brand-gold transition-colors">
-                Contacto
-              </button>
+
+            <div className="flex flex-col gap-4">
+              {/* B2B */}
+              <div>
+                <p className="text-[10px] font-bold text-brand-gold tracking-[0.16em] uppercase mb-2">
+                  Distribuidores / Mayoristas (B2B)
+                </p>
+                <div className="flex flex-col gap-2">
+                  <button onClick={() => scrollToSection('export')} className="text-left text-sm text-brand-dark hover:text-brand-gold transition-colors">
+                    Exportación
+                  </button>
+                </div>
+              </div>
+
+              {/* B2C */}
+              <div>
+                <p className="text-[10px] font-bold text-brand-gold tracking-[0.16em] uppercase mb-2">
+                  Consumidor Final (B2C)
+                </p>
+                <div className="flex flex-col gap-2">
+                  <button onClick={() => scrollToSection('concessionaires')} className="text-left text-sm text-brand-dark hover:text-brand-gold transition-colors">
+                    Concesionarios
+                  </button>
+                  <button onClick={() => scrollToSection('supermarkets')} className="text-left text-sm text-brand-dark hover:text-brand-gold transition-colors">
+                    Supermercados
+                  </button>
+                </div>
+              </div>
+
+              {/* Comunes */}
+              <div>
+                <p className="text-[10px] font-bold text-brand-dark/50 tracking-[0.16em] uppercase mb-2">
+                  General
+                </p>
+                <div className="flex flex-col gap-2">
+                  <button onClick={() => scrollToSection('certifications')} className="text-left text-sm text-brand-dark hover:text-brand-gold transition-colors">
+                    Certificaciones
+                  </button>
+                  <button onClick={() => scrollToSection('contact')} className="text-left text-sm text-brand-dark hover:text-brand-gold transition-colors">
+                    Contacto
+                  </button>
+                </div>
+              </div>
             </div>
           </div>
 
@@ -124,7 +150,7 @@ export function Header() {
               Productos
             </a>
 
-            {/* Donde Comprar with Dropdown */}
+            {/* Donde Comprar with Dropdown — B2B / B2C */}
             <div
               className="relative"
               onMouseEnter={() => setShowSubmenu(true)}
@@ -134,45 +160,62 @@ export function Header() {
                 Donde Comprar
               </button>
 
-              {/* Dropdown Submenu */}
+              {/* Dropdown Submenu — mismo look & feel que "Política Ambiental"
+                  (fondo #F5F3EE, texto brand-dark, Space Grotesk) */}
               {showSubmenu && (
-                <div className="absolute top-full left-0 mt-0 bg-[#F5F3EE] shadow-lg min-w-[240px] z-50">
-                  <button
-                    onClick={() => scrollToSection('channel-selector')}
-                    className="block w-full text-left px-6 py-4 text-brand-dark hover:bg-brand-gold/10 transition-colors text-base"
-                  >
-                    Canales
-                  </button>
-                  <button
-                    onClick={() => scrollToSection('export')}
-                    className="block w-full text-left px-6 py-4 text-brand-dark hover:bg-brand-gold/10 transition-colors text-base"
-                  >
-                    Exportación
-                  </button>
-                  <button
-                    onClick={() => scrollToSection('certifications')}
-                    className="block w-full text-left px-6 py-4 text-brand-dark hover:bg-brand-gold/10 transition-colors text-base"
-                  >
-                    Certificaciones
-                  </button>
-                  <button
-                    onClick={() => scrollToSection('concessionaires')}
-                    className="block w-full text-left px-6 py-4 text-brand-dark hover:bg-brand-gold/10 transition-colors text-base"
-                  >
-                    Concesionarios
-                  </button>
-                  <button
-                    onClick={() => scrollToSection('supermarkets')}
-                    className="block w-full text-left px-6 py-4 text-brand-dark hover:bg-brand-gold/10 transition-colors text-base"
-                  >
-                    Supermercados
-                  </button>
-                  <button
-                    onClick={() => scrollToSection('contact')}
-                    className="block w-full text-left px-6 py-4 text-brand-dark hover:bg-brand-gold/10 transition-colors text-base"
-                  >
-                    Contacto
-                  </button>
+                <div
+                  className="absolute top-full left-1/2 -translate-x-1/2 mt-0 shadow-lg min-w-[420px] z-50"
+                  style={{ backgroundColor: '#F5F3EE', fontFamily: "'Space Grotesk', sans-serif" }}
+                >
+                  <div className="grid grid-cols-2 gap-0">
+                    {/* B2B */}
+                    <div className="border-r border-brand-dark/10 py-4">
+                      <p className="px-6 text-[10px] font-bold text-brand-gold tracking-[0.16em] uppercase mb-1">
+                        Distribuidores / Mayoristas
+                      </p>
+                      <button
+                        onClick={() => scrollToSection('export')}
+                        className="block w-full text-left px-6 py-3 text-brand-dark hover:bg-brand-gold/10 transition-colors text-base font-medium"
+                      >
+                        Exportación
+                      </button>
+                    </div>
+
+                    {/* B2C */}
+                    <div className="py-4">
+                      <p className="px-6 text-[10px] font-bold text-brand-gold tracking-[0.16em] uppercase mb-1">
+                        Consumidor Final
+                      </p>
+                      <button
+                        onClick={() => scrollToSection('concessionaires')}
+                        className="block w-full text-left px-6 py-3 text-brand-dark hover:bg-brand-gold/10 transition-colors text-base font-medium"
+                      >
+                        Concesionarios
+                      </button>
+                      <button
+                        onClick={() => scrollToSection('supermarkets')}
+                        className="block w-full text-left px-6 py-3 text-brand-dark hover:bg-brand-gold/10 transition-colors text-base font-medium"
+                      >
+                        Supermercados
+                      </button>
+                    </div>
+                  </div>
+
+                  {/* Comunes (B2B + B2C) */}
+                  <div className="border-t border-brand-dark/10 py-2">
+                    <button
+                      onClick={() => scrollToSection('certifications')}
+                      className="block w-full text-left px-6 py-3 text-brand-dark hover:bg-brand-gold/10 transition-colors text-base font-medium"
+                    >
+                      Certificaciones
+                    </button>
+                    <button
+                      onClick={() => scrollToSection('contact')}
+                      className="block w-full text-left px-6 py-3 text-brand-dark hover:bg-brand-gold/10 transition-colors text-base font-medium"
+                    >
+                      Contacto
+                    </button>
+                  </div>
                 </div>
               )}
             </div>

@@ -44,7 +44,18 @@ export function StickyNav() {
     { id: 'contact', label: 'Contacto' },
   ];
 
-  if (!isVisible) return null;
+  // ─────────────────────────────────────────────────────────────
+  // DESACTIVADO: este nav secundario ("Canales / Exportación /
+  // Certificaciones / Concesionarios / Supermercados / Contacto /
+  // Volver a canales") ya no debe mostrarse.
+  // Para reactivarlo, elimina la siguiente línea
+  // (`return null;`) y descomenta el bloque "if (!isVisible)
+  // return null;" más abajo si quieres recuperar el comportamiento
+  // original basado en scroll.
+  // ─────────────────────────────────────────────────────────────
+  return null;
+
+  // if (!isVisible) return null;
 
   return (
     <nav className="sticky top-20 z-40 bg-[#FDFBF7]/95 border-b border-brand-gold/25 shadow-[0_6px_18px_rgba(0,0,0,0.05)] backdrop-blur-md">

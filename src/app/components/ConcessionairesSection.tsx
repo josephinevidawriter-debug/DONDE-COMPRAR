@@ -126,7 +126,13 @@ const [showAll, setShowAll] = useState(false);
     const countries: Country[] = ['Todos', 'Nicaragua', 'Costa Rica', 'Guatemala'];
 
     return (
-      <section id="concessionaires" className="py-16 md:py-20 bg-white">
+      <section
+      id="concessionaires"
+      className="py-16 md:py-20"
+      style={{
+        backgroundColor: '#E9E6EB'
+      }}
+    >
         <div className="container mx-auto px-4 lg:px-8">
         <div className="text-center mb-6 w-full max-w-full overflow-hidden px-3 sm:px-6 md:px-8 lg:px-12">
       <h2

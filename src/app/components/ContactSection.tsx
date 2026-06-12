@@ -3,7 +3,7 @@ import { useState } from 'react';
 
 // ---------- TOKENS LIGHT (San Martín) ----------
 const TOKENS = {
-  bg: '#F5F3EE',
+  bg: '#E9E6E1',
   text: '#111111',
   textSoft: 'rgba(17,17,17,0.75)',
   textMuted: 'rgba(17,17,17,0.70)',
@@ -74,103 +74,105 @@ export function ContactSection() {
       )}
 
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-12">
-        {/* Header */}
-        <header className="text-center mb-10 sm:mb-12 lg:mb-16">
-          <h2
-            className="text-[26px] sm:text-[32px] md:text-[40px] lg:text-[48px] mb-1"
-            style={{
-              fontFamily: '"Space Grotesk", sans-serif',
-              fontWeight: 600,
-              lineHeight: '1.12',
-              letterSpacing: '-0.03em',
-              color: TOKENS.text,
-              textTransform: 'uppercase',
-            }}
-          >
-            Contáctenos
-          </h2>
-          <p
-            className="text-[15px] sm:text-[16px] lg:text-[18px] max-w-2xl mx-auto"
-            style={{ color: TOKENS.textSoft, lineHeight: 1.55 }}
-          >
-            Nuestro equipo comercial está listo para atender sus necesidades
-          </p>
-          
-        </header>
-
-        {/* Grid: 40% cards (vertical stack) / 60% form */}
-        <div className="grid grid-cols-1 lg:grid-cols-5 gap-8 lg:gap-12 xl:gap-16 items-start">
-          {/* ---------- LEFT: 2 cards stacked vertically (40%) ---------- */}
-          <aside className="order-2 lg:order-none lg:col-span-2 grid grid-cols-2 lg:flex lg:flex-col gap-3 lg:gap-8">
-            {/* National Sales — Featured (gold) */}
-            <article
-              className="p-3 lg:p-8 transition-colors duration-300 group"
-              style={{
-                backgroundColor: TOKENS.gold,
-                border: `1px solid ${TOKENS.gold}`,
-                borderRadius: 0,
-              }}
-            >
-              <h3
-              className="text-[17px] lg:text-3xl font-bold mb-2 lg:mb-5 leading-[1.1]"
-                style={{ fontFamily: 'var(--font-serif)', color: TOKENS.text }}
+        {/* Grid: left block (header + cards, vertically centered) / right (form) */}
+        <div className="grid grid-cols-1 lg:grid-cols-5 gap-8 lg:gap-12 xl:gap-16 lg:items-stretch">
+          {/* ---------- LEFT: header + cards, centered vertically vs form ---------- */}
+          <div className="lg:col-span-2 flex flex-col justify-center gap-8 lg:gap-10">
+            {/* Header */}
+            <header className="text-center lg:text-left">
+              <h2
+                className="text-[26px] sm:text-[32px] md:text-[40px] lg:text-[42px] mb-1"
+                style={{
+                  fontFamily: '"Space Grotesk", sans-serif',
+                  fontWeight: 600,
+                  lineHeight: '1.12',
+                  letterSpacing: '-0.03em',
+                  color: TOKENS.text,
+                  textTransform: 'uppercase',
+                }}
               >
-                Ventas Nacionales
-              </h3>
-              <ul className="space-y-1.5 lg:space-y-3.5">
-              <li className="hidden lg:flex items-start gap-3">
-                  <span style={{ color: TOKENS.text }}>Managua, Nicaragua</span>
-                </li>
-                <li className="flex items-start gap-3">
-                  <a
-  href="tel:..."
-  className="hover:underline text-[11px] lg:text-base whitespace-nowrap"
->
-                    (505) 2248-4356
-                  </a>
-                </li>
-              </ul>
-            </article>
-
-            {/* International Sales — White card */}
-            <article
-             className="p-3 lg:p-8 transition-colors duration-300"
-              style={{
-                backgroundImage: "url('https://sanmartin.com.ni/wp-content/uploads/2025/02/Careers.jpg')",
-                backgroundSize: '50px',
-                backgroundRepeat: 'repeat',
-                backgroundPosition: 'center',
-                border: '1px solid rgba(255,255,255,0.14)'
-              }}
-              onMouseEnter={(e) =>
-                (e.currentTarget.style.borderColor = TOKENS.cardBorderHover)
-              }
-              onMouseLeave={(e) => (e.currentTarget.style.borderColor = TOKENS.cardBorder)}
-            >
-              <h3
-               className="text-[17px] lg:text-2xl font-bold mb-2 lg:mb-5 leading-[1.1]"
-                style={{ fontFamily: 'var(--font-serif)', color: TOKENS.text }}
+                Contáctenos
+              </h2>
+              <p
+                className="text-[15px] sm:text-[16px] lg:text-[18px] max-w-2xl mx-auto lg:mx-0"
+                style={{ color: TOKENS.textSoft, lineHeight: 1.55 }}
               >
-                Ventas Internacionales
-              </h3>
-            
-              <ul className="space-y-1.5 lg:space-y-3.5">
-              <li className="hidden lg:flex items-start gap-3">
-                  <span style={{ color: TOKENS.textSoft }}>Managua, Nicaragua</span>
-                </li>
-                <li className="flex items-start gap-3">
-                  <a
-  href="tel:..."
-  className="hover:underline text-[11px] lg:text-base whitespace-nowrap"
->
-                    (505) 2254-5011
-                  </a>
-                </li>
-              </ul>
-            </article>
-          </aside>
+                Nuestro equipo comercial está listo para atender sus necesidades
+              </p>
+            </header>
 
-          {/* ---------- RIGHT: Form (60%) ---------- */}
+            {/* Cards */}
+            <aside className="grid grid-cols-2 lg:flex lg:flex-col gap-3 lg:gap-8">
+              {/* National Sales — Featured (gold) */}
+              <article
+                className="p-3 lg:p-8 transition-colors duration-300 group"
+                style={{
+                  backgroundColor: TOKENS.gold,
+                  border: `1px solid ${TOKENS.gold}`,
+                  borderRadius: 0,
+                }}
+              >
+                <h3
+                className="text-[17px] lg:text-3xl font-bold mb-2 lg:mb-5 leading-[1.1]"
+                  style={{ fontFamily: 'var(--font-serif)', color: TOKENS.text }}
+                >
+                  Ventas Nacionales
+                </h3>
+                <ul className="space-y-1.5 lg:space-y-3.5">
+                <li className="hidden lg:flex items-start gap-3">
+                    <span style={{ color: TOKENS.text }}>Managua, Nicaragua</span>
+                  </li>
+                  <li className="flex items-start gap-3">
+                    <a
+    href="tel:..."
+    className="hover:underline text-[11px] lg:text-base whitespace-nowrap"
+  >
+                      (505) 2248-4356
+                    </a>
+                  </li>
+                </ul>
+              </article>
+
+              {/* International Sales — White card */}
+              <article
+               className="p-3 lg:p-8 transition-colors duration-300"
+                style={{
+                  backgroundImage: "url('https://sanmartin.com.ni/wp-content/uploads/2025/02/Careers.jpg')",
+                  backgroundSize: '50px',
+                  backgroundRepeat: 'repeat',
+                  backgroundPosition: 'center',
+                  border: '1px solid rgba(255,255,255,0.14)'
+                }}
+                onMouseEnter={(e) =>
+                  (e.currentTarget.style.borderColor = TOKENS.cardBorderHover)
+                }
+                onMouseLeave={(e) => (e.currentTarget.style.borderColor = TOKENS.cardBorder)}
+              >
+                <h3
+                 className="text-[17px] lg:text-2xl font-bold mb-2 lg:mb-5 leading-[1.1]"
+                  style={{ fontFamily: 'var(--font-serif)', color: TOKENS.text }}
+                >
+                  Ventas Internacionales
+                </h3>
+              
+                <ul className="space-y-1.5 lg:space-y-3.5">
+                <li className="hidden lg:flex items-start gap-3">
+                    <span style={{ color: TOKENS.textSoft }}>Managua, Nicaragua</span>
+                  </li>
+                  <li className="flex items-start gap-3">
+                    <a
+    href="tel:..."
+    className="hover:underline text-[11px] lg:text-base whitespace-nowrap"
+  >
+                      (505) 2254-5011
+                    </a>
+                  </li>
+                </ul>
+              </article>
+            </aside>
+          </div>
+
+          {/* ---------- RIGHT: form, starts at header's top line ---------- */}
           <div
             className="lg:col-span-3 p-6 sm:p-8 lg:p-10"
             style={{

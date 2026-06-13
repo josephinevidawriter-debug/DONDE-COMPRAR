@@ -39,6 +39,18 @@ import careersImg from '../../imports/Careers.jpg';
   • Teléfono y email en el mismo orden y posición en las dos cards
   • Email: .office-email → nowrap + text-overflow ellipsis,
     nunca rompe en segunda línea
+
+  SECCIÓN 2 — EXPORT DESTINATIONS:
+  • Mobile: h3, párrafo, filtros región, mapa (apilados).
+    Stats "16 Países / 5 Regiones" → hidden en mobile (hidden lg:flex).
+  • Al tocar un filtro → mapa se reemplaza por banderas del país
+    (orden alfabético) con X para cerrar y volver al mapa.
+  • Filtros y países siempre en orden alfabético en todos los devices.
+
+  SECCIÓN 3 — DISTRIBUIDORES:
+  • Mobile: eyebrow → H2 → párrafo → banderas/card → CTA
+    CTA se mueve debajo de las banderas en mobile.
+  • Desktop: split 50/50 sin cambios.
   ============================================================ */
 
 const GLOBAL_STYLES = `
@@ -160,6 +172,12 @@ const GLOBAL_STYLES = `
     to   { opacity: 1; transform: translateY(0); }
   }
   .dist-fade-in { animation: dist-fade-in 0.35s ease both; }
+
+  @keyframes region-fade-in {
+    from { opacity: 0; transform: translateY(6px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+  .region-fade-in { animation: region-fade-in 0.30s ease both; }
 
   /* Email en cards gemelas: nunca rompe línea */
   .office-email {
@@ -422,15 +440,14 @@ export function ExportSection() {
   const [selectedRegion, setSelectedRegion] = useState<string | null>(null);
   const [selectedDistCountry, setSelectedDistCountry] = useState<'cr' | 'gt' | null>(null);
 
+  /* ── Regiones — orden alfabético estricto ──────────────────────────────── */
   const regions = [
     {
-      id: 'centroamerica', name: 'Centroamérica y Caribe', color: '#E8D9A8',
+      id: 'africa', name: 'África', color: '#D97757',
       countries: [
-        { name: 'Guatemala', code: 'gt' },
-        { name: 'El Salvador', code: 'sv' },
-        { name: 'Costa Rica', code: 'cr' },
-        { name: 'República Dominicana', code: 'do' },
-        { name: 'Puerto Rico', code: 'pr' },
+        { name: 'Angola (Luanda)', code: 'ao' },
+        { name: 'Congo (Pointe Noire)', code: 'cg' },
+        { name: 'Costa de Marfil', code: 'ci' },
       ],
     },
     {
@@ -441,6 +458,24 @@ export function ExportSection() {
       ],
     },
     {
+      id: 'asia', name: 'Asia', color: '#E8B860',
+      countries: [
+        { name: 'Japón', code: 'jp' },
+        { name: 'Tailandia', code: 'th' },
+        { name: 'Taiwan', code: 'tw' },
+      ],
+    },
+    {
+      id: 'centroamerica', name: 'Centroamérica y Caribe', color: '#E8D9A8',
+      countries: [
+        { name: 'Costa Rica', code: 'cr' },
+        { name: 'El Salvador', code: 'sv' },
+        { name: 'Guatemala', code: 'gt' },
+        { name: 'Puerto Rico', code: 'pr' },
+        { name: 'República Dominicana', code: 'do' },
+      ],
+    },
+    {
       id: 'europa', name: 'Europa', color: '#C9885A',
       countries: [
         { name: 'España', code: 'es' },
@@ -448,27 +483,9 @@ export function ExportSection() {
         { name: 'Rusia', code: 'ru' },
       ],
     },
-    {
-      id: 'asia', name: 'Asia', color: '#E8B860',
-      countries: [
-        { name: 'Japón', code: 'jp' },
-        { name: 'Taiwan', code: 'tw' },
-        { name: 'Tailandia', code: 'th' },
-      ],
-    },
-    {
-      id: 'africa', name: 'África', color: '#D97757',
-      countries: [
-        { name: 'Angola (Luanda)', code: 'ao' },
-        { name: 'Congo (Pointe Noire)', code: 'cg' },
-        { name: 'Costa de Marfil', code: 'ci' },
-      ],
-    },
   ];
 
   const activeRegion = regions.find((r) => r.id === selectedRegion);
-  const FLAG_W = 'w-14';
-  const FLAG_H = 'h-9';
 
   return (
     <section id="export" className="bg-brand-dark relative" style={{ backgroundColor: '#111111', fontFamily: "'Space Grotesk', sans-serif" }}>
@@ -478,11 +495,9 @@ export function ExportSection() {
           1. SPLIT FRAME — Slider | Encabezado + Cards gemelas
           ─────────────────────────────────────────────────────────────
           MOBILE: columnas apiladas.
-            • Slider: h-[38vh] fija. No hay min-h → el texto arranca
-              inmediatamente, sin whitespace entre slider y encabezado.
+            • Slider: h-[38vh] fija.
             • RIGHT: py-8 px-5 sin min-h-screen en mobile.
-          DESKTOP (md:): flex-row. RIGHT recupera md:min-h-screen
-            para centrar el contenido verticalmente.
+          DESKTOP (md:): flex-row. RIGHT recupera md:min-h-screen.
           ============================================================ */}
       <div className="relative z-10 w-full flex flex-col md:flex-row overflow-hidden">
 
@@ -491,14 +506,10 @@ export function ExportSection() {
           <OfficeSlider />
         </div>
 
-        {/* RIGHT — Encabezado + cards gemelas.
-            MOBILE: py-8 px-5 (32/20 px estándar), sin min-h-screen.
-            DESKTOP: md:min-h-screen para centrado vertical.           */}
+        {/* RIGHT — Encabezado + cards gemelas */}
         <div className="w-full md:w-2/5 flex flex-col items-center justify-center px-5 py-8 md:px-7 md:py-12 md:min-h-screen"
           style={{ backgroundColor: '#0a0a0a' }}>
 
-          {/* Encabezado de sección
-              mb-6 (24 px) mobile — estándar entre heading-block y cards */}
           <div className="w-full max-w-md mb-6 md:mb-10 text-left">
             <h2 className="text-[26px] md:text-[32px] lg:text-[40px]" style={{
               fontFamily: "'Space Grotesk', sans-serif", fontWeight: 600,
@@ -516,50 +527,34 @@ export function ExportSection() {
             </p>
           </div>
 
-          {/* ── Cards gemelas ──────────────────────────────────────────────
-              gap-2 mobile (8 px) / gap-4 desktop.
-              Cada card: px-3 py-5 mobile / px-6 py-8 desktop.
-              Simetría:
-                · Badge text-[9px] mobile → 1 línea en ambas.
-                · Título: 2 líneas en ambas con <br />.
-                · "Managua, Nicaragua" → solo "Nicaragua" en mobile.
-                · Mismo orden: badge → título → ubicación → tel → email.
-                · .office-email: nowrap + ellipsis, nunca rompe.
-              ──────────────────────────────────────────────────────────── */}
           <div className="w-full flex flex-row gap-2 md:gap-4">
 
             {/* VENTAS NACIONALES */}
             <div className="flex-1 flex flex-col items-center text-center px-3 py-5 md:px-6 md:py-8"
               style={{ justifyContent: 'center' }}>
-
               <span className="inline-block px-2 py-1 mb-3 md:mb-4 text-[9px] md:text-[10px] font-bold uppercase"
                 style={{ backgroundColor: '#D4A93A', color: '#111111',
                   fontFamily: "'Space Grotesk', sans-serif", letterSpacing: '0.08em', whiteSpace: 'nowrap' }}>
                 Oficina Principal
               </span>
-
               <h4 style={{ fontFamily: "'Space Grotesk', sans-serif", fontWeight: 700,
                 fontSize: 'clamp(14px, 3.2vw, 22px)', lineHeight: '1.15',
                 color: '#FFFFFF', marginBottom: '14px' }}>
                 Ventas<br />Nacionales
               </h4>
-
               <div style={{ display: 'flex', flexDirection: 'column', gap: '10px', alignItems: 'center', width: '100%' }}>
                 <div className="flex items-center justify-center gap-1.5 md:gap-2">
                   <MapPin className="h-3.5 w-3.5 md:h-4 md:w-4 flex-shrink-0"
                     style={{ color: '#D4A93A', strokeWidth: '1.75px' }} />
-                  {/* Mobile: solo "Nicaragua" */}
                   <span className="md:hidden" style={{ color: 'rgba(255,255,255,0.80)',
                     fontSize: 'clamp(11px, 2.5vw, 13px)', fontFamily: "'Space Grotesk', sans-serif" }}>
                     Nicaragua
                   </span>
-                  {/* Desktop: "Managua, Nicaragua" */}
                   <span className="hidden md:inline" style={{ color: 'rgba(255,255,255,0.80)',
                     fontSize: '14px', fontFamily: "'Space Grotesk', sans-serif" }}>
                     Managua, Nicaragua
                   </span>
                 </div>
-
                 <div className="flex items-center justify-center gap-1.5 md:gap-2">
                   <Phone className="h-3.5 w-3.5 md:h-4 md:w-4 flex-shrink-0"
                     style={{ color: '#D4A93A', strokeWidth: '1.75px' }} />
@@ -568,48 +563,40 @@ export function ExportSection() {
                     (505) 2248-4356
                   </a>
                 </div>
-
                 <a href="mailto:ventasnic@san-martin.com.ni" className="office-email">
                   ventasnic@san-martin.com.ni
                 </a>
               </div>
             </div>
 
-            {/* Divisor vertical */}
             <div style={{ width: '1px', backgroundColor: '#2a2a2a', flexShrink: 0, alignSelf: 'stretch' }} />
 
             {/* VENTAS INTERNACIONALES */}
             <div className="flex-1 flex flex-col items-center text-center px-3 py-5 md:px-6 md:py-8"
               style={{ justifyContent: 'center' }}>
-
               <span className="inline-block px-2 py-1 mb-3 md:mb-4 text-[9px] md:text-[10px] font-bold uppercase"
                 style={{ backgroundColor: 'transparent', color: '#D4A93A', border: '1px solid #D4A93A',
                   fontFamily: "'Space Grotesk', sans-serif", letterSpacing: '0.08em', whiteSpace: 'nowrap' }}>
                 Oficina Principal
               </span>
-
               <h4 style={{ fontFamily: "'Space Grotesk', sans-serif", fontWeight: 700,
                 fontSize: 'clamp(14px, 3.2vw, 22px)', lineHeight: '1.15',
                 color: '#FFFFFF', marginBottom: '14px' }}>
                 Ventas<br />Internacionales
               </h4>
-
               <div style={{ display: 'flex', flexDirection: 'column', gap: '10px', alignItems: 'center', width: '100%' }}>
                 <div className="flex items-center justify-center gap-1.5 md:gap-2">
                   <MapPin className="h-3.5 w-3.5 md:h-4 md:w-4 flex-shrink-0"
                     style={{ color: '#D4A93A', strokeWidth: '1.75px' }} />
-                  {/* Mobile: solo "Nicaragua" */}
                   <span className="md:hidden" style={{ color: 'rgba(255,255,255,0.80)',
                     fontSize: 'clamp(11px, 2.5vw, 13px)', fontFamily: "'Space Grotesk', sans-serif" }}>
                     Nicaragua
                   </span>
-                  {/* Desktop: "Managua, Nicaragua" */}
                   <span className="hidden md:inline" style={{ color: 'rgba(255,255,255,0.80)',
                     fontSize: '14px', fontFamily: "'Space Grotesk', sans-serif" }}>
                     Managua, Nicaragua
                   </span>
                 </div>
-
                 <div className="flex items-center justify-center gap-1.5 md:gap-2">
                   <Phone className="h-3.5 w-3.5 md:h-4 md:w-4 flex-shrink-0"
                     style={{ color: '#D4A93A', strokeWidth: '1.75px' }} />
@@ -618,7 +605,6 @@ export function ExportSection() {
                     (505) 2254-5011
                   </a>
                 </div>
-
                 <a href="mailto:exportsales@san-martin.com.ni" className="office-email">
                   exportsales@san-martin.com.ni
                 </a>
@@ -632,13 +618,22 @@ export function ExportSection() {
 
       {/* ============================================================
           2. EXPORT DESTINATIONS — FONDO BLANCO
+          ─────────────────────────────────────────────────────────────
+          MOBILE (flex-col): h3 → párrafo → filtros → (mapa | banderas)
+            Stats "16 Países / 5 Regiones": hidden en mobile (hidden lg:flex).
+          DESKTOP (lg:flex-row): split 2/5 | 3/5.
+            LEFT: h3, párrafo, stats.
+            RIGHT: filtros + mapa (o banderas si región activa).
+          Al tocar un filtro → mapa se reemplaza por banderas (alfa-
+          bético) con X para cerrar y volver al mapa.
           ============================================================ */}
       <div className="w-full" style={{ backgroundColor: '#FFFFFF' }}>
-        <div className="flex flex-col lg:flex-row w-full min-h-screen">
+        <div className="flex flex-col lg:flex-row w-full lg:min-h-screen">
 
-          <div className="w-full lg:w-2/5 flex flex-col justify-center items-start px-10 md:px-14 lg:px-16 py-16 lg:py-20"
+          {/* LEFT — heading + párrafo + stats (stats hidden en mobile) */}
+          <div className="w-full lg:w-2/5 flex flex-col justify-center items-start px-5 pt-10 pb-4 lg:px-16 lg:py-20"
             style={{ backgroundColor: '#FFFFFF' }}>
-            <div className="w-full max-w-md">
+            <div className="w-full lg:max-w-md">
               <h3 className="text-[28px] md:text-[32px] lg:text-[36px]" style={{
                 fontFamily: "'Space Grotesk', sans-serif", fontWeight: 700, lineHeight: '1.2',
                 letterSpacing: '-0.02em', color: '#111111', marginBottom: '12px',
@@ -647,60 +642,35 @@ export function ExportSection() {
               </h3>
               <p className="text-[15px] md:text-base lg:text-lg" style={{
                 fontFamily: "'Space Grotesk', sans-serif", fontWeight: 400, lineHeight: '1.65',
-                color: '#444444', marginBottom: '40px',
+                color: '#444444', marginBottom: '0',
               }}>
                 Nuestra presencia internacional respaldada por certificaciones y trazabilidad de clase mundial.
               </p>
 
-              <div className="w-full">
-                {!activeRegion ? (
-                  <div className="flex items-center gap-10">
-                    <div style={{ borderLeft: '2px solid #D4A93A', paddingLeft: '20px' }}>
-                      <p style={{ fontFamily: "'Space Grotesk', sans-serif", fontWeight: 700, fontSize: 'clamp(14px, 1.1vw, 17px)', color: '#D4A93A', marginBottom: '4px' }}>Hacia</p>
-                      <p style={{ fontFamily: "'Space Grotesk', sans-serif", fontWeight: 700, fontSize: 'clamp(40px, 4vw, 56px)', lineHeight: '1', color: '#D4A93A', marginBottom: '4px' }}>16</p>
-                      <p style={{ fontFamily: "'Space Grotesk', sans-serif", fontWeight: 600, fontSize: '10px', letterSpacing: '0.12em', textTransform: 'uppercase', color: '#888888' }}>Países</p>
-                    </div>
-                    <div style={{ borderLeft: '2px solid rgba(212,169,58,0.35)', paddingLeft: '20px' }}>
-                      <p style={{ fontFamily: "'Space Grotesk', sans-serif", fontWeight: 700, fontSize: 'clamp(40px, 4vw, 56px)', lineHeight: '1', color: '#111111', marginBottom: '4px' }}>5</p>
-                      <p style={{ fontFamily: "'Space Grotesk', sans-serif", fontWeight: 600, fontSize: '10px', letterSpacing: '0.12em', textTransform: 'uppercase', color: '#888888', lineHeight: '1.4' }}>Regiones<br />Globales</p>
-                    </div>
-                  </div>
-                ) : (
-                  <div>
-                    <div className="flex items-center justify-between mb-5">
-                      <div className="flex items-center gap-2">
-                        <span className="w-2.5 h-2.5 rounded-full inline-block flex-shrink-0" style={{ backgroundColor: activeRegion.color }} />
-                        <span style={{ fontFamily: "'Space Grotesk', sans-serif", fontWeight: 600, fontSize: '13px', letterSpacing: '0.06em', textTransform: 'uppercase', color: '#D4A93A' }}>
-                          {activeRegion.name}
-                        </span>
-                      </div>
-                      <button onClick={() => setSelectedRegion(null)} aria-label="Cerrar"
-                        style={{ color: '#888888', fontSize: '13px', lineHeight: '1', background: 'none', border: 'none', cursor: 'pointer' }}>
-                        ✕
-                      </button>
-                    </div>
-                    <ul style={{ display: 'flex', flexDirection: 'column', gap: '14px' }}>
-                      {activeRegion.countries.map((c) => (
-                        <li key={c.code} style={{ display: 'flex', alignItems: 'center', gap: '14px' }}>
-                          <img src={`https://flagcdn.com/${c.code}.svg`} alt={c.name} loading="lazy"
-                            className={`${FLAG_W} ${FLAG_H} object-cover flex-shrink-0`}
-                            style={{ borderRadius: '3px', boxShadow: '0 1px 4px rgba(0,0,0,0.18)', outline: '1px solid rgba(0,0,0,0.08)' }}
-                          />
-                          <span style={{ fontFamily: "'Space Grotesk', sans-serif", fontWeight: 500, fontSize: '15px', color: '#111111', whiteSpace: 'nowrap' }}>
-                            {c.name}
-                          </span>
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-                )}
+              {/* Stats: HIDDEN en mobile, visible solo en lg+ */}
+              <div className="hidden lg:flex items-center gap-10 mt-10">
+                <div style={{ borderLeft: '2px solid #D4A93A', paddingLeft: '20px' }}>
+                  <p style={{ fontFamily: "'Space Grotesk', sans-serif", fontWeight: 700, fontSize: 'clamp(14px, 1.1vw, 17px)', color: '#D4A93A', marginBottom: '4px' }}>Hacia</p>
+                  <p style={{ fontFamily: "'Space Grotesk', sans-serif", fontWeight: 700, fontSize: 'clamp(40px, 4vw, 56px)', lineHeight: '1', color: '#D4A93A', marginBottom: '4px' }}>16</p>
+                  <p style={{ fontFamily: "'Space Grotesk', sans-serif", fontWeight: 600, fontSize: '10px', letterSpacing: '0.12em', textTransform: 'uppercase', color: '#888888' }}>Países</p>
+                </div>
+                <div style={{ borderLeft: '2px solid rgba(212,169,58,0.35)', paddingLeft: '20px' }}>
+                  <p style={{ fontFamily: "'Space Grotesk', sans-serif", fontWeight: 700, fontSize: 'clamp(40px, 4vw, 56px)', lineHeight: '1', color: '#111111', marginBottom: '4px' }}>5</p>
+                  <p style={{ fontFamily: "'Space Grotesk', sans-serif", fontWeight: 600, fontSize: '10px', letterSpacing: '0.12em', textTransform: 'uppercase', color: '#888888', lineHeight: '1.4' }}>Regiones<br />Globales</p>
+                </div>
               </div>
             </div>
           </div>
 
-          <div className="w-full lg:w-3/5 flex flex-col justify-center px-8 md:px-10 lg:px-12 py-16 lg:py-20"
+          {/* RIGHT — filtros + mapa/banderas
+              Mobile: pt-4 (gap visual entre heading y filtros), pb-10.
+              Desktop: lg:py-20. */}
+          <div className="w-full lg:w-3/5 flex flex-col justify-center px-5 pt-4 pb-10 lg:px-12 lg:py-20"
             style={{ backgroundColor: '#FFFFFF' }}>
-            <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-3 mb-8">
+
+            {/* Region filter grid — 2-col mobile, 3-col sm, 5-col lg
+                Siempre en orden alfabético (definido en el array). */}
+            <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-3 mb-6 lg:mb-8">
               {regions.map((region) => {
                 const isActive = selectedRegion === region.id;
                 return (
@@ -726,12 +696,59 @@ export function ExportSection() {
                 );
               })}
             </div>
-            <div className="w-full flex items-center justify-center">
-              <img src={mapImage} alt="Mapa de exportación Carnes San Martín"
-                className="w-full h-auto object-contain transition-transform duration-700 hover:scale-[1.02]"
-                style={{ maxHeight: '60vh' }}
-              />
-            </div>
+
+            {/* Mapa (estado inicial) o Banderas por país (región activa) */}
+            {!activeRegion ? (
+              <div className="w-full flex items-center justify-center">
+                <img src={mapImage} alt="Mapa de exportación Carnes San Martín"
+                  className="w-full h-auto object-contain transition-transform duration-700 hover:scale-[1.02]"
+                  style={{ maxHeight: '60vh' }}
+                />
+              </div>
+            ) : (
+              <div className="region-fade-in w-full">
+                {/* Encabezado de región + botón X para cerrar y volver al mapa */}
+                <div className="flex items-center justify-between mb-4 px-1">
+                  <div className="flex items-center gap-2.5">
+                    <span className="w-2.5 h-2.5 rounded-full flex-shrink-0"
+                      style={{ backgroundColor: activeRegion.color }} />
+                    <span style={{ fontFamily: "'Space Grotesk', sans-serif", fontWeight: 700,
+                      fontSize: '13px', letterSpacing: '0.08em', textTransform: 'uppercase', color: '#D4A93A' }}>
+                      {activeRegion.name}
+                    </span>
+                  </div>
+                  <button
+                    onClick={() => setSelectedRegion(null)}
+                    aria-label="Cerrar región y volver al mapa"
+                    style={{ display: 'flex', alignItems: 'center', justifyContent: 'center',
+                      width: '28px', height: '28px', borderRadius: '50%',
+                      backgroundColor: '#111111', border: 'none', cursor: 'pointer',
+                      transition: 'background-color 0.2s' }}>
+                    <X style={{ width: '13px', height: '13px', color: '#FFFFFF' }} />
+                  </button>
+                </div>
+
+                {/* Lista de países — orden alfabético (definido en el array) */}
+                <div className="flex flex-col gap-2">
+                  {activeRegion.countries.map((c) => (
+                    <div key={c.code}
+                      className="flex items-center gap-3 px-3 py-2.5 rounded"
+                      style={{ backgroundColor: 'rgba(17,17,17,0.04)', border: '1px solid rgba(17,17,17,0.06)' }}>
+                      <img
+                        src={`https://flagcdn.com/${c.code}.svg`}
+                        alt={c.name}
+                        loading="lazy"
+                        style={{ width: '48px', height: '32px', objectFit: 'cover', borderRadius: '3px',
+                          boxShadow: '0 1px 4px rgba(0,0,0,0.18)', outline: '1px solid rgba(0,0,0,0.08)', flexShrink: 0 }}
+                      />
+                      <span style={{ fontFamily: "'Space Grotesk', sans-serif", fontWeight: 500, fontSize: '15px', color: '#111111' }}>
+                        {c.name}
+                      </span>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            )}
           </div>
         </div>
       </div>
@@ -740,19 +757,19 @@ export function ExportSection() {
       {/* ============================================================
           3. DISTRIBUIDORES REGIONALES — FONDO NEGRO
           ─────────────────────────────────────────────────────────────
-          MOBILE: columnas apiladas.
-            • RIGHT (banderas/cards): py-8 px-6 (32/24 px estándar).
-              Sin minHeight forzado → se ajusta al contenido exacto,
-              eliminando el exceso de fondo negro debajo de los cards.
-          DESKTOP: flex-row, el bloque izquierdo define la altura.
+          MOBILE (flex-col): eyebrow → H2 → párrafo → banderas/card → CTA
+            • CTA desktop: hidden en mobile (hidden lg:block en left col).
+            • CTA mobile: lg:hidden, último elemento del flex-col,
+              aparece debajo del bloque de banderas/cards.
+          DESKTOP (lg:flex-row): split 50/50 sin cambios.
           ============================================================ */}
       <div className="w-full flex flex-col lg:flex-row" style={{ backgroundColor: '#000000' }}>
 
-        {/* LEFT 50% — texto */}
-        <div className="w-full lg:w-1/2 flex flex-col justify-center"
-          style={{ backgroundColor: '#000000', padding: 'clamp(48px, 6vw, 96px) clamp(40px, 8vw, 100px)' }}>
+        {/* LEFT / TOP mobile: eyebrow + H2 + párrafo + CTA (desktop only) */}
+        <div className="w-full lg:w-1/2 flex flex-col justify-center px-5 pt-10 pb-6 lg:px-16 lg:py-24"
+          style={{ backgroundColor: '#000000' }}>
 
-          <span className="inline-block mb-5" style={{ fontFamily: "'Space Grotesk', sans-serif",
+          <span className="inline-block mb-4 lg:mb-5" style={{ fontFamily: "'Space Grotesk', sans-serif",
             fontWeight: 600, fontSize: '11px', letterSpacing: '0.14em',
             textTransform: 'uppercase', color: '#D4A93A' }}>
             Red Comercial Regional
@@ -767,7 +784,7 @@ export function ExportSection() {
 
           <p className="text-base md:text-lg lg:text-xl" style={{
             fontFamily: "'Space Grotesk', sans-serif", fontWeight: 400, lineHeight: '1.65',
-            color: 'rgba(255,255,255,0.70)', marginBottom: '40px', maxWidth: '520px',
+            color: 'rgba(255,255,255,0.70)', marginBottom: '0', maxWidth: '520px',
           }}>
             ¿Buscas distribución de carnes premium en Costa Rica o Guatemala?
             Nuestra red de distribuidores autorizados te conecta directamente con
@@ -777,7 +794,8 @@ export function ExportSection() {
             Central en Nicaragua está lista para atenderte.
           </p>
 
-          <div>
+          {/* CTA — DESKTOP ONLY: hidden en mobile */}
+          <div className="hidden lg:block mt-10">
             <a href="#export" className="cta-dark">
               Oficina Central — Nicaragua
               <span style={{ display: 'inline-block' }}>→</span>
@@ -785,12 +803,9 @@ export function ExportSection() {
           </div>
         </div>
 
-        {/* RIGHT 50% — banderas / cards.
-            MOBILE: py-8 px-6 (32/24 px). Sin minHeight forzado:
-              el bloque se cierra limpio justo debajo del contenido,
-              sin fondo negro extra.
-            DESKTOP: py-16 px-16.                                    */}
-        <div className="w-full lg:w-1/2 flex items-center justify-center py-8 px-6 lg:py-16 lg:px-16"
+        {/* RIGHT / MIDDLE mobile: banderas / cards
+            py-8 px-5 mobile (32/20 px). Sin minHeight forzado. */}
+        <div className="w-full lg:w-1/2 flex items-center justify-center py-8 px-5 lg:py-16 lg:px-16"
           style={{ backgroundColor: '#000000' }}>
           <div className="w-full flex items-center justify-center mx-auto" style={{ maxWidth: '380px' }}>
             {selectedDistCountry === null && (
@@ -807,6 +822,14 @@ export function ExportSection() {
               </div>
             )}
           </div>
+        </div>
+
+        {/* CTA — MOBILE ONLY: aparece después de las banderas/cards */}
+        <div className="lg:hidden w-full px-5 pb-10" style={{ backgroundColor: '#000000' }}>
+          <a href="#export" className="cta-dark">
+            Oficina Central — Nicaragua
+            <span style={{ display: 'inline-block' }}>→</span>
+          </a>
         </div>
 
       </div>
